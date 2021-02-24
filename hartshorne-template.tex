@@ -1,0 +1,42 @@
+\documentclass{hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
+\usepackage[margin=0.7in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb} 
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+
+% Math Operators
+\DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
+\DeclareMathOperator{\rr}{\mathbb{R}} % Reals
+\DeclareMathOperator{\nn}{\mathbb{N}} % Naturals
+\DeclareMathOperator{\qq}{\mathbb{Q}} % Rationals
+\DeclareMathOperator{\Ht}{\rm{ht}}    % Height of a prime ideal
+\DeclareMathOperator{\Dim}{\rm{dim}}  % Dimension of ring/space
+\DeclareMathOperator{\im}{\rm{Im}}    % Image of a map
+\let\aa\relax
+\DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
+\DeclareMathOperator{\pp}{\mathbf{P}} % Projective space
+
+% Math commands
+\newcommand{\x}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\x"
+\newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+% Enumerate environment will now list boldfaced letters
+\renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
+\newcommand*{\ms}[1]{\ensuremath{\mathscr{#1}}}
+
+% Header 
+\newcommand{\header}[2]{
+    {\noindent
+    {\Large \bf Hartshorne #1 Exercises: #2}
+    \hfill 
+    {\large Feiyang Lin and Luke Trujillo}
+    \vspace{0.5cm}}
+}
+
+\begin{document}
+
+\end{document}

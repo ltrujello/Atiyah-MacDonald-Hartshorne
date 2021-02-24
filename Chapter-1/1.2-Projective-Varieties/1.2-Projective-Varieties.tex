@@ -1,0 +1,139 @@
+\documentclass{hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
+\usepackage[margin=0.7in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb} 
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+
+% Math Operators
+\DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
+\DeclareMathOperator{\rr}{\mathbb{R}} % Reals
+\DeclareMathOperator{\nn}{\mathbb{N}} % Naturals
+\DeclareMathOperator{\qq}{\mathbb{Q}} % Rationals
+\DeclareMathOperator{\Ht}{\rm{ht}}    % Height of a prime ideal
+\DeclareMathOperator{\Dim}{\rm{dim}}  % Dimension of ring/space
+\DeclareMathOperator{\im}{\rm{Im}}    % Image of a map
+\let\aa\relax
+\DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
+\DeclareMathOperator{\pp}{\mathbf{P}} % Projective space
+
+% Math commands
+\newcommand{\x}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\x"
+\newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+
+% Enumerate environment will now list boldfaced letters
+\renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
+\newcommand*{\ms}[1]{\ensuremath{\mathscr{#1}}}
+
+% Header 
+\newcommand{\header}[2]{
+    {\noindent
+    {\Large \bf Hartshorne #1 Exercises: #2}
+    \hfill 
+    {\large Feiyang Lin and Luke Trujillo}
+    \vspace{0.5cm}}
+}
+
+
+\begin{document}
+
+\header{1.2}{Projective Varieties}
+
+% --
+\begin{exercise}[Exercise 2.1]
+    Prove the ``homogeneous Nullstellensatz,'' which says if $\mathfrak{a}
+    \subseteq S$ is a homogeneous ideal, and if $f \in S$ is a homogeneous
+    polynomial with $\deg f > 0$, such that $f(P) = 0$ for all $P \in
+    Z(\mathfrak{a})$ in $\pp^n$, then $f^q \in \mathfrak{a}$ for some $q >
+    0$.
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+% --
+\begin{exercise}[Exercise 2.2]
+    For a homogeneous ideal $\mathfrak{a} \subseteq S$, show that the following
+    conditions are equivalent:
+    \begin{itemize}
+        \item[(\emph{i}.)] $Z(\mathfrak{a}) = \emptyset$ (the empty set);
+        \item[(\emph{ii}.)] $\sqrt{\mathfrak{a}} =$ either $S$ or the ideal $S_+ =
+        \bigoplus_{d > 0}S_d$;
+        \item[(\emph{iii}.)] $\mathfrak{a} \supseteq S_d$ for some $d > 0$. 
+    \end{itemize}
+\end{exercise}
+
+\begin{solution}
+    
+\end{solution}
+
+% --
+\begin{exercise}[Exercise 2.3]
+    \begin{enumerate}
+        \item If $T_1 \subseteq T_2$ are subsets of $S^h$, then $Z(T_1) \supseteq
+        Z(T_2)$.
+      \item If $Y_1 \subseteq Y_2$ are subsets of $\pp^n$, then $I(Y_1) \supseteq
+        I(Y_2)$.
+      \item For any two subsets $Y_1,Y_2$ of $\pp^n$, $I(Y_1 \cup Y_2) = I(Y_1)
+        \cap I(Y_2)$.
+      \item If $\mathfrak{a} \subseteq S$ is a homogeneous ideal with
+        $Z(\mathfrak{a}) \ne \emptyset$, then $I(Z(\mathfrak{a})) =
+        \sqrt{\mathfrak{a}}$.
+      \item For any subset $Y \subseteq \pp^n$, $Z(I(Y)) = \overline{Y}$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+% --
+\begin{exercise}[Exercise 2.4]
+    \begin{enumerate}
+        \item There is a one-to-one inclusion-reversing correspondence between
+        algebraic sets in $\pp^n$ and homogeneous radical ideals of $S$ not equal
+        to $S_+$ given by $Y \mapsto I(Y)$ and $\mathfrak{a} \mapsto
+        Z(\mathfrak{a})$. \emph{Note:} Since $S_{+}$ does not occur in this correspondence, 
+        it is sometimes called te \emph{irrelevant} maximal ideal of $S$. 
+        
+        \item An algebraic set $Y \subseteq \pp^n$ is irreducible if and only if $I(Y)$ is a prime ideal. 
+        \item Show that $\pp^n$ itself is irreducible. 
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+% --
+\begin{exercise}[Exercise 2.5]
+    \begin{enumerate}
+        \item $\pp^n$ is a noetherian topological space. 
+        \item Every algebraic set in $\pp^n$ can be written uniquely as a finite
+          union of irreducible algebraic sets, no one containing another. These are
+          called its \emph{irreducible components}. 
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+
+\end{solution}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
