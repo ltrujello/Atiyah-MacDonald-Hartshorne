@@ -1,10 +1,13 @@
-\documentclass{hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
+\documentclass{/Users/SHER/Documents/Hartshorne-Exercises/hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
+% \documentclass{hw_pset}
 \usepackage[margin=0.7in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath, amssymb} 
-\usepackage{lmodern}
+\usepacka{}ge{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{pdfcolmk}
 
 % Math Operators
 \DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
@@ -17,12 +20,16 @@
 \let\aa\relax
 \DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
 \DeclareMathOperator{\pp}{\mathbf{P}} % Projective space
+\DeclareMathOperator{\R}{\mathbb{R}}
 
 % Math commands
 \newcommand{\x}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\x"
 \newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
 \renewcommand{\phi}{\varphi}
 \renewcommand{\epsilon}{\varepsilon}
+
+% feiyang's solutions
+\newcommand{\lfy}[1]{{\color{Maroon} #1}}
 
 % Enumerate environment will now list boldfaced letters
 \renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
@@ -203,16 +210,17 @@
     \[
         B \cong k[\x]/I(Y)
     \]
-    with $Y$ an affine variety. By definition, this is a finitely genereated $k$-algebra.
-    As it is also an integral domain, $B$ cannot have any nilpotents. 
+    with $Y$ an affine variety. By definition, this is a finitely genereated $k$-algebra. As it is also an integral domain, $B$ cannot have any nilpotents. 
+
+    \lfy{$B$ is not necessarily an integral domain because $Y$ might be reducible, e.g. consider $I(Y) = (xy)$. However, $I(Y)$ is radical, so if $p^n \in I(Y)$, then $p \in I(Y)$, so $B$ has no nilpotents.}
 
     Converseley, suppose $B$ is finitely generated and has no nilpotents. By definition, 
-    there exists elements $b_1, \dots, b_n \in B$ and a map $\phi: k[\x] \to B$ 
+    there exists elements $b_1, \dots, b_n \in B$ and a map (\lfy{surjection}) $\phi: k[\x] \to B$ 
     where $p(\x) \mapsto p(b_1, \dots, b_n)$. This establishes the isomorphism 
     \[
         B \cong k[\x]/\ker(\phi).
     \]
-    Since $B$ has no nilpotents, every ideal is radical. Therefore, 
+    Since $B$ has no nilpotents, every ideal is radical. \lfy{$\ker(\phi)$ is radical?} Therefore, 
     \[
         B \cong k[\x]/\ker(\phi) \cong k[\x]/I(Z(\ker(\phi))).
     \]
@@ -321,7 +329,7 @@
         Since $Y \not\subset H$, we know that $(f) \not\subset \idl{p}$ which implies 
         $f \not\in \idl{p}$. Hence, we see that $f + \idl{p} \in k[\x]/\idl{p}$ 
         is not a zero divisor (as it is an integral domain). It is also not a unit as 
-        $f$ is irreducible. 
+        $f$ is irreducible. \lfy{Write $\bar{f}$ as the representative of $f$ in $k[\x]/\idl{p}$. If $\bar{f}\bar{g} = \bar{0}$, then $fg \in \idl{p}$. Since $f \in \idl{p}$ and $\idl{p}$ is prime, this means that $g \in \idl{p}$, i.e. $\bar{g} = \bar{0}$. So $\bar{f}$ is not a zero-divisor.}
 
         \item The ring $k[\x]/\idl{p}$ is Noetherian. Thus, by 
         Theorem 1.11A, every minimal prime ideal in $k[\x]/\idl{p}$
@@ -457,7 +465,7 @@
 \end{exercise}
 
 \begin{solution}
-    Construct the map $\phi: k[x,y,z] \to k[t]$ where $p(x,y,z) = f(t^3, t^4, t^5)$. 
+    Construct the map $\phi: k[x,y,z] \to k[t]$ where $p(x,y,z) = f(t^3, t^4, t^5)$. \lfy{$\phi(p)(t) = p(t^3, t^4, t^5)$?}
     The kernel of this map is given by $I(Y) = \{f \in k[x,y,z] \mid f(t^3, t^4, t^5) = 0 \text{ for all } t \in k  \}$.
     However, the map is not surjective. 
     Thus we have that 
@@ -466,6 +474,7 @@
     \]
     Since $k[t]$ is an integral domain, and $\im(\phi)$ is a subring, 
     this nevertheless implies that $I(Y)$ is a prime ideal.
+    \lfy{Alternatively we have an isomorphism of varieties between $Y$ and $X = \{(t, t^3, t^4, t^5)\}$ via $(x, y, z) \mapsto (x^{-1}y, x, y, z)$ and $(t, t^3, t^4, t^5) \mapsto (t^3, t^4, t^5)$.}
 \end{solution}
 
 \begin{exercise}[1.12]
@@ -475,7 +484,7 @@
 \end{exercise}
 
 \begin{solution}
-
+\lfy{Consider $f = (x^2-1)^2+y^2$. $Z(f) = Z((x-1, y)) \cup Z((x+1, y))$, and so is reducible. Now we prove that $f$ is irreducible. Suppose $f$ is reducible. Then $f = g(x,y)h(x,y)$. One can check that $f(x,1) = (x^2-1)^2+1$ has no factorization two non-units over $\R$. Therefore $f(x,y) = g(y)h(x,y).$ However $f$ has a term $x^4$ and no other $x^4y^i$ terms, which implies that $g(y)$ is a unit.}
 \end{solution}
 
 
