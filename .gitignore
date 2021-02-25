@@ -1,5 +1,7 @@
 # Grr, Apple.
 *.DS_Store
+# No longer need hw_pset.cls
+hw_pset.cls 
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
