@@ -1,33 +1,41 @@
-\documentclass{/Users/SHER/Documents/Hartshorne-Exercises/hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
+% \documentclass{/Users/SHER/Documents/Hartshorne-Exercises/hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
 % \documentclass{hw_pset}
+\documentclass[10pt]{amsart}
 \usepackage[margin=0.7in]{geometry}
 \usepackage{graphicx}
 \usepackage{amsmath, amssymb} 
 \usepackage{lmodern}
+% \usepackage{tikz}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage{pdfcolmk}
+\usepackage{/Users/SHER/Documents/Hartshorne-Exercises/style}
 
 % Math Operators
-\DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
-\DeclareMathOperator{\rr}{\mathbb{R}} % Reals
-\DeclareMathOperator{\nn}{\mathbb{N}} % Naturals
-\DeclareMathOperator{\qq}{\mathbb{Q}} % Rationals
-\DeclareMathOperator{\Ht}{\rm{ht}}    % Height of a prime ideal
-\DeclareMathOperator{\Dim}{\rm{dim}}  % Dimension of ring/space
-\DeclareMathOperator{\im}{\rm{Im}}    % Image of a map
-\let\aa\relax
-\DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
-\DeclareMathOperator{\pp}{\mathbf{P}} % Projective space
+% \DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
+% \DeclareMathOperator{\rr}{\mathbb{R}} % Reals
+% \DeclareMathOperator{\nn}{\mathbb{N}} % Naturals
+% \DeclareMathOperator{\qq}{\mathbb{Q}} % Rationals
+% \DeclareMathOperator{\Ht}{\rm{ht}}    % Height of a prime ideal
+% \DeclareMathOperator{\Dim}{\rm{dim}}  % Dimension of ring/space
+% \DeclareMathOperator{\im}{\rm{Im}}    % Image of a map
+% \let\aa\relax
+% \DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
+% \DeclareMathOperator{\by}{\mathbf{y}} % Affine n-space
+% \DeclareMathOperator{\fa}{\fa}
+% \DeclareMathOperator{\bbP}{\mathbf{P}} % Projective space
 
-% Math commands
-\newcommand{\x}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\x"
-\newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
-\renewcommand{\phi}{\varphi}
-\renewcommand{\epsilon}{\varepsilon}
+% % Math commands
+% \newcommand{\x}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\x"
+% \newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
+% \renewcommand{\phi}{\varphi}
+% \renewcommand{\epsilon}{\varepsilon}
 
-% Enumerate environment will now list boldfaced letters
-\renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
-\newcommand*{\ms}[1]{\ensuremath{\mathscr{#1}}}
+% % Enumerate environment will now list boldfaced letters
+% \renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
+% \newcommand*{\ms}[1]{\ensuremath{\mathscr{#1}}}
+
 
 % Header 
 \newcommand{\header}[2]{
@@ -45,10 +53,10 @@
 
 % --
 \begin{exercise}[Exercise 2.1]
-    Prove the ``homogeneous Nullstellensatz,'' which says if $\mathfrak{a}
+    Prove the ``homogeneous Nullstellensatz,'' which says if $\fa
     \subseteq S$ is a homogeneous ideal, and if $f \in S$ is a homogeneous
     polynomial with $\deg f > 0$, such that $f(P) = 0$ for all $P \in
-    Z(\mathfrak{a})$ in $\pp^n$, then $f^q \in \mathfrak{a}$ for some $q >
+    Z(\fa)$ in $\bbP^n$, then $f^q \in \fa$ for some $q >
     0$.
 \end{exercise}
 
@@ -58,18 +66,24 @@
 
 % --
 \begin{exercise}[Exercise 2.2]
-    For a homogeneous ideal $\mathfrak{a} \subseteq S$, show that the following
+    For a homogeneous ideal $\fa \subseteq S$, show that the following
     conditions are equivalent:
     \begin{itemize}
-        \item[(\emph{i}.)] $Z(\mathfrak{a}) = \emptyset$ (the empty set);
-        \item[(\emph{ii}.)] $\sqrt{\mathfrak{a}} =$ either $S$ or the ideal $S_+ =
+        \item[(\emph{i}.)] $Z(\fa) = \emptyset$ (the empty set);
+        \item[(\emph{ii}.)] $\sqrt{\fa} =$ either $S$ or the ideal $S_+ =
         \bigoplus_{d > 0}S_d$;
-        \item[(\emph{iii}.)] $\mathfrak{a} \supseteq S_d$ for some $d > 0$. 
+        \item[(\emph{iii}.)] $\fa \supseteq S_d$ for some $d > 0$. 
     \end{itemize}
 \end{exercise}
 
 \begin{solution}
-    
+    \lfy{
+    (i) $\Rightarrow$ (ii). Since $Z(\fa) = \emptyset$, the zero set of $\fa$ in affine space is either $\emptyset$ or $\{\mathbf{0}\}.$ In the first case, we certainly have $\sqrt{\fa} = S$. In the second case, we have $\sqrt{\fa} = \{p \in S: p(0) = 0\} = S_+$.
+
+    (ii) $\Rightarrow$ (iii). It suffices to show that there exists $d$ such that all monomials of degree $d$ lies in $\fa$. Since $S_+ \subset \sqrt{\fa},$ for each $0 \leq i \leq n$, there exists $d_i$ such that $x_i^{d_i} \in \fa$. Let $d = n\sum_{i=0}^{n}d_i$. Then if a monomial has degree $d$, then there exists $i$ such that the exponent of $x_i$ in the monomial is at least $\sum_{i=0}^{n}d_i$, and therefore at least $d_i$, which implies that the monomial is in $\fa$.
+
+    (iii) $\Rightarrow$ (i). If $S_d \subseteq \fa$ for some $d > 0$, then $x_i \in \sqrt{\fa}$ for every $0 \leq i \leq n$, which means that $Z(\fa) = Z(\sqrt{\fa}) = \emptyset$. 
+    }
 \end{solution}
 
 % --
@@ -77,14 +91,14 @@
     \begin{enumerate}
         \item If $T_1 \subseteq T_2$ are subsets of $S^h$, then $Z(T_1) \supseteq
         Z(T_2)$.
-      \item If $Y_1 \subseteq Y_2$ are subsets of $\pp^n$, then $I(Y_1) \supseteq
+      \item If $Y_1 \subseteq Y_2$ are subsets of $\bbP^n$, then $I(Y_1) \supseteq
         I(Y_2)$.
-      \item For any two subsets $Y_1,Y_2$ of $\pp^n$, $I(Y_1 \cup Y_2) = I(Y_1)
+      \item For any two subsets $Y_1,Y_2$ of $\bbP^n$, $I(Y_1 \cup Y_2) = I(Y_1)
         \cap I(Y_2)$.
-      \item If $\mathfrak{a} \subseteq S$ is a homogeneous ideal with
-        $Z(\mathfrak{a}) \ne \emptyset$, then $I(Z(\mathfrak{a})) =
-        \sqrt{\mathfrak{a}}$.
-      \item For any subset $Y \subseteq \pp^n$, $Z(I(Y)) = \overline{Y}$.
+      \item If $\fa \subseteq S$ is a homogeneous ideal with
+        $Z(\fa) \ne \emptyset$, then $I(Z(\fa)) =
+        \sqrt{\fa}$.
+      \item For any subset $Y \subseteq \bbP^n$, $Z(I(Y)) = \overline{Y}$.
     \end{enumerate}
 \end{exercise}
 
@@ -96,13 +110,13 @@
 \begin{exercise}[Exercise 2.4]
     \begin{enumerate}
         \item There is a one-to-one inclusion-reversing correspondence between
-        algebraic sets in $\pp^n$ and homogeneous radical ideals of $S$ not equal
-        to $S_+$ given by $Y \mapsto I(Y)$ and $\mathfrak{a} \mapsto
-        Z(\mathfrak{a})$. \emph{Note:} Since $S_{+}$ does not occur in this correspondence, 
+        algebraic sets in $\bbP^n$ and homogeneous radical ideals of $S$ not equal
+        to $S_+$ given by $Y \mapsto I(Y)$ and $\fa \mapsto
+        Z(\fa)$. \emph{Note:} Since $S_{+}$ does not occur in this correspondence, 
         it is sometimes called te \emph{irrelevant} maximal ideal of $S$. 
         
-        \item An algebraic set $Y \subseteq \pp^n$ is irreducible if and only if $I(Y)$ is a prime ideal. 
-        \item Show that $\pp^n$ itself is irreducible. 
+        \item An algebraic set $Y \subseteq \bbP^n$ is irreducible if and only if $I(Y)$ is a prime ideal. 
+        \item Show that $\bbP^n$ itself is irreducible. 
     \end{enumerate}
 \end{exercise}
 
@@ -113,8 +127,8 @@
 % --
 \begin{exercise}[Exercise 2.5]
     \begin{enumerate}
-        \item $\pp^n$ is a noetherian topological space. 
-        \item Every algebraic set in $\pp^n$ can be written uniquely as a finite
+        \item $\bbP^n$ is a noetherian topological space. 
+        \item Every algebraic set in $\bbP^n$ can be written uniquely as a finite
           union of irreducible algebraic sets, no one containing another. These are
           called its \emph{irreducible components}. 
     \end{enumerate}
@@ -124,7 +138,14 @@
 
 \end{solution}
 
+\lfy{for 2.12(b)
 
+We prove the harder direction that $Z(\fa) \subseteq \im(\rho_d).$ We may index the $N+1$ coordinates of a point in $\bbP^n$ by tuples of the form $(a_0, a_1, \dots, a_n)$ where $a_i \in \Z_{+}$ and the sum of all $a_i$'s is $d$. Given $\y \in Z(\fa)$, I claim that there exists $0 \leq i \leq n$ such that $y_{d\bbe_i} \neq 0$. Indeed, suppose towards the contrary. Then since for any index $\bv = (a_0, a_1, \dots, a_n)$, $p(\y) = y_{\bv}^d - \prod_{i = 0}^{n}y_{d \bbe_i}^{a_i} \in \fa$, we have that $p(\y) = y_{\bv}^d = 0$, which implies that $y_{\bv} = 0$ for arbitrary $\bv$, which is absurd. 
+
+So fix some $i$ and some representative of $\y$ such that $y_{d\bbe_i} = 1$. Let $\x \in \bbP^n$ be such that $x_i = y_{d\bbe_i} = 1$ and $x_j = y_{d\bbe_i - \bbe_i + \bbe_j}$. We claim that $\rho_d(\x) = \y$. By construction, we already have that $x_i^{d-1}x_j = x_j = y_{d\bbe_i - \bbe_i + \bbe_j}$. It's straightforward to check that the polynomials in $\fa$ ensures that $y_{\bv} = M_{\bv}(\x)$.
+
+To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.
+}
 
 
 
