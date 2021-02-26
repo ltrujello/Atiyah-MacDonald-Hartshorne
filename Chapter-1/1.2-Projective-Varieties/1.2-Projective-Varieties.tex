@@ -1,41 +1,16 @@
-% \documentclass{/Users/SHER/Documents/Hartshorne-Exercises/hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
-% \documentclass{hw_pset}
 \documentclass[10pt]{amsart}
 \usepackage[margin=0.7in]{geometry}
 \usepackage{graphicx}
-\usepackage{amsmath, amssymb} 
+\usepackage{amsmath, amssymb, amsthm} 
 \usepackage{lmodern}
-% \usepackage{tikz}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
-\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[usenames,dvipsnames]{xcolor} % If using tikz, put \usepackage{tikz} after this
 \usepackage{pdfcolmk}
-\usepackage{/Users/SHER/Documents/Hartshorne-Exercises/style}
 
-% Math Operators
-% \DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
-% \DeclareMathOperator{\rr}{\mathbb{R}} % Reals
-% \DeclareMathOperator{\nn}{\mathbb{N}} % Naturals
-% \DeclareMathOperator{\qq}{\mathbb{Q}} % Rationals
-% \DeclareMathOperator{\Ht}{\rm{ht}}    % Height of a prime ideal
-% \DeclareMathOperator{\Dim}{\rm{dim}}  % Dimension of ring/space
-% \DeclareMathOperator{\im}{\rm{Im}}    % Image of a map
-% \let\aa\relax
-% \DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
-% \DeclareMathOperator{\by}{\mathbf{y}} % Affine n-space
-% \DeclareMathOperator{\fa}{\fa}
-% \DeclareMathOperator{\bbP}{\mathbf{P}} % Projective space
-
-% % Math commands
-% \newcommand{\x}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\x"
-% \newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
-% \renewcommand{\phi}{\varphi}
-% \renewcommand{\epsilon}{\varepsilon}
-
-% % Enumerate environment will now list boldfaced letters
-% \renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
-% \newcommand*{\ms}[1]{\ensuremath{\mathscr{#1}}}
-
+% Our commands + environments are in style.cls. 
+% Using the line below, they can be imported into any .tex file.
+\usepackage{../../style}
 
 % Header 
 \newcommand{\header}[2]{
@@ -61,7 +36,25 @@
 \end{exercise}
 
 \begin{solution}
-
+    \luke{
+        Let $\idl{a}$ be a homogeneous ideal of $k[x_0, \dots, x_n]$. 
+    Then in $\bbP^n$, we have that  
+    \[
+        Z(\idl{a}) = \bigg\{ P \in \bbP^n \;\bigg|\; \text{For all } f \in \idl{a}, f(P) = 0  \bigg\}
+    \]
+    while in $\aa^{n+1}$, we have that 
+    \[
+        Z'(\idl{a}) = \bigg\{ Q \in \aa^{n+1} \;\bigg|\; \text{For all } f \in \idl{a}, f(Q) = 0  \bigg\}.
+    \]
+    We can write a surjective map $\pi: Z'(\idl{a}) \to Z(\idl{a})$ sending an affine point to its projective 
+    equivalence class.
+    In addition, for a projective point $P \in Z(\idl{a})$, we can observe that 
+    $\pi^{-1}(P) \subset Z'(\idl{a})$ (the elements of $P$'s equivalence class). 
+    
+    Thus, if $f$ is homogeneous with a nonzero degree and $f(P) = 0$ for all $P \in Z(\idl{a})$, 
+    then $f(Q) = 0$ for all $Q \in Z'(\idl{a})$. By the usual Nullstellensatz, 
+    this implies that $f^q \in \idl{a}$ for some $q > 0$, which proves the result. 
+    }
 \end{solution}
 
 % --
@@ -77,8 +70,47 @@
 \end{exercise}
 
 \begin{solution}
+    \luke{
+        \begin{description}
+            \item[$(i) \implies (ii)$] 
+            Suppose $\idl{a}$ is a homogeneous ideal and $Z(\idl{a}) = \varnothing$. By the 
+            homogeneous Nullstellensatz, it is vacuously true that for every 
+            $f \in \oplus_{d > 0}S_d$, $f(P) = 0$ for all $P \in Z(\idl{a})$, and so 
+            for every such $f$ there exists a $q > 0$ such that $f^q \in \idl{a}$. 
+            Therefore, $\oplus_{d > 0}S_d \subseteq \sqrt{a}$. If $\idl{a}$ contains 
+            a unit, then $\sqrt{\idl{a}} = S$. If $\idl{a}$ does not contain a unit, then 
+            $\sqrt{\idl{a}} \subseteq \oplus_{d > 0}S_d \implies \oplus_{d > 0}S_d = \sqrt{\idl{a}}$.
+    
+            \item[$(ii) \implies (iii)$] 
+            Suppose $\sqrt{a} = S$. Then this implies that $1 \in \idl{a} \implies \idl{a} = S$. Hence $S_d \subset \idl{a}$.
+    
+            Alternatively, subbPose $\sqrt{a} = \oplus_{d > 0}S_d$. Then for every $f \in \oplus_{d > 0}S_d$, 
+            there exists a $q > 0$ such that $f^q \in \idl{a}$. In particular, there 
+            exist $r_1, \dots, r_n$ such that 
+            \[
+                x_1^{r_1}, \dots, x_n^{r_n} \in \idl{a}.
+            \]
+            Take $d = r_1 + \cdots + r_n$. We claim that $S_d \subset \idl{a}$. 
+            To see this, note that every degree-$d$ homogeneous polynomial is of the form 
+            \[
+                \sum_{k \ge 0}c_k x_1^{\alpha_1(k)} \cdots  x_n^{\alpha_n(k)}
+            \]
+            where only finitely many summands are nonzero and $\alpha_1(k) + \cdots + \alpha_n(k) = d$ is a sum 
+            of nonnegative integers. Since 
+            $d = r_1 + \cdots + r_n$, we know that for any summand $x_1^{\alpha_1(k)} \cdots  x_n^{\alpha_n(k)}$
+            at least one $\alpha_i(k) \ge r_i$. Hence, the summand is in $\idl{a}$, and so the whole 
+            sum is in $\idl{a}$. Therefore $S_d \subseteq \idl{a}$. 
+    
+            \item[$(iii) \implies (i)$] 
+            Suppose $S_d \subseteq \idl{a}$ for $d > 0$. Then $Z(\idl{a})$ must 
+            at least contain points $P$ such that $f(P) = 0$ for all $f \in S_d$.
+            This includes the polynomials $x_1^d, \dots, x_n^d$. However, these $n$ polynomials 
+            cannot all be simultaneously zero. Hence $Z(\idl{a}) = \varnothing$. 
+        
+        \end{description}
+    }    
     \lfy{
-    (i) $\Rightarrow$ (ii). Since $Z(\fa) = \emptyset$, the zero set of $\fa$ in affine space is either $\emptyset$ or $\{\mathbf{0}\}.$ In the first case, we certainly have $\sqrt{\fa} = S$. In the second case, we have $\sqrt{\fa} = \{p \in S: p(0) = 0\} = S_+$.
+    (i) $\Rightarrow$ (ii). Since $Z(\fa) = \emptyset$, the zero set of $\fa$ in affine space \luke{Did you mean projective space?} is either $\emptyset$ or $\{\mathbf{0}\}.$ In the first case, we certainly have $\sqrt{\fa} = S$. In the second case, we have $\sqrt{\fa} = \{p \in S: p(0) = 0\} = S_+$.
 
     (ii) $\Rightarrow$ (iii). It suffices to show that there exists $d$ such that all monomials of degree $d$ lies in $\fa$. Since $S_+ \subset \sqrt{\fa},$ for each $0 \leq i \leq n$, there exists $d_i$ such that $x_i^{d_i} \in \fa$. Let $d = n\sum_{i=0}^{n}d_i$. Then if a monomial has degree $d$, then there exists $i$ such that the exponent of $x_i$ in the monomial is at least $\sum_{i=0}^{n}d_i$, and therefore at least $d_i$, which implies that the monomial is in $\fa$.
 
@@ -103,7 +135,29 @@
 \end{exercise}
 
 \begin{solution}
-
+    \luke{
+        I did {\bf (a) -- (c)}, but I don't feel like \TeX-ing them.
+        \begin{enumerate}
+            \setcounter{enumi}{3}
+            \item Suppose $f$ is homogeneous and $f \in I(Z(\idl{a}))$. Then 
+            $f(P) = 0$ for all $P \in Z(\idl{a})$. By the homogeneous Nullstellensatz, 
+            we see that $f \in \sqrt{\idl{a}}$.
+            
+            Suppose $f \in \idl{a}$. Then $f^q \in \idl{a}$ for some $q > 0$. 
+            As $f^q(P) = 0$ for all $P \in Z(\idl{a})$, $f(P) = 0$ for all 
+            $P \in Z(\idl{a})$ (as $k$ is an integral domain) and so it 
+            follows that $f \in I(Z(\idl{a}))$.
+            Our total work then shows that $I(Z(\idl{a})) = \sqrt{\idl{a}}$, as desired.
+    
+            \item
+            We first know that $Y \subset Z(I(Y))$; we show that it is the smallest closed 
+            set containing $Y$. Thus
+            let $Z(J)$ be a closed set where $Y \subset Z(J) \subset I(Z(Y))$. 
+            Then $I(Z(J)) \subset I(Y)$. Since $I(Z(J)) = \sqrt{J}$, we see that 
+            $J \subset I(Y)$. Therefore, 
+            $Z(I(Y)) \subset Z(J)$. Hence, $Z(I(Y)) = Z(J)$, and so $Z(I(Y)) = \overline{Y}$.  
+        \end{enumerate}
+    }
 \end{solution}
 
 % --
@@ -138,12 +192,118 @@
 
 \end{solution}
 
-\lfy{for 2.12(b)
+\begin{exercise}[2.6]
+    If $Y$ is a projective variety with homogeneous coordinate ring $S(Y)$, show that $\Dim S(Y) = \Dim Y + 1$. 
+    [\emph{Hint}: Let $\phi_i: U_i \to \aa^n$ be the homeomorphism of (2.2), 
+    let $Y_i$ be the affine variety $\phi_i(Y \cap U_i)$ and let $A(Y_i)$ be its affine coordinate ring.
+    Show that $A(Y_i)$ can be identified with the subring of elements of degree 0 of the 
+    localized ring $S(Y)x_i$. Then show that $S(Y)_{x_i} \cong A(Y_i)[x_i, x_i^{-1}]$. 
+    Now use (1.7), (1.8A), and (Ex 1.10), and look at the transcendence degrees. Conclude also that 
+    $\Dim Y = \Dim Y_i$ whenever $Y_i$ is empty.]
+\end{exercise}
 
-We prove the harder direction that $Z(\fa) \subseteq \im(\rho_d).$ We may index the $N+1$ coordinates of a point in $\bbP^n$ by tuples of the form $(a_0, a_1, \dots, a_n)$ where $a_i \in \Z_{+}$ and the sum of all $a_i$'s is $d$. Given $\y \in Z(\fa)$, I claim that there exists $0 \leq i \leq n$ such that $y_{d\bbe_i} \neq 0$. Indeed, suppose towards the contrary. Then since for any index $\bv = (a_0, a_1, \dots, a_n)$, $p(\y) = y_{\bv}^d - \prod_{i = 0}^{n}y_{d \bbe_i}^{a_i} \in \fa$, we have that $p(\y) = y_{\bv}^d = 0$, which implies that $y_{\bv} = 0$ for arbitrary $\bv$, which is absurd. 
+\begin{solution}
 
-So fix some $i$ and some representative of $\y$ such that $y_{d\bbe_i} = 1$. Let $\x \in \bbP^n$ be such that $x_i = y_{d\bbe_i} = 1$ and $x_j = y_{d\bbe_i - \bbe_i + \bbe_j}$. We claim that $\rho_d(\x) = \y$. By construction, we already have that $x_i^{d-1}x_j = x_j = y_{d\bbe_i - \bbe_i + \bbe_j}$. It's straightforward to check that the polynomials in $\fa$ ensures that $y_{\bv} = M_{\bv}(\x)$.
+\end{solution}
 
+\begin{exercise}[2.7]
+    \begin{enumerate}
+        \item $\Dim \bbP^n = n$.
+        \item If $Y \subseteq \bbP^n$ is a quasi-projective variety, then $\Dim Y =
+          \Dim \overline{Y}$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{exercise}[2.8]
+    A projective variety $Y \subseteq \bbP^n$ has dimension $n-1$ if
+    and only if it is the zero set of a single irreducible homogeneous polynomial
+    $f$ of positive degree. $Y$ is called a \emph{hypersurface} in $\bbP^n$.   
+\end{exercise}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{exercise}[2.9]
+    If $Y \subseteq \aa^n$ is an affine variety, we identify $\aa^n$ with an open
+    set $U_0 \subset \bbP^n$ by the homeomorphism $\varphi_0$. Then we can speak of
+    $\overline{Y}$, the closure of $Y$ in $\bbP^n$, which is called the
+    \emph{projective closure} of $Y$. 
+\end{exercise}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{exercise}[2.10]
+    Let $Y \subset \bbP^n$ be a nonempty algebraic set, and let $\theta\colon
+    \aa^{n+1} \setminus \{(0,\cdots,0\} \to \bbP^n$ be the map which sends the
+    point with affine coordinates $(a_0, \cdots, a_n)$ to the point with
+    homogeneous coordinates $[a_0 :\cdots: a_n]$. We define the \emph{affine cone}
+    over $Y$ to be $$C(Y) = \theta^{-1}(Y) \cup \{(0,\cdots, 0)\}.$$ 
+    \begin{enumerate}
+        \item Show that $C(Y)$ is an algebraic set in $\aa^{n+1}$, whose ideal is equal to $I(Y)$, considered as an ordinary ideal in $k[x_0, \cdots, x_n]$. 
+        \item $C(Y)$ is irreducible if and only if $Y$ is irreducible. 
+        \item $\Dim C(Y) = \Dim Y +1$.
+    \end{enumerate}
+    Sometimes we consider the projective closure $\overline{C(Y)}$ of $C(Y)$ in
+    $\bbP^{n+1}$. This is called the \emph{projective cone} over $Y$.
+\end{exercise}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{exercise}[2.11]
+    A hypersurface defined by a linear polynomial is called a \emph{hyperplane}. 
+        \begin{enumerate}
+            \item Show that the following two conditions are equivalent for a variety $Y \subset \bbP^n$: 
+                \begin{itemize}
+                \item[(\emph{i}.)] $I(Y)$ can be generated by linear polynomials
+                \item[(\emph{ii}.)] $Y$ can be written as an intersection of hyperplanes. 
+                \end{itemize}
+                In this case we say that $Y$ is a \emph{linear variety} in $\bbP^n$.
+            \item If $Y$ is a linear variety of dimension $r$ in $\bbP^n$, show that $I(Y)$ is minimally generated by $n-r$ linear polynomials 
+            \item Let $Y,Z$ be linear varieties in $\bbP^n$, with $\Dim Y = r$, $\Dim Z = s$. If $r+s-n \geq 0$, then $Y \cap Z \neq \emptyset$. 
+            Furthermore, if $Y \cap Z \neq \emptyset$, then $Y \cap Z$ is a linear variety 
+            of dimension $\geq r+s-n$ (Think of $\aa^{n+1}$ as a vector 
+            space over $k$, and work with its subspaces.)
+        \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+    
+\end{solution}
+
+\begin{exercise}[2.12]
+    For given $n, d>0$, let
+    $M_0,\ldots, M_N$ be all the monomials of degree $d$ in the $n+1$ variables
+    $x_0, \ldots x_n$, where $N = \binom{n+d}{n} -1.$ We define a mabbPing
+    $\rho_d\colon \bbP^n \to \bbP^N$ by sending the point $P = (a_0, \ldots, a_n)$
+    to the point $\rho_d(P) = (M_0(a), \ldots, M_N(a))$ obtained by substituting
+    the $a_i$ in the monomials $M_j$. This is called the $d$-uple \emph{embedding}
+    of $\bbP^n$ in $\bbP^N$. For example, if $n=1, d=2$, then $N= 2$, and the image
+    $Y$ of the $2$-uple embedding of $\bbP^1$ in $\bbP^2$ is a conic. 
+    \begin{enumerate}
+      \item Let $\theta\colon k[y_0, \ldots, y_N] \to k[x_0, \ldots, x_n]$ be the
+        homorphism defined by sending $y_i$ to $M_i$, and let $\mathfrak{a}$ be
+        the kernel of $\theta$. Then $\mathfrak{a}$ is homogeneous prime ideal, and
+        so $Z(\mathfrak{a})$ is a projective variety in $\bbP^N$. 
+      \item Show that the image of $\rho_d$ is exactly $Z(\mathfrak{a})$.
+      \item Now show that $\rho_d$ is a homeomorphism of $\bbP^n$ onto the projective
+        variety $Z(\mathfrak{a})$. 
+      \item Show that the twisted cubic curve in $\bbP^3$
+        {\emph{(Ex.\ $2.9$)}} is equal to the $3$-uple
+        embedding of $\bbP^1$ in $\bbP^3$, for suitable choice of coordinates. 
+    \end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\lfy{
 To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.
 
 2.12(c)
@@ -154,16 +314,95 @@ To give an example to make this proof clearer, consider the example when $n = 1$
 
  ($\rho_d^{-1}$ continuous.) We claim that for any ideal $J \subset k[x_0, \dots, x_n]$, \[\rho_d(Z(J)) = Z(\theta^{-1}J) \cap Z(\fa).\] Indeed, if $\y = \rho_d(\x)$ where $\x \in Z(J)$, then for any $p \in \theta^{-1}J$, $p(\y) = p(\rho_d(\x)) = 0$ because $p \circ \rho_d = \theta(p) \in J$. Conversely, if $\y \in Z(\theta^{-1}J) \cap Z(\fa)$, then by part (ii), since $Z(\fa) = \im \rho_d$, there exists $\x$ such that $\y = \rho_d(\x)$. We check that $\x \in Z(J)$: for all $q$ such that $q \circ \rho_d \in J$, we have that $q(\y) = q(\rho_d(\x))= 0$. In other words, for all $p \in J$, $p(\x) = 0$.
 }
+\end{solution}
 
+\begin{exercise}[2.13]
+    Let $Y$ be the image of the $2$-uple embedding of $\bbP^2$ in $\bbP^5$. This is the
+    \emph{Veronese surface}. If $Z \subseteq Y$ is a closed curve (a \emph{curve} is 
+    a variety of dimension $1$), show that there exists a hypersurface $V \subseteq
+    \bbP^5$ such that $V \cap Y = Z$. 
+\end{exercise}
 
+\begin{solution}
+    
+\end{solution}
 
+\begin{exercise}[2.14]
+    Let $\psi\colon \bbP^r \times \bbP^s \to \bbP^N$ be the map defined by sending
+    the ordered pair $(a_0, \ldots, a_r) \times (b_0, \ldots, b_s)$ to $(\ldots,
+    a_ib_j, \ldots)$ in lexicographic order, where $N = rs + r +s$. Note that
+    $\psi$ is well-defined and injective. It is called the \emph{Segre embedding}.
+    Show that the image of $\psi$ is a subvariety of $\bbP^N$.
+\end{exercise}
 
+\begin{solution}
+    
+\end{solution}
 
+\begin{exercise}[2.15]
+    Consider the surface $Q$ (a \emph{surface} is variety of dimension $2$) in
+    $\bbP^3$ defined by the equation $xy-zw = 0$.
+    \begin{enumerate} 
+      \item Show that $Q$ is equal to the Segre embedding of $\bbP^1 \times \bbP^1$ in
+        $\bbP^3$, for suitable choice of coordinates.
+      \item Show that $Q$ contains two families of lines (a \emph{line} is a
+        linear variety of dimension $1$) $\{L_t\}, \{M_t\}$, each parametrized by
+        $t \in \bbP^1$, with the properties that if $L_t \ne L_u$, then
+        $L_t \cap L_u = \emptyset$; if $M_t \ne M_u$, $M_t \cap M_u = \emptyset$,
+        and for all $t,u, L_t \cap M_u =$ one point. 
+      \item Show that $Q$ contains other curves besides these lines, and deduce that
+        the Zariski topology on $Q$ is not homeomorphic via $\psi$ to the product
+        topology on $\bbP^1 \times \bbP^1$ (where each $\bbP^1$ has its Zariski
+        topology). 
+    \end{enumerate}
+\end{exercise}
 
+\begin{solution}
+    
+\end{solution}
 
+\begin{exercise}[2.16]
+    \begin{enumerate}
+        \item The intersection of two varieties need not be a variety. For example,
+        let $Q_1$ and $Q_2$ be the quadric surfaces in $\bbP^3$ given by the
+        equations $x^2-yw = 0$ and $xy - zw =0$, respectively. Show that $Q_1 \cap
+        Q_2$ is the union of a twisted cubic curve and a line.
+        
+        \item Even if the intersection of two varieties is a variety, the ideal of the
+        intersection may not be the sum of the ideals. For example, let $C$ be the
+        conic in $\bbP^2$ given by the equation $x^2-yz = 0$. Let $L$ be the line
+        given by $y = 0$. Show that $C \cap L$ consists of one point $P$, but that
+        $I(C) + I(L) \ne I(P)$. 
+    \end{enumerate}
+\end{exercise}
 
+\begin{solution}
+    
+\end{solution}
 
+\begin{exercise}[2.17]
+    A variety $Y$ of dimension $r$ in $\bbP^n$ is a \emph{(strict) complete
+    intersection} if $I(Y)$ can be generated by $n-r$ elements. $Y$ is a
+    \emph{set-theoretic complete intersection} if $Y$ can be written as the
+    intersection of $n-r$ hypersurfaces.
+    \begin{enumerate}
+    \item Let $Y$ be a variety in $\bbP^n$, let $Y = Z(\mathfrak{a})$; and
+    subbPose that $\mathfrak{a}$ can be generated by $q$ elements. Then show
+    that $\Dim Y \ge n-q$. 
+    \item Show that a strict complete intersection is a set-theoretic complete
+    intersection.
+    \item The converse of $(b)$ is false. For example let $Y$ be the twisted
+    cubic curve in $\bbP^3$ {\emph{(Ex.\ 2.9)}}. Show that
+    $I(Y)$ cannot be generated by two elements. On the other hand, find
+    hypersurfaces $H_1,H_2$ of degrees $2,3$ respectively, such that
+    $Y = H_1 \cap H_2$. 
+    \item It is an unsolved problem whether every closed irreducible curve in
+    $\bbP^3$ is a set-theoretic intersection of two surfaces.
+    \end{enumerate}
+\end{exercise}
 
-
+\begin{solution}
+    
+\end{solution}
 
 \end{document}

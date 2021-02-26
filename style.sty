@@ -20,6 +20,35 @@
     {\mbox{}\hfill$\square$}
 }
 
+%%-----------Luke's Shortcuts
+% These do not conflict with the any of the other commands
+
+% Similar to \lyf
+\newcommand{\luke}[1]{{\color{Blue} #1}}
+
+% Note
+\newcommand{\Note}[1]{\textcolor{red}{#1}}
+
+% Math Operators
+\DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
+\DeclareMathOperator{\rr}{\mathbb{R}} % Reals
+\DeclareMathOperator{\qq}{\mathbb{Q}} % Rationals
+\DeclareMathOperator{\Ht}{\rm{ht}}    % Height of a prime ideal
+\DeclareMathOperator{\Dim}{\rm{dim}}  % Dimension of ring/space
+\let\aa\relax
+\DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
+\DeclareMathOperator{\pp}{\mathbf{P}} % Projective space
+
+% Math commands
+\newcommand{\xs}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\xs"
+\newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
+\renewcommand{\epsilon}{\varepsilon}
+
+% Enumerate environment will now list boldfaced letters
+\renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
+\newcommand*{\ms}[1]{\ensuremath{\mathscr{#1}}}
+%%-------------------------
+
 \theoremstyle{definition}
 
 \newtheorem{note}[section]{Note}

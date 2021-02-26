@@ -1,39 +1,16 @@
-\documentclass{/Users/SHER/Documents/Hartshorne-Exercises/hw_pset} % hw_pset simply loads article.cls and creates the exercise/solution environments.
-% \documentclass{hw_pset}
+\documentclass[10pt]{amsart}
 \usepackage[margin=0.7in]{geometry}
 \usepackage{graphicx}
-\usepackage{amsmath, amssymb} 
-\usepacka{}ge{lmodern}
+\usepackage{amsmath, amssymb, amsthm} 
+\usepackage{lmodern}
 \usepackage[T1]{fontenc}
 \usepackage{fancyhdr}
-\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[usenames,dvipsnames]{xcolor} % If using tikz, put \usepackage{tikz} after this
 \usepackage{pdfcolmk}
 
-% Math Operators
-\DeclareMathOperator{\zz}{\mathbb{Z}} % Integers
-\DeclareMathOperator{\rr}{\mathbb{R}} % Reals
-\DeclareMathOperator{\nn}{\mathbb{N}} % Naturals
-\DeclareMathOperator{\qq}{\mathbb{Q}} % Rationals
-\DeclareMathOperator{\Ht}{\rm{ht}}    % Height of a prime ideal
-\DeclareMathOperator{\Dim}{\rm{dim}}  % Dimension of ring/space
-\DeclareMathOperator{\im}{\rm{Im}}    % Image of a map
-\let\aa\relax
-\DeclareMathOperator{\aa}{\mathbf{A}} % Affine n-space
-\DeclareMathOperator{\pp}{\mathbf{P}} % Projective space
-\DeclareMathOperator{\R}{\mathbb{R}}
-
-% Math commands
-\newcommand{\x}{x_1, \dots, x_n}    % Shortcut: "x_1, \dots, x_n" => "\x"
-\newcommand{\idl}[1]{\mathfrak{#1}} % Shortcut for ideals: "\mathfrak{p}" => "\idl{p}"
-\renewcommand{\phi}{\varphi}
-\renewcommand{\epsilon}{\varepsilon}
-
-% feiyang's solutions
-\newcommand{\lfy}[1]{{\color{Maroon} #1}}
-
-% Enumerate environment will now list boldfaced letters
-\renewcommand{\labelenumi}{{\bf (\alph{enumi})}}
-\newcommand*{\ms}[1]{\ensuremath{\mathscr{#1}}}
+% Our commands + environments are in style.cls. 
+% Using the line below, they can be imported into any .tex file.
+\usepackage{../../style}
 
 % Header 
 \newcommand{\header}[2]{
@@ -51,8 +28,8 @@
 \begin{exercise}[1.1]
     \begin{enumerate}
         \item Let $Y$ be the plane curve $y = x^2$ (i.e., $Y$ is the zero set of 
-        the polynomial $f = y - x^2$. Show that $A(Y)$ is isomorphic to a polynomial ring 
-        in one variable over $k$)
+        the polynomial $f = y - x^2$). Show that $A(Y)$ is isomorphic to a polynomial ring 
+        in one variable over $k$
 
         \item Let $Z$ be the plane curve $xy = 1$. Show that $A(Z)$ is not isomorphic to 
         a polynomial ring in one variable over $k$. 
@@ -64,40 +41,42 @@
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}
-        \item Consider the map $\phi: k[x, y] \to k[x]$ where $\phi(p(x, y)) = p(x, x^2)$. 
-        As this is (1) surjective and (2) has kernel $(y - x^2)$, we see that 
-        \[
-            k[x, y]/(y - x^2) \cong k[x].
-        \]
-        Hence $(y - x^2)$ is prime. Moreover, if we denote 
-        $Y = Z(y - x^2)$, then we see that
-        \[
-            A(Y) \cong k[x, y]/I(Y) = k[x, y]/I(Z(y - x^2)) = k[x, y]/(y - x^2)
-            \cong k[x].
-        \]
-        Therefore, $A(Y) \cong k[x]$. 
-
-        \item Consider the map 
-        $\phi: k[x, y] \to k[x, 1/x]$ where $\phi(p(x, y)) = p(x, 1/x)$. This 
-        is surjective with kernel $(xy - 1)$. This then gives us 
-        \[
-            k[x, y]/(xy - 1) \cong k[x, 1/x] \not\cong k[x].
-        \]
-        Denote $Y = Z(xy - 1)$. Note that $xy - 1$ is irreducible in $k[x, y]$. 
-        Hence, $(xy - 1)$ is prime. Moreover, 
-        \[
-            A(Y) \cong k[x, y]/I(Z(xy - 1)) = k[x, y]/(xy - 1)\not\cong k[x].
-        \]
-        Thus $A(Y) \not\cong k[x]$. 
-
-        \item Let $f = x^2 + axy + by^2 + cx + dy + e$. 
-        Suppose $b$ is a perfect square. Then 
-        \[
-            f = (x + by)^2 + cx + dy + e.
-        \]
-        Write $X = x + a$. Then $f = X^2 + cx + dy +e$. 
-    \end{enumerate}
+    \luke{
+        \begin{enumerate}
+            \item Consider the map $\phi: k[x, y] \to k[x]$ where $\phi(p(x, y)) = p(x, x^2)$. 
+            As this is (1) surjective and (2) has kernel $(y - x^2)$, we see that 
+            \[
+                k[x, y]/(y - x^2) \cong k[x].
+            \]
+            Hence $(y - x^2)$ is prime. Moreover, if we denote 
+            $Y = Z(y - x^2)$, then we see that
+            \[
+                A(Y) \cong k[x, y]/I(Y) = k[x, y]/I(Z(y - x^2)) = k[x, y]/(y - x^2)
+                \cong k[x].
+            \]
+            Therefore, $A(Y) \cong k[x]$. 
+    
+            \item Consider the map 
+            $\phi: k[x, y] \to k[x, 1/x]$ where $\phi(p(x, y)) = p(x, 1/x)$. This 
+            is surjective with kernel $(xy - 1)$. This then gives us 
+            \[
+                k[x, y]/(xy - 1) \cong k[x, 1/x] \not\cong k[x].
+            \]
+            Denote $Y = Z(xy - 1)$. Note that $xy - 1$ is irreducible in $k[x, y]$. 
+            Hence, $(xy - 1)$ is prime. Moreover, 
+            \[
+                A(Y) \cong k[x, y]/I(Z(xy - 1)) = k[x, y]/(xy - 1)\not\cong k[x].
+            \]
+            Thus $A(Y) \not\cong k[x]$. 
+    
+            \item Let $f = x^2 + axy + by^2 + cx + dy + e$. 
+            Suppose $b$ is a perfect square. Then 
+            \[
+                f = (x + by)^2 + cx + dy + e.
+            \]
+            Write $X = x + a$. Then $f = X^2 + cx + dy +e$. 
+        \end{enumerate}
+    }
 \end{solution}
 
 \begin{exercise}[1.2]
@@ -110,12 +89,14 @@
 \end{exercise}
 
 \begin{solution}
-    Construct the map $\phi: k[x,y,z] \to k[x]$ were 
+    \luke{
+        Construct the map $\phi: k[x,y,z] \to k[x]$ were 
     $\phi(p(x, y, z)) = p(x, x^2, x^3)$. Then the kernel of the 
     map is $(x^2 - y, x^3 - z)$. Therefore, 
     \[
         k[x,y,z]/(x^2 - y, x^3 - z) \cong k[x]. 
     \]
+    (\Note{I think my dimension calculation here can be greatly simplified by using the above isomorphism.})
     Hence $Y = Z(x^2 -y, x^3 - z)$ closed, irreducible, and hence an affine 
     variety. 
     Now observe that 
@@ -153,9 +134,7 @@
 
     Finally, observe that $I(Y) = I(Z(x^2-y, x^3 - z)) = (x^2 - y, x^3 - z)$. 
     Thus the generators are just $x^2 - y$ and $x^3 - z$. 
-
-
-
+    }
 
 \end{solution}
 
@@ -167,6 +146,7 @@
 \end{exercise}
 
 \begin{solution}
+   \luke{
     Since $Y = Z(x^2 - y, xz - z)$,  we see that it consists of all $\aa^3$ that 
     satisfy:
     \[
@@ -186,6 +166,7 @@
     one of the three sets. Therefore, $Y = Z(z - 1, x - y^2) \cup Z(x, z) \cup Z(x, y)$. 
     Moreover, each of these are affine varities, and as none are contained in any 
     other, we see that these are the unique irreducible components of $Y$.
+   }
 
 \end{solution}
 
@@ -206,26 +187,31 @@
 \end{exercise}
 
 \begin{solution}
+   \luke{Thanks for pointing out the mistakes Feiyang! I cleared up a lot of my confusion.
+   \\
     If $B$ is a $k$-algebra isomorphic to an affine coordinate ring, then 
     \[
-        B \cong k[\x]/I(Y)
+        B \cong k[\xs]/I(Y)
     \]
-    with $Y$ an affine variety. By definition, this is a finitely genereated $k$-algebra. As it is also an integral domain, $B$ cannot have any nilpotents. 
-
-    \lfy{$B$ is not necessarily an integral domain because $Y$ might be reducible, e.g. consider $I(Y) = (xy)$. However, $I(Y)$ is radical, so if $p^n \in I(Y)$, then $p \in I(Y)$, so $B$ has no nilpotents.}
+    with $Y$ an algebraic set. By definition, this is a finitely genereated $k$-algebra. 
+    Additionally, $I(Y)$ is radical, and so $B$ cannot have any nilpotents.
 
     Converseley, suppose $B$ is finitely generated and has no nilpotents. By definition, 
-    there exists elements $b_1, \dots, b_n \in B$ and a map (\lfy{surjection}) $\phi: k[\x] \to B$ 
-    where $p(\x) \mapsto p(b_1, \dots, b_n)$. This establishes the isomorphism 
+    there exists elements $b_1, \dots, b_n \in B$ and a surjection $\phi: k[\xs] \to B$ 
+    where $p(\xs) \mapsto p(b_1, \dots, b_n)$. This establishes the isomorphism 
     \[
-        B \cong k[\x]/\ker(\phi).
+        B \cong k[\xs]/\ker(\phi).
     \]
-    Since $B$ has no nilpotents, every ideal is radical. \lfy{$\ker(\phi)$ is radical?} Therefore, 
+    Since $B$ has no nilpotents, we know that for any 
+    $x \in k[\xs] - \ker(\phi)$, $x^r \not\in \ker(\phi)$ for any $r > 0$.
+    Hence, $\sqrt{\ker(\phi)} = \ker(\phi)$, so that $\ker(\phi)$ is radical.
+    Therefore, 
     \[
-        B \cong k[\x]/\ker(\phi) \cong k[\x]/I(Z(\ker(\phi))).
+        B \cong k[\xs]/\ker(\phi) \cong k[\xs]/I(Z(\ker(\phi))).
     \]
-    Hence, $B$ is isomorphic to the affine coordinate ring of $Z(\ker(\phi))$, 
+    We now see that $B$ is isomorphic to the affine coordinate ring of $Z(\ker(\phi))$, 
     which is an algebraic set.
+   }
 \end{solution}
 
 \begin{exercise}[1.6]
@@ -236,28 +222,30 @@
 \end{exercise}
 
 \begin{solution}
-    We first prove the first sentence.
-    Let $U$ be a nonempty open subset of $X$, an irreducible space. 
-    Observe that $\overline{U} \cup U^c = X$. Since $X$ is irreducible and $U$ 
-    is nonempty, we see that $\overline{U} = X$. Therefore, $U$ is dense.
-
-    Now suppose $U$ was reducible (in its subspace topology). Then this implies that 
-    $U = Y_1 \cup Y_2$ with $Y_1, Y_2$ closed and proper (in $U$'s subspace topology). 
-    Now we may express $Y_1 = Z_1 \cap U$ with $Z_1$ closed in $X$; similarly, there is a closed $Z_2$ corresponding 
-    to $Y_2$. Therefore, 
-    \[
-        U \subset Z_1 \cup Z_2 \implies \overline{U} \subset \overline{Z_1 \cup Z_2} \implies 
-        X = Z_1 \cup Z_2.        
-    \]
-    Hence either $X = Z_1$ or $Z_2$, so $Y_1$ or $Y_2$ is either $U$, contradicting our 
-    assumption that $Y_1$ and $Y_2$ are proper. Therefore, $U$ is irreducible. 
-
-    Now we prove the second sentence. Let $Y$ be irreducible in its subspace topology, and 
-    suppose $\overline{Y}$ is reducible in $X$. Then there exists proper, closed subsets 
-    $Z_1$, $Z_2$ of $\overline{Y}$ such that $\overline{Y} = Z_1 \cup Z_2$. Hence, 
-    $Y = (Y \cap Z_1) \cup (Y \cap Z_2)$, which implies that $Y = Z_1$ 
-    or $Y = Z_2$. However, this implies that $\overline{Y} = Z_1$ or $Z_2$, a contradiction. 
-    Therefore $\overline{Y}$ is irreducible. 
+    \luke{
+        We first prove the first sentence.
+        Let $U$ be a nonempty open subset of $X$, an irreducible space. 
+        Observe that $\overline{U} \cup U^c = X$. Since $X$ is irreducible and $U$ 
+        is nonempty, we see that $\overline{U} = X$. Therefore, $U$ is dense.
+    
+        Now suppose $U$ was reducible (in its subspace topology). Then this implies that 
+        $U = Y_1 \cup Y_2$ with $Y_1, Y_2$ closed and proper (in $U$'s subspace topology). 
+        Now we may express $Y_1 = Z_1 \cap U$ with $Z_1$ closed in $X$; similarly, there is a closed $Z_2$ corresponding 
+        to $Y_2$. Therefore, 
+        \[
+            U \subset Z_1 \cup Z_2 \implies \overline{U} \subset \overline{Z_1 \cup Z_2} \implies 
+            X = Z_1 \cup Z_2.        
+        \]
+        Hence either $X = Z_1$ or $Z_2$, so $Y_1$ or $Y_2$ is either $U$, contradicting our 
+        assumption that $Y_1$ and $Y_2$ are proper. Therefore, $U$ is irreducible. 
+    
+        Now we prove the second sentence. Let $Y$ be irreducible in its subspace topology, and 
+        suppose $\overline{Y}$ is reducible in $X$. Then there exists proper, closed subsets 
+        $Z_1$, $Z_2$ of $\overline{Y}$ such that $\overline{Y} = Z_1 \cup Z_2$. Hence, 
+        $Y = (Y \cap Z_1) \cup (Y \cap Z_2)$, which implies that $Y = Z_1$ 
+        or $Y = Z_2$. However, this implies that $\overline{Y} = Z_1$ or $Z_2$, a contradiction. 
+        Therefore $\overline{Y}$ is irreducible. 
+    }
 
 \end{solution}
 
@@ -278,31 +266,33 @@
 \end{exercise}
 
 \begin{solution}
-    \begin{enumerate}
-        \item First note that $(\emph{ii}) \implies (\emph{i})$ and $(\emph{iv}) \implies (\emph{iii})$ 
-        are immediate by definition of a Noetherian space.
+    \luke{
+        \begin{enumerate}
+            \item First note that $(\emph{ii}) \implies (\emph{i})$ and $(\emph{iv}) \implies (\emph{iii})$ 
+            are immediate by definition of a Noetherian space.
+            
+            We show $(\emph{iii}) \implies (\emph{iv})$. Since the ascending chain condition is satisfied, 
+            we may use Zorn's Lemma to deduce that any nonempty family of open subsets has 
+            a maximal element (we order it by inclusion, then apply the lemma).
+            We can prove $(\emph{ii}) \implies (\emph{i})$ similarly.
         
-        We show $(\emph{iii}) \implies (\emph{iv})$. Since the ascending chain condition is satisfied, 
-        we may use Zorn's Lemma to deduce that any nonempty family of open subsets has 
-        a maximal element (we order it by inclusion, then apply the lemma).
-        We can prove $(\emph{ii}) \implies (\emph{i})$ similarly.
+            \item Let $X$ be a Noetherian space and suppose $\mathcal{U} = \{U_{i}\}_{i \in \lambda}$ 
+            is an open cover of $X$. 
+            By (\textbf{a}), there exists a maximal element $V_1$ of $\mathcal{U}$. Using 
+            $V_1$ as our base case, inductively build the sets 
+            \[
+                V_{i+1} = \text{max}\bigg(\bigg\{ U_i \in \mathcal{U} \;\bigg|\; U_i \not\subset V_1 \cup \cdots \cup V_{i}  \bigg\}\bigg) \qquad i = 1, 2, \dots
+            \]
+            The maximum will exist by repeatedly applying (\textbf{a}). Now the chain 
+            \[
+                V_1 \subset V_1 \cup V_2 \subset \cdots V_1 \cup \cdots \cup V_j \subset \cdots
+            \]
+            must have stabilize for some finite number of unions. This then implies that 
+            $X = V_1 \cup \cdots \cup V_r$ for some $r$. Hence, $V_1, \dots, V_r$ is our finite 
+            subcover of $\mathcal{U}$, so that $X$ is compact.
     
-        \item Let $X$ be a Noetherian space and suppose $\mathcal{U} = \{U_{i}\}_{i \in \lambda}$ 
-        is an open cover of $X$. 
-        By (\textbf{a}), there exists a maximal element $V_1$ of $\mathcal{U}$. Using 
-        $V_1$ as our base case, inductively build the sets 
-        \[
-            V_{i+1} = \text{max}\bigg(\bigg\{ U_i \in \mathcal{U} \;\bigg|\; U_i \not\subset V_1 \cup \cdots \cup V_{i}  \bigg\}\bigg) \qquad i = 1, 2, \dots
-        \]
-        The maximum will exist by repeatedly applying (\textbf{a}). Now the chain 
-        \[
-            V_1 \subset V_1 \cup V_2 \subset \cdots V_1 \cup \cdots \cup V_j \subset \cdots
-        \]
-        must have stabilize for some finite number of unions. Ths then implies that 
-        $X = V_1 \cup \cdots \cup V_r$ for some $r$. Hence, $V_1, \dots, V_r$ is our finite 
-        subcover of $\mathcal{U}$, so that $X$ is compact.
-
-    \end{enumerate}
+        \end{enumerate}
+    }
 \end{solution}
 
 \begin{exercise}[1.8]
@@ -313,58 +303,58 @@
 \end{exercise}
 
 \begin{solution}
-    First denote $Y = Z(\idl{p})$ where $\idl{p}$ is a prime ideal in $k[\x]$.
-    By Corollary 1.6, we can express the algebraic set $Y \cap H$ uniquely as 
-    \[
-        Y \cap H = V_1 \cup \dots \cup V_{\ell}
-    \]
-    where each $V_i$ is an affine variety and $V_i \not\subset V_j$ for $i \ne j$. 
-    For each affine variety $V_i$ denote $V_i = Z(\idl{p}_i)$ with $\idl{p}_i$ prime. 
-    We make some observations. 
-    \begin{itemize}
-        \item Each prime ideal $\idl{p}_i$ contains $\idl{p}$, and hence corresponds to a 
-        prime ideal $\idl{p}_i'$ in $k[\x]/\idl{p}$.
+   \luke{ First denote $Y = Z(\idl{p})$ where $\idl{p}$ is a prime ideal in $k[\xs]$.
+   By Corollary 1.6, we can express the algebraic set $Y \cap H$ uniquely as 
+   \[
+       Y \cap H = V_1 \cup \dots \cup V_{\ell}
+   \]
+   where each $V_i$ is an affine variety and $V_i \not\subset V_j$ for $i \ne j$. 
+   For each affine variety $V_i$ denote $V_i = Z(\idl{p}_i)$ with $\idl{p}_i$ prime. 
+   We make some observations. 
+   \begin{itemize}
+       \item Each prime ideal $\idl{p}_i$ contains $\idl{p}$, and hence corresponds to a 
+       prime ideal $\idl{p}_i'$ in $k[\xs]/\idl{p}$.
 
-        \item 
-        Since $Y \not\subset H$, we know that $(f) \not\subset \idl{p}$ which implies 
-        $f \not\in \idl{p}$. Hence, we see that $f + \idl{p} \in k[\x]/\idl{p}$ 
-        is not a zero divisor (as it is an integral domain). It is also not a unit as 
-        $f$ is irreducible. \lfy{Write $\bar{f}$ as the representative of $f$ in $k[\x]/\idl{p}$. If $\bar{f}\bar{g} = \bar{0}$, then $fg \in \idl{p}$. Since $f \in \idl{p}$ and $\idl{p}$ is prime, this means that $g \in \idl{p}$, i.e. $\bar{g} = \bar{0}$. So $\bar{f}$ is not a zero-divisor.}
+       \item 
+       Since $Y \not\subset H$, we know that $(f) \not\subset \idl{p}$ which implies 
+       $f \not\in \idl{p}$. Hence, we see that $f + \idl{p} \in k[\xs]/\idl{p}$ 
+       is not a zero divisor (as it is an integral domain). It is also not a unit as 
+       $f$ is irreducible. \lfy{Write $\bar{f}$ as the representative of $f$ in $k[\xs]/\idl{p}$. If $\bar{f}\bar{g} = \bar{0}$, then $fg \in \idl{p}$. Since $f \in \idl{p}$ and $\idl{p}$ is prime, this means that $g \in \idl{p}$, i.e. $\bar{g} = \bar{0}$. So $\bar{f}$ is not a zero-divisor.}
 
-        \item The ring $k[\x]/\idl{p}$ is Noetherian. Thus, by 
-        Theorem 1.11A, every minimal prime ideal in $k[\x]/\idl{p}$
-        containing $f + \idl{p}$ must have height one.
-    \end{itemize}
-    Our claim is that each $\idl{p}'_i$ is a minimal prime ideal 
-    containing $f + \idl{p}$. Assuming this is true, we can observe 
-    by Theorem 1.8A that 
-    \begin{align*}
-        \Ht(\idl{p}_i') + \Dim\left( (k[\x]/\idl{p})/\idl{p}'_i \right) = \Dim\left( k[\x]/\idl{p} \right)
-        &\implies 
-        1 +  \Dim\left( A(V_i) \right) = r\\
-        &\implies 
-        \Dim\left( A(V_i) \right) = r - 1
-    \end{align*}
-    Thus we show the claim. Suppose $\idl{q}$ is a prime ideal in $k[\x]/\idl{p}$ 
-    containing $f + \idl{p}$, and that $\idl{q} \subseteq \idl{p}'_i$ for some $i$. 
-    Then $\idl{q}$ corresponds to a prime ideal $\idl{q}'$ of $k[\x]$ (1) containing $\idl{p}$ and (2) 
-    containing $f$. However, 
-    \[
-        \sqrt{\left<\idl{p}, f\right>} = \idl{p}_1 \cap \cdots \cap \idl{p}_{\ell}
-    \]
-    and as the radical of $\left<\idl{p}, f\right>$ (the smallest ideal containing $\idl{p}$ and $f$)
-    is the intersection of all prime ideals containing this ideal, we see that 
-    $\idl{p}_1 \cap \cdots \cap \idl{p}_{\ell} \subseteq \idl{q}'$. By Proposition 1.1.11(b) in Atiyah-MacDonald, 
-    this implies that $\idl{p}_j \subseteq \idl{q}'$. However, it must be that 
-    $j = i$, since none of these prime ideals 
-    are contained in each other. This then implies that 
-    $\idl{p}'_i \subseteq \idl{q}$ in $k[\x]/\idl{p}$, which gives us that $\idl{q} = \idl{p}_i'$. 
-    Hence, $\idl{p}_i$ is a minimal prime ideal in $k[\x]/\idl{p}$ containing $f+\idl{p}$, and 
-    so we may apply our above calculation. This then shows that 
-    \[
-        \Dim(A(V_i)) = r - 1  
-    \]
-    as desired.
+       \item The ring $k[\xs]/\idl{p}$ is Noetherian. Thus, by 
+       Theorem 1.11A, every minimal prime ideal in $k[\xs]/\idl{p}$
+       containing $f + \idl{p}$ must have height one.
+   \end{itemize}
+   Our claim is that each $\idl{p}'_i$ is a minimal prime ideal 
+   containing $f + \idl{p}$. Assuming this is true, we can observe 
+   by Theorem 1.8A that 
+   \begin{align*}
+       \Ht(\idl{p}_i') + \Dim\left( (k[\xs]/\idl{p})/\idl{p}'_i \right) = \Dim\left( k[\xs]/\idl{p} \right)
+       &\implies 
+       1 +  \Dim\left( A(V_i) \right) = r\\
+       &\implies 
+       \Dim\left( A(V_i) \right) = r - 1
+   \end{align*}
+   Thus we show the claim. Suppose $\idl{q}$ is a prime ideal in $k[\xs]/\idl{p}$ 
+   containing $f + \idl{p}$, and that $\idl{q} \subseteq \idl{p}'_i$ for some $i$. 
+   Then $\idl{q}$ corresponds to a prime ideal $\idl{q}'$ of $k[\xs]$ (1) containing $\idl{p}$ and (2) 
+   containing $f$. However, 
+   \[
+       \sqrt{\left<\idl{p}, f\right>} = \idl{p}_1 \cap \cdots \cap \idl{p}_{\ell}
+   \]
+   and as the radical of $\left<\idl{p}, f\right>$ (the smallest ideal containing $\idl{p}$ and $f$)
+   is the intersection of all prime ideals containing this ideal, we see that 
+   $\idl{p}_1 \cap \cdots \cap \idl{p}_{\ell} \subseteq \idl{q}'$. By Proposition 1.1.11(b) in Atiyah-MacDonald, 
+   this implies that $\idl{p}_j \subseteq \idl{q}'$. However, it must be that 
+   $j = i$, since none of these prime ideals 
+   are contained in each other. This then implies that 
+   $\idl{p}'_i \subseteq \idl{q}$ in $k[\xs]/\idl{p}$, which gives us that $\idl{q} = \idl{p}_i'$. 
+   Hence, $\idl{p}_i$ is a minimal prime ideal in $k[\xs]/\idl{p}$ containing $f+\idl{p}$, and 
+   so we may apply our above calculation. This then shows that 
+   \[
+       \Dim(A(V_i)) = r - 1  
+   \]
+   as desired.}
 \end{solution}
 
 \begin{exercise}[1.9]
@@ -374,17 +364,17 @@
 \end{exercise}
 
 \begin{solution}
-    We prove this by induction. 
+    \luke{We prove this by induction. 
     \begin{description}
         \item[Base Case.] Consider an ideal $\idl{a} = (a)$ which 
-        is generated by a single element. We assume $\idl{a}$ is not all of $k[\x]$ (i.e., $a$ is not a unit);
+        is generated by a single element. We assume $\idl{a}$ is not all of $k[\xs]$ (i.e., $a$ is not a unit);
         otherwise, $Z(\idl{a})$ is empty, which is not irreducible, and further 
         it does not make sense to talk about the irreducible components for the empty set. 
         \begin{itemize}
             \item Suppose $a = 0$. Then $\idl{a} = 0 \implies Z(\idl{a}) = \aa^n$ which is irreducible 
             and has dimension $n$.
 
-            \item Suppose $a$ is not a unit and is nonzero. Since $k[\x]$ is a UFD, then 
+            \item Suppose $a$ is not a unit and is nonzero. Since $k[\xs]$ is a UFD, then 
             we may uniquely express $a$ as $a = u\cdot f_1 \cdots f_m$ with $u$ a unit, eac 
             $f_i$ irreducible. We then have that 
             \[
@@ -420,23 +410,23 @@
         \]
         By Proposition 1.11(b) in Atiyah MacDonald, this implies that 
         $\idl{q}_s \subset \idl{p}_j$ for some $s = 1, 2, \dots, m$. 
-        Thus, denote $\idl{p}'_j$ as the prime ideal in $k[\x]/\idl{q}_s$ 
+        Thus, denote $\idl{p}'_j$ as the prime ideal in $k[\xs]/\idl{q}_s$ 
         corresponding to $\idl{p}_j$. 
         By Theorem 1.8A, we have that 
         \[
-            \Ht(\idl{p}'_j) + \Dim\left( \left(k[\x]/\idl{q}_s\right)/\idl{p}'_j \right)
+            \Ht(\idl{p}'_j) + \Dim\left( \left(k[\xs]/\idl{q}_s\right)/\idl{p}'_j \right)
             =
-            \Dim(k[\x]/\idl{q}_s).
+            \Dim(k[\xs]/\idl{q}_s).
         \]
         Now $\idl{p}'_i$ is a minimal prime ideal containing $a_i + \idl{q}_s$, which is not a unit
         or zero divisor. Hence, its height is one. Therefore, 
         \[
-            1 + \Dim(V_i) = \Dim(k[\x]/\idl{q}_s) \ge n - (r - 1)
+            1 + \Dim(V_i) = \Dim(k[\xs]/\idl{q}_s) \ge n - (r - 1)
             \implies 
             \Dim(V_i) \ge n - r.
         \]
         This completes the inductive step and the proof is complete. 
-    \end{description}
+    \end{description}}
 \end{solution}
 
 \begin{exercise}[1.10]
@@ -465,7 +455,7 @@
 \end{exercise}
 
 \begin{solution}
-    Construct the map $\phi: k[x,y,z] \to k[t]$ where $p(x,y,z) = f(t^3, t^4, t^5)$. \lfy{$\phi(p)(t) = p(t^3, t^4, t^5)$?}
+    \luke{Construct the map $\phi: k[x,y,z] \to k[t]$ where $p(x,y,z) \mapsto p(t^3, t^4, t^5)$.
     The kernel of this map is given by $I(Y) = \{f \in k[x,y,z] \mid f(t^3, t^4, t^5) = 0 \text{ for all } t \in k  \}$.
     However, the map is not surjective. 
     Thus we have that 
@@ -473,7 +463,7 @@
         k[x,y,z]/I(Y) \cong \im(\phi).
     \]
     Since $k[t]$ is an integral domain, and $\im(\phi)$ is a subring, 
-    this nevertheless implies that $I(Y)$ is a prime ideal.
+    this nevertheless implies that $I(Y)$ is a prime ideal.}
     \lfy{Alternatively we have an isomorphism of varieties between $Y$ and $X = \{(t, t^3, t^4, t^5)\}$ via $(x, y, z) \mapsto (x^{-1}y, x, y, z)$ and $(t, t^3, t^4, t^5) \mapsto (t^3, t^4, t^5)$.}
 \end{solution}
 
