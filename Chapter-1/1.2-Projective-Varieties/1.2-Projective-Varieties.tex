@@ -145,6 +145,14 @@ We prove the harder direction that $Z(\fa) \subseteq \im(\rho_d).$ We may index 
 So fix some $i$ and some representative of $\y$ such that $y_{d\bbe_i} = 1$. Let $\x \in \bbP^n$ be such that $x_i = y_{d\bbe_i} = 1$ and $x_j = y_{d\bbe_i - \bbe_i + \bbe_j}$. We claim that $\rho_d(\x) = \y$. By construction, we already have that $x_i^{d-1}x_j = x_j = y_{d\bbe_i - \bbe_i + \bbe_j}$. It's straightforward to check that the polynomials in $\fa$ ensures that $y_{\bv} = M_{\bv}(\x)$.
 
 To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.
+
+2.12(c)
+
+ The map $\rho_d$ is clearly a bijection between $\bbP^n$ and $\im \rho_d = Z(\fa)$. So it suffices to show that $\rho_d$ is bicontinuous, or equivalently, that it identifies the closed sets in $\bbP^n$ and $Z(\fa)$. 
+
+ ($\rho_d$ continuous.) We claim that for any ideal $I \subset k[y_0, \dots, y_N]$, \[\rho_d^{-1}(Z(I)) = Z(\theta(I)).\] Notice that if $(x_0, \dots, x_n) \in \rho_d^{-1}(Z(I))$, then $p(M_0(\bx), \dots, M_N(\bx)) = 0$ for all $p(y_0, \dots, y_N) \in I$. If $(x_0, \dots, x_n) \in Z(\theta(I))$, then for all $p(y_0, \dots, y_N) \in I$, $\theta(p)(x_0, \dots, x_n) = 0$. But $\theta(p)(x_0, \dots, x_n) = p(M_0(\bx), \dots, M_N(\bx))$. So these two conditions are equivalent.
+
+ ($\rho_d^{-1}$ continuous.) We claim that for any ideal $J \subset k[x_0, \dots, x_n]$, \[\rho_d(Z(J)) = Z(\theta^{-1}J) \cap Z(\fa).\] Indeed, if $\y = \rho_d(\x)$ where $\x \in Z(J)$, then for any $p \in \theta^{-1}J$, $p(\y) = p(\rho_d(\x)) = 0$ because $p \circ \rho_d = \theta(p) \in J$. Conversely, if $\y \in Z(\theta^{-1}J) \cap Z(\fa)$, then by part (ii), since $Z(\fa) = \im \rho_d$, there exists $\x$ such that $\y = \rho_d(\x)$. We check that $\x \in Z(J)$: for all $q$ such that $q \circ \rho_d \in J$, we have that $q(\y) = q(\rho_d(\x))= 0$. In other words, for all $p \in J$, $p(\x) = 0$.
 }
 
 
