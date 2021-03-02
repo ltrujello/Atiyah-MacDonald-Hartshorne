@@ -364,6 +364,9 @@
 \end{exercise}
 
 \begin{solution}
+    \lfy{
+      
+    }
     \luke{We prove this by induction. 
     \begin{description}
         \item[Base Case.] Consider an ideal $\idl{a} = (a)$ which 
@@ -442,7 +445,12 @@
 \end{exercise}
 
 \begin{solution}
-    
+    \begin{enumerate}
+        \item 
+        \item \lfy{It suffices to show that there exists $i$ such that $\dim X \leq \dim U_i$. Given a chain $Z_0 \subset Z_1 \subset \cdots \subset Z_n$ of distinct irreducible closed subsets of $X$, there exists $U_i$ such that $U_i \cap Z_{n-1} \neq \emptyset$. Then we claim that $Z_0 \cap U_i \subset Z_1 \cap U_i \subset \cdots \subset Z_n \cap U_i$ is a chain of distinct irreducible closed subsets of $U_i$. It suffices to show distinctness. Suppose that $Z_j \cap U_j = Z_{j+1} \cap U_i$.
+        Notice that \[Z_{j+1} = Z_j \cup Z_{j+1} = Z_j \cup (Z_{j+1} \cap U_i) \cup (Z_{j+1} \cap U_i^c) = Z_j \cup (Z_{j+1} \cap U_i^c).\] Since $Z_{j+1}$ is irreducible and since $Z_j \neq \emptyset$ (the empty set is not considered irreducible), we have that $Z_{j+1} \cap U_i^c = \emptyset$. However, this implies that $Z_{j+1} = Z_{j+1} \cap U_i = Z_{j} \cap U_i$, which is a contradiction to $Z_j \subsetneq Z_{j+1}$.
+        }
+    \end{enumerate}
 \end{solution}
 
 \begin{exercise}[1.11]
