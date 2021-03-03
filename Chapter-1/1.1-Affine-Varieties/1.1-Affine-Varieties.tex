@@ -41,7 +41,7 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{
+    \begin{luke}
         \begin{enumerate}
             \item Consider the map $\phi: k[x, y] \to k[x]$ where $\phi(p(x, y)) = p(x, x^2)$. 
             As this is (1) surjective and (2) has kernel $(y - x^2)$, we see that 
@@ -76,7 +76,7 @@
             \]
             Write $X = x + a$. Then $f = X^2 + cx + dy +e$. 
         \end{enumerate}
-    }
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[1.2]
@@ -89,7 +89,7 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{
+    \begin{luke}
         Construct the map $\phi: k[x,y,z] \to k[x]$ were 
     $\phi(p(x, y, z)) = p(x, x^2, x^3)$. Then the kernel of the 
     map is $(x^2 - y, x^3 - z)$. Therefore, 
@@ -134,7 +134,7 @@
 
     Finally, observe that $I(Y) = I(Z(x^2-y, x^3 - z)) = (x^2 - y, x^3 - z)$. 
     Thus the generators are just $x^2 - y$ and $x^3 - z$. 
-    }
+    \end{luke}
 
 \end{solution}
 
@@ -146,7 +146,7 @@
 \end{exercise}
 
 \begin{solution}
-   \luke{
+    \begin{luke}
     Since $Y = Z(x^2 - y, xz - z)$,  we see that it consists of all $\aa^3$ that 
     satisfy:
     \[
@@ -166,7 +166,7 @@
     one of the three sets. Therefore, $Y = Z(z - 1, x - y^2) \cup Z(x, z) \cup Z(x, y)$. 
     Moreover, each of these are affine varities, and as none are contained in any 
     other, we see that these are the unique irreducible components of $Y$.
-   }
+    \end{luke}
 
 \end{solution}
 
@@ -187,8 +187,7 @@
 \end{exercise}
 
 \begin{solution}
-   \luke{Thanks for pointing out the mistakes Feiyang! I cleared up a lot of my confusion.
-   \\
+    \begin{luke}
     If $B$ is a $k$-algebra isomorphic to an affine coordinate ring, then 
     \[
         B \cong k[\xs]/I(Y)
@@ -211,7 +210,7 @@
     \]
     We now see that $B$ is isomorphic to the affine coordinate ring of $Z(\ker(\phi))$, 
     which is an algebraic set.
-   }
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[1.6]
@@ -222,7 +221,7 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{
+    \begin{luke}
         We first prove the first sentence.
         Let $U$ be a nonempty open subset of $X$, an irreducible space. 
         Observe that $\overline{U} \cup U^c = X$. Since $X$ is irreducible and $U$ 
@@ -245,7 +244,7 @@
         $Y = (Y \cap Z_1) \cup (Y \cap Z_2)$, which implies that $Y = Z_1$ 
         or $Y = Z_2$. However, this implies that $\overline{Y} = Z_1$ or $Z_2$, a contradiction. 
         Therefore $\overline{Y}$ is irreducible. 
-    }
+    \end{luke}
 
 \end{solution}
 
@@ -266,7 +265,7 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{
+    \begin{luke}
         \begin{enumerate}
             \item First note that $(\emph{ii}) \implies (\emph{i})$ and $(\emph{iv}) \implies (\emph{iii})$ 
             are immediate by definition of a Noetherian space.
@@ -292,7 +291,7 @@
             subcover of $\mathcal{U}$, so that $X$ is compact.
     
         \end{enumerate}
-    }
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[1.8]
@@ -303,58 +302,60 @@
 \end{exercise}
 
 \begin{solution}
-   \luke{ First denote $Y = Z(\idl{p})$ where $\idl{p}$ is a prime ideal in $k[\xs]$.
-   By Corollary 1.6, we can express the algebraic set $Y \cap H$ uniquely as 
-   \[
-       Y \cap H = V_1 \cup \dots \cup V_{\ell}
-   \]
-   where each $V_i$ is an affine variety and $V_i \not\subset V_j$ for $i \ne j$. 
-   For each affine variety $V_i$ denote $V_i = Z(\idl{p}_i)$ with $\idl{p}_i$ prime. 
-   We make some observations. 
-   \begin{itemize}
-       \item Each prime ideal $\idl{p}_i$ contains $\idl{p}$, and hence corresponds to a 
-       prime ideal $\idl{p}_i'$ in $k[\xs]/\idl{p}$.
+    \begin{luke}
+        First denote $Y = Z(\idl{p})$ where $\idl{p}$ is a prime ideal in $k[\xs]$.
+    By Corollary 1.6, we can express the algebraic set $Y \cap H$ uniquely as 
+    \[
+        Y \cap H = V_1 \cup \dots \cup V_{\ell}
+    \]
+    where each $V_i$ is an affine variety and $V_i \not\subset V_j$ for $i \ne j$. 
+    For each affine variety $V_i$ denote $V_i = Z(\idl{p}_i)$ with $\idl{p}_i$ prime. 
+    We make some observations. 
+    \begin{itemize}
+        \item Each prime ideal $\idl{p}_i$ contains $\idl{p}$, and hence corresponds to a 
+        prime ideal $\idl{p}_i'$ in $k[\xs]/\idl{p}$.
 
-       \item 
-       Since $Y \not\subset H$, we know that $(f) \not\subset \idl{p}$ which implies 
-       $f \not\in \idl{p}$. Hence, we see that $f + \idl{p} \in k[\xs]/\idl{p}$ 
-       is not a zero divisor (as it is an integral domain). It is also not a unit as 
-       $f$ is irreducible. \lfy{Write $\bar{f}$ as the representative of $f$ in $k[\xs]/\idl{p}$. If $\bar{f}\bar{g} = \bar{0}$, then $fg \in \idl{p}$. Since $f \in \idl{p}$ and $\idl{p}$ is prime, this means that $g \in \idl{p}$, i.e. $\bar{g} = \bar{0}$. So $\bar{f}$ is not a zero-divisor.}
+        \item 
+        Since $Y \not\subset H$, we know that $(f) \not\subset \idl{p}$ which implies 
+        $f \not\in \idl{p}$. Hence, we see that $f + \idl{p} \in k[\xs]/\idl{p}$ 
+        is not a zero divisor (as it is an integral domain). It is also not a unit as 
+        $f$ is irreducible. \lfy{Write $\bar{f}$ as the representative of $f$ in $k[\xs]/\idl{p}$. If $\bar{f}\bar{g} = \bar{0}$, then $fg \in \idl{p}$. Since $f \in \idl{p}$ and $\idl{p}$ is prime, this means that $g \in \idl{p}$, i.e. $\bar{g} = \bar{0}$. So $\bar{f}$ is not a zero-divisor.}
 
-       \item The ring $k[\xs]/\idl{p}$ is Noetherian. Thus, by 
-       Theorem 1.11A, every minimal prime ideal in $k[\xs]/\idl{p}$
-       containing $f + \idl{p}$ must have height one.
-   \end{itemize}
-   Our claim is that each $\idl{p}'_i$ is a minimal prime ideal 
-   containing $f + \idl{p}$. Assuming this is true, we can observe 
-   by Theorem 1.8A that 
-   \begin{align*}
-       \Ht(\idl{p}_i') + \Dim\left( (k[\xs]/\idl{p})/\idl{p}'_i \right) = \Dim\left( k[\xs]/\idl{p} \right)
-       &\implies 
-       1 +  \Dim\left( A(V_i) \right) = r\\
-       &\implies 
-       \Dim\left( A(V_i) \right) = r - 1
-   \end{align*}
-   Thus we show the claim. Suppose $\idl{q}$ is a prime ideal in $k[\xs]/\idl{p}$ 
-   containing $f + \idl{p}$, and that $\idl{q} \subseteq \idl{p}'_i$ for some $i$. 
-   Then $\idl{q}$ corresponds to a prime ideal $\idl{q}'$ of $k[\xs]$ (1) containing $\idl{p}$ and (2) 
-   containing $f$. However, 
-   \[
-       \sqrt{\left<\idl{p}, f\right>} = \idl{p}_1 \cap \cdots \cap \idl{p}_{\ell}
-   \]
-   and as the radical of $\left<\idl{p}, f\right>$ (the smallest ideal containing $\idl{p}$ and $f$)
-   is the intersection of all prime ideals containing this ideal, we see that 
-   $\idl{p}_1 \cap \cdots \cap \idl{p}_{\ell} \subseteq \idl{q}'$. By Proposition 1.1.11(b) in Atiyah-MacDonald, 
-   this implies that $\idl{p}_j \subseteq \idl{q}'$. However, it must be that 
-   $j = i$, since none of these prime ideals 
-   are contained in each other. This then implies that 
-   $\idl{p}'_i \subseteq \idl{q}$ in $k[\xs]/\idl{p}$, which gives us that $\idl{q} = \idl{p}_i'$. 
-   Hence, $\idl{p}_i$ is a minimal prime ideal in $k[\xs]/\idl{p}$ containing $f+\idl{p}$, and 
-   so we may apply our above calculation. This then shows that 
-   \[
-       \Dim(A(V_i)) = r - 1  
-   \]
-   as desired.}
+        \item The ring $k[\xs]/\idl{p}$ is Noetherian. Thus, by 
+        Theorem 1.11A, every minimal prime ideal in $k[\xs]/\idl{p}$
+        containing $f + \idl{p}$ must have height one.
+    \end{itemize}
+    Our claim is that each $\idl{p}'_i$ is a minimal prime ideal 
+    containing $f + \idl{p}$. Assuming this is true, we can observe 
+    by Theorem 1.8A that 
+    \begin{align*}
+        \Ht(\idl{p}_i') + \Dim\left( (k[\xs]/\idl{p})/\idl{p}'_i \right) = \Dim\left( k[\xs]/\idl{p} \right)
+        &\implies 
+        1 +  \Dim\left( A(V_i) \right) = r\\
+        &\implies 
+        \Dim\left( A(V_i) \right) = r - 1
+    \end{align*}
+    Thus we show the claim. Suppose $\idl{q}$ is a prime ideal in $k[\xs]/\idl{p}$ 
+    containing $f + \idl{p}$, and that $\idl{q} \subseteq \idl{p}'_i$ for some $i$. 
+    Then $\idl{q}$ corresponds to a prime ideal $\idl{q}'$ of $k[\xs]$ (1) containing $\idl{p}$ and (2) 
+    containing $f$. However, 
+    \[
+        \sqrt{\left<\idl{p}, f\right>} = \idl{p}_1 \cap \cdots \cap \idl{p}_{\ell}
+    \]
+    and as the radical of $\left<\idl{p}, f\right>$ (the smallest ideal containing $\idl{p}$ and $f$)
+    is the intersection of all prime ideals containing this ideal, we see that 
+    $\idl{p}_1 \cap \cdots \cap \idl{p}_{\ell} \subseteq \idl{q}'$. By Proposition 1.1.11(b) in Atiyah-MacDonald, 
+    this implies that $\idl{p}_j \subseteq \idl{q}'$. However, it must be that 
+    $j = i$, since none of these prime ideals 
+    are contained in each other. This then implies that 
+    $\idl{p}'_i \subseteq \idl{q}$ in $k[\xs]/\idl{p}$, which gives us that $\idl{q} = \idl{p}_i'$. 
+    Hence, $\idl{p}_i$ is a minimal prime ideal in $k[\xs]/\idl{p}$ containing $f+\idl{p}$, and 
+    so we may apply our above calculation. This then shows that 
+    \[
+        \Dim(A(V_i)) = r - 1  
+    \]
+    as desired.
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[1.9]
@@ -364,7 +365,8 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{We prove this by induction. 
+    \begin{luke}
+    We prove this by induction. 
     \begin{description}
         \item[Base Case.] Consider an ideal $\idl{a} = (a)$ which 
         is generated by a single element. We assume $\idl{a}$ is not all of $k[\xs]$ (i.e., $a$ is not a unit);
@@ -426,7 +428,8 @@
             \Dim(V_i) \ge n - r.
         \]
         This completes the inductive step and the proof is complete. 
-    \end{description}}
+    \end{description}
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[1.10]
@@ -442,7 +445,12 @@
 \end{exercise}
 
 \begin{solution}
-    
+    \begin{enumerate}
+        \item 
+        \item \lfy{It suffices to show that there exists $i$ such that $\dim X \leq \dim U_i$. Given a chain $Z_0 \subset Z_1 \subset \cdots \subset Z_n$ of distinct irreducible closed subsets of $X$, there exists $U_i$ such that $U_i \cap Z_{n-1} \neq \emptyset$. Then we claim that $Z_0 \cap U_i \subset Z_1 \cap U_i \subset \cdots \subset Z_n \cap U_i$ is a chain of distinct irreducible closed subsets of $U_i$. It suffices to show distinctness. Suppose that $Z_j \cap U_j = Z_{j+1} \cap U_i$.
+        Notice that \[Z_{j+1} = Z_j \cup Z_{j+1} = Z_j \cup (Z_{j+1} \cap U_i) \cup (Z_{j+1} \cap U_i^c) = Z_j \cup (Z_{j+1} \cap U_i^c).\] Since $Z_{j+1}$ is irreducible and since $Z_j \neq \emptyset$ (the empty set is not considered irreducible), we have that $Z_{j+1} \cap U_i^c = \emptyset$. However, this implies that $Z_{j+1} = Z_{j+1} \cap U_i = Z_{j} \cap U_i$, which is a contradiction to $Z_j \subsetneq Z_{j+1}$.
+        }
+    \end{enumerate}
 \end{solution}
 
 \begin{exercise}[1.11]
@@ -455,7 +463,8 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{Construct the map $\phi: k[x,y,z] \to k[t]$ where $p(x,y,z) \mapsto p(t^3, t^4, t^5)$.
+    \begin{luke}
+    Construct the map $\phi: k[x,y,z] \to k[t]$ where $p(x,y,z) \mapsto p(t^3, t^4, t^5)$.
     The kernel of this map is given by $I(Y) = \{f \in k[x,y,z] \mid f(t^3, t^4, t^5) = 0 \text{ for all } t \in k  \}$.
     However, the map is not surjective. 
     Thus we have that 
@@ -463,7 +472,8 @@
         k[x,y,z]/I(Y) \cong \im(\phi).
     \]
     Since $k[t]$ is an integral domain, and $\im(\phi)$ is a subring, 
-    this nevertheless implies that $I(Y)$ is a prime ideal.}
+    this nevertheless implies that $I(Y)$ is a prime ideal.
+    \end{luke}
     \lfy{Alternatively we have an isomorphism of varieties between $Y$ and $X = \{(t, t^3, t^4, t^5)\}$ via $(x, y, z) \mapsto (x^{-1}y, x, y, z)$ and $(t, t^3, t^4, t^5) \mapsto (t^3, t^4, t^5)$.}
 \end{solution}
 
