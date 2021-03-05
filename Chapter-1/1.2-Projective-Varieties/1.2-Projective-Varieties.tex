@@ -486,21 +486,20 @@
 \end{exercise}
 
 \begin{solution}
-    \lfy{for 2.12(b)
-        We prove the harder direction that $Z(\fa) \subseteq \im(\rho_d).$ We may index the $N+1$ coordinates of a point in $\bbP^n$ by tuples of the form $(a_0, a_1, \dots, a_n)$ where $a_i \in \Z_{+}$ and the sum of all $a_i$'s is $d$. Given $\y \in Z(\fa)$, I claim that there exists $0 \leq i \leq n$ such that $y_{d\bbe_i} \neq 0$. Indeed, suppose towards the contrary. Then since for any index $\bv = (a_0, a_1, \dots, a_n)$, $p(\y) = y_{\bv}^d - \prod_{i = 0}^{n}y_{d \bbe_i}^{a_i} \in \fa$, we have that $p(\y) = y_{\bv}^d = 0$, which implies that $y_{\bv} = 0$ for arbitrary $\bv$, which is absurd. 
+        
 \begin{enumerate}
     \item 
-    \item \lfy{To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.}
+    \item We prove the harder direction that $Z(\fa) \subseteq \im(\rho_d).$ We may index the $N+1$ coordinates of a point in $\bbP^n$ by tuples of the form $(a_0, a_1, \dots, a_n)$ where $a_i \in \Z_{+}$ and the sum of all $a_i$'s is $d$. Given $\y \in Z(\fa)$, I claim that there exists $0 \leq i \leq n$ such that $y_{d\bbe_i} \neq 0$. Indeed, suppose towards the contrary. Then since for any index $\bv = (a_0, a_1, \dots, a_n)$, $p(\y) = y_{\bv}^d - \prod_{i = 0}^{n}y_{d \bbe_i}^{a_i} \in \fa$, we have that $p(\y) = y_{\bv}^d = 0$, which implies that $y_{\bv} = 0$ for arbitrary $\bv$, which is absurd. 
 
-    \item \lfy{The map $\rho_d$ is clearly a bijection between $\bbP^n$ and $\im \rho_d = Z(\fa)$. So it suffices to show that $\rho_d$ is bicontinuous, or equivalently, that it identifies the closed sets in $\bbP^n$ and $Z(\fa)$. 
+    To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.
 
-        To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.
-        }
+    \item The map $\rho_d$ is clearly a bijection between $\bbP^n$ and $\im \rho_d = Z(\fa)$. So it suffices to show that $\rho_d$ is bicontinuous, or equivalently, that it identifies the closed sets in $\bbP^n$ and $Z(\fa)$. 
+        
     ($\rho_d$ continuous.) We claim that for any ideal $I \subset k[y_0, \dots, y_N]$, \[\rho_d^{-1}(Z(I)) = Z(\theta(I)).\] Notice that if $(x_0, \dots, x_n) \in \rho_d^{-1}(Z(I))$, then $p(M_0(\bx), \dots, M_N(\bx)) = 0$ for all $p(y_0, \dots, y_N) \in I$. If $(x_0, \dots, x_n) \in Z(\theta(I))$, then for all $p(y_0, \dots, y_N) \in I$, $\theta(p)(x_0, \dots, x_n) = 0$. But $\theta(p)(x_0, \dots, x_n) = p(M_0(\bx), \dots, M_N(\bx))$. So these two conditions are equivalent.
 
     ($\rho_d^{-1}$ continuous.) We claim that for any ideal $J \subset k[x_0, \dots, x_n]$, \[\rho_d(Z(J)) = Z(\theta^{-1}J) \cap Z(\fa).\] Indeed, if $\y = \rho_d(\x)$ where $\x \in Z(J)$, then for any $p \in \theta^{-1}J$, $p(\y) = p(\rho_d(\x)) = 0$ because $p \circ \rho_d = \theta(p) \in J$. Conversely, if $\y \in Z(\theta^{-1}J) \cap Z(\fa)$, then by part (ii), since $Z(\fa) = \im \rho_d$, there exists $\x$ such that $\y = \rho_d(\x)$. We check that $\x \in Z(J)$: for all $q$ such that $q \circ \rho_d \in J$, we have that $q(\y) = q(\rho_d(\x))= 0$. In other words, for all $p \in J$, $p(\x) = 0$.
 \end{enumerate}
-    }
+    
 
     \begin{luke}
         \begin{enumerate}
@@ -687,6 +686,15 @@
 \begin{enumerate}
     \item If $\fa = $
 \end{enumerate}
+\end{solution}
+
+\begin{exercise}[3.15]
+\end{exercise}
+
+\begin{solution}
+    \begin{enumerate}
+        \item \lfy{As hinted, let $X_i = \{x \in X \mid x \times Y \subseteq Z_i\}$ for $i = 1,2$. We first prove that $X = X_1 \cup X_2$. If this doesn't happen, then there exists $y_1, y_2 \in Y$ such that $(x, y_1) \in Z_1 \setminus Z_2$, $(x, y_2) \in Z_2 \setminus Z_1$. However, this implies that $Z_1\cap x \times Y$ and $Z_2 \cap x \times Y$ are both (non-empty) proper subsets of $x \times Y$. But they are both closed, and $\{x\} \times Y$ is irreducible, which is a contradiction.}
+    \end{enumerate}
 \end{solution}
 
 \end{document}
