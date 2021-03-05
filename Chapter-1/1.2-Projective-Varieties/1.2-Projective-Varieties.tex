@@ -7,6 +7,8 @@
 \usepackage{fancyhdr}
 \usepackage[usenames,dvipsnames]{xcolor} % If using tikz, put \usepackage{tikz} after this
 \usepackage{pdfcolmk}
+\usepackage{enumitem}
+\setlist{noitemsep}
 
 % Our commands + environments are in style.cls. 
 % Using the line below, they can be imported into any .tex file.
@@ -36,25 +38,25 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{
-        Let $\idl{a}$ be a homogeneous ideal of $k[x_0, \dots, x_n]$. 
+    \begin{luke}
+    Let $\idl{a}$ be a homogeneous ideal of $k[x_0, \dots, x_n]$. 
     Then in $\bbP^n$, we have that  
     \[
-        Z(\idl{a}) = \bigg\{ P \in \bbP^n \;\bigg|\; \text{For all } f \in \idl{a}, f(P) = 0  \bigg\}
+        Z_{\pp^n}(\idl{a}) = \bigg\{ P \in \bbP^n \;\bigg|\; \text{For all } f \in \idl{a}, f(P) = 0  \bigg\}
     \]
     while in $\aa^{n+1}$, we have that 
     \[
-        Z'(\idl{a}) = \bigg\{ Q \in \aa^{n+1} \;\bigg|\; \text{For all } f \in \idl{a}, f(Q) = 0  \bigg\}.
+        Z_{\aa^{n+1}}(\idl{a}) = \bigg\{ Q \in \aa^{n+1} \;\bigg|\; \text{For all } f \in \idl{a}, f(Q) = 0  \bigg\}.
     \]
-    We can write a surjective map $\pi: Z'(\idl{a}) \to Z(\idl{a})$ sending an affine point to its projective 
+    We can write a surjective map $\pi: Z_{\aa^{n+1}}(\idl{a}) \to Z_{\pp^n}(\idl{a})$ sending an affine point to its projective 
     equivalence class.
-    In addition, for a projective point $P \in Z(\idl{a})$, we can observe that 
-    $\pi^{-1}(P) \subset Z'(\idl{a})$ (the elements of $P$'s equivalence class). 
+    In addition, for a projective point $P \in Z_{\pp^n}(\idl{a})$, we can observe that 
+    $\pi^{-1}(P) \subset Z_{\aa^{n+1}}(\idl{a})$ (the elements of $P$'s equivalence class). 
     
-    Thus, if $f$ is homogeneous with a nonzero degree and $f(P) = 0$ for all $P \in Z(\idl{a})$, 
-    then $f(Q) = 0$ for all $Q \in Z'(\idl{a})$. By the usual Nullstellensatz, 
+    Thus, if $f$ is homogeneous with a nonzero degree and $f(P) = 0$ for all $P \in Z_{\pp^n}(\idl{a})$, 
+    then $f(Q) = 0$ for all $Q \in Z_{\aa^{n+1}}(\idl{a})$. By the usual Nullstellensatz, 
     this implies that $f^q \in \idl{a}$ for some $q > 0$, which proves the result. 
-    }
+    \end{luke}
 \end{solution}
 
 % --
@@ -70,7 +72,7 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{
+    \begin{luke}
         \begin{description}
             \item[$(i) \implies (ii)$] 
             Suppose $\idl{a}$ is a homogeneous ideal and $Z(\idl{a}) = \varnothing$. By the 
@@ -84,7 +86,7 @@
             \item[$(ii) \implies (iii)$] 
             Suppose $\sqrt{a} = S$. Then this implies that $1 \in \idl{a} \implies \idl{a} = S$. Hence $S_d \subset \idl{a}$.
     
-            Alternatively, subbPose $\sqrt{a} = \oplus_{d > 0}S_d$. Then for every $f \in \oplus_{d > 0}S_d$, 
+            Alternatively, suppose $\sqrt{a} = \oplus_{d > 0}S_d$. Then for every $f \in \oplus_{d > 0}S_d$, 
             there exists a $q > 0$ such that $f^q \in \idl{a}$. In particular, there 
             exist $r_1, \dots, r_n$ such that 
             \[
@@ -108,9 +110,10 @@
             cannot all be simultaneously zero. Hence $Z(\idl{a}) = \varnothing$. 
         
         \end{description}
-    }    
+    \end{luke}
+
     \lfy{
-    (i) $\Rightarrow$ (ii). Since $Z(\fa) = \emptyset$, the zero set of $\fa$ in affine space \luke{Did you mean projective space?} is either $\emptyset$ or $\{\mathbf{0}\}.$ In the first case, we certainly have $\sqrt{\fa} = S$. In the second case, we have $\sqrt{\fa} = \{p \in S: p(0) = 0\} = S_+$.
+    (i) $\Rightarrow$ (ii). Since $Z(\fa) = \emptyset$, the zero set of $\fa$ in affine space \begin{luke}Did you mean projective space?\end{luke} is either $\emptyset$ or $\{\mathbf{0}\}.$ In the first case, we certainly have $\sqrt{\fa} = S$. In the second case, we have $\sqrt{\fa} = \{p \in S: p(0) = 0\} = S_+$.
 
     (ii) $\Rightarrow$ (iii). It suffices to show that there exists $d$ such that all monomials of degree $d$ lies in $\fa$. Since $S_+ \subset \sqrt{\fa},$ for each $0 \leq i \leq n$, there exists $d_i$ such that $x_i^{d_i} \in \fa$. Let $d = n\sum_{i=0}^{n}d_i$. Then if a monomial has degree $d$, then there exists $i$ such that the exponent of $x_i$ in the monomial is at least $\sum_{i=0}^{n}d_i$, and therefore at least $d_i$, which implies that the monomial is in $\fa$.
 
@@ -135,7 +138,7 @@
 \end{exercise}
 
 \begin{solution}
-    \luke{
+    \begin{luke}
         I did {\bf (a) -- (c)}, but I don't feel like \TeX-ing them.
         \begin{enumerate}
             \setcounter{enumi}{3}
@@ -157,7 +160,7 @@
             $J \subset I(Y)$. Therefore, 
             $Z(I(Y)) \subset Z(J)$. Hence, $Z(I(Y)) = Z(J)$, and so $Z(I(Y)) = \overline{Y}$.  
         \end{enumerate}
-    }
+    \end{luke}
 \end{solution}
 
 % --
@@ -203,7 +206,53 @@
 \end{exercise}
 
 \begin{solution}
+    \begin{luke}
+        We follow the hints. Note that 
+        \[
+            S(Y)_{x_i}
+            =
+            \bigg\{ \frac{f(x_0, \dots, x_n) + I_{\pp^n}(Y)}{x_i^j} \;\bigg|\; f + I_{\pp^n}(Y) \in S(Y) \bigg\}.
+        \]
+        In addition, an element of degree  0 will be of the form $(f + I(Y))/x_i^d$, where $\deg(f) = d$. 
+        Now in this case, 
+        \[
+            \frac{f(x_0, \dots, x_n) + I_{\pp^n}(Y)}{x_i^d}
+            =
+            f\left( \frac{x_0}{x_i}, \dots, 1, \dots, \frac{x_n}{x_i} \right) + I_{\pp^n}(Y)
+            =
+            f(x_0, \dots, 1, \dots, x_n) + I_{\aa^n}(Y_i)
+        \]
+        where $1$ appears in the $i$-th coordinate. Therefore, the homogeneous 
+        representative $f$ may be regarded as an ordinary polynomial which is 
+        not in $I(Y_i)$ (i.e., it at least does not vanish on $Y$ if the $i$-th coordinate is 
+        fixed to be nonzero). Hence, we may identify the 0-degree element 
+        $(f + I(Y))/x_i^d$ as a member of $A(Y_i)$. 
 
+        Alternatively, let $f + I_{\aa^n}(Y_i) \in A(Y_i)$. 
+        Since $f$ does not vanish on $Y$ when $x_i$ is fixed to 1, we 
+        
+
+        We
+        may homogenize the representative to 
+        obtain the homogeneous polynomial $x_i^df\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right)$, 
+        where $d = \deg(f)$. Note that this can represent the
+        degree $d$-element of $x_i^df\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right) + I(Y)$ in 
+        $S(Y)$. This in turn corresponds to the degree $0$-element of 
+        $S(Y)_{x_i}$: 
+        \[
+            \frac{x_i^df\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right) + I(Y)}{x_i^d}
+            =
+            f\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right) + I(Y).
+        \]
+        In this way we identify $f + I(Y_i) \in A(Y_i)$ with a degree 0 element of $S(Y)_{x_i}$. 
+        
+        
+        
+
+
+        
+    
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[2.7]
@@ -230,9 +279,19 @@
 
 \begin{exercise}[2.9]
     If $Y \subseteq \aa^n$ is an affine variety, we identify $\aa^n$ with an open
-    set $U_0 \subset \bbP^n$ by the homeomorphism $\varphi_0$. Then we can speak of
-    $\overline{Y}$, the closure of $Y$ in $\bbP^n$, which is called the
+    set $U_0 \subset \pp^n$ by the homeomorphism $\varphi_0$. Then we can speak of
+    $\overline{Y}$, the closure of $Y$ in $\pp^n$, which is called the
     \emph{projective closure} of $Y$. 
+   \begin{enumerate}
+     \item Show that $I(\overline{Y})$ is the ideal generated by $\beta(I(Y))$,
+       using the notation of the proof of $(2.2)$. 
+     \item Let $Y \subset \aa^n$ be the twisted cubic of \emph{(Ex $1.2$)}. Its
+       projective closure $\overline{Y} \subset \pp^n$ is called the \emph{twisted
+       cubic curve} in $\pp^3$. Find generators for $I(Y)$ and $I(\overline{Y})$,
+       and use this example to show that if $f_1, \ldots, f_r$ generate $I(Y)$,
+       then $\beta(f_1), \ldots, \beta(f_r)$ do \emph{not} necessarily generate
+       $I(\overline{Y})$. 
+   \end{enumerate}
 \end{exercise}
 
 \begin{solution}
@@ -240,6 +299,43 @@
         \item Since $\overline{Y} = Z(I(\phi_o Y))$, $I(\overline{Y}) = I(\phi_o Y)$. So it suffices to show that $I(\phi_o Y) = \beta(I(Y))$. We have $I(\phi_0 Y) \supseteq \beta(I(Y))$ because $\phi_o(Y) \subseteq Z(\beta(I(Y)))$. Conversely, we have $I(\phi_0 Y) \subseteq \beta(I(Y))$ because any point of $Y$ vanishes on $p(1,x_1,\dots, x_n)$ for $p \in I(\phi_o(Y))$. In other words, if $p \in I(\phi_o(Y))$, then $p(1,x_1,\dots, x_n) \in I(Y)$, which implies that $p \in \beta(I(Y))$.
         \item Recall that the twisted cubic is the variety $Y = \{(t,t^2,t^3): t \in k\}$. We claim that $I(Y) = J = (y-x^2,z-x^3).$ Since $Z(J) = Y$, it suffices to check that $J$ is radical. Notice that $k[x,y,z]/J \cong k[x]$ has no nilpotents, which shows that $J$ is radical. Let $f_1 = y-x^2$ and $f_2 = z-x^3$. We claim also that $\beta f_1 = wy-x^2$ and $\beta f_2 = w^2 z - x^3$ don't generate $I(\overline{Y}) = I(\phi_o(Y))$. Since $\phi_o(Y) = \{[1:t:t^2:t^3]: t\in k\},$ we have $wz-xy \in I(\overline{Y})$. But this cannot be generated by $\beta f_1$ and $\beta f_2$ since the only term involving $z$ in $\beta f_1$ and $\beta f_2$ is $w^2 z$.
     \end{enumerate}
+
+       \begin{luke}
+        \begin{enumerate}
+            \item 
+            Note that since $\overline{Y} =  Z(I_{\pp^n}(Y))$, we have that 
+            $I_{\pp^n}(Y) = I(Z(I_{\pp^n}(Y))) = I_{\pp^n}(Y)$. Additionally, we 
+            have that 
+            \[
+                \beta(I_{\aa^n}(Y)) \subset I_{\pp^n}(Y) = I_{\pp^n}(\overline{Y}).
+            \]
+            Hence it remains to show the other inclusion. To do so, note that 
+            \begin{align*}
+                I_{\pp^n}(Y) 
+                &= 
+                \{f \in S^h \mid f(1, a_1, \dots, a_n) \quad (a_1, \dots, a_n) \in Y\}\\
+                &=
+                \{f \in S^h \mid \alpha(f) \in I_{\aa^n}(Y)  \}.
+            \end{align*}
+            If $f \in I_{\pp^n}(Y)$, then $\alpha(f) \in I_{\aa^n}(Y)$, in which 
+            case $\beta(\alpha(f)) \in \beta(I_{\aa^n}(Y))$. Since $\beta(\alpha(f)) = f$, we see 
+            that $f \in \beta(I_{\aa^n}(Y))$. Therefore $\beta(I_{\aa^n}(Y)) = I_{\pp^n}(Y) = I_{\pp^n}(\overline{Y})$.  
+            
+            \item Since $Y = \{(t, t^2, t^3) \mid t \in k\}$, we know that in $\pp^n$
+            \[
+                Y = \{ (1, t, t^2, t^3) \mid t \in k \}.
+            \]
+            Recall from Ex 1.2 that $I_{\aa^n}(Y) = (x^2 - y, x^3 - z)$. 
+            By \textbf{(a)}, we know that $I_{\pp^n}(\overline{Y}) = \beta(I_{\aa^n}(Y))$.
+            Now observe that $xy - z \in I_{\aa^n}(Y)$, so that $\beta(xy-z) = xy - zx_0 \in I(\overline{Y})$. 
+            However, this polynomial cannot be generated by the ideal 
+            \[
+                (\beta(x^2 - y), \beta(x^3 - z)) = (x^2 - yx_0, x^3 - zx_0^2).  
+            \]
+            Hence we see that $I(\overline{Y}) \ne (\beta(x^2 - y), \beta(x^3 - z))$. 
+
+        \end{enumerate}
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[2.10]
@@ -258,7 +354,43 @@
 \end{exercise}
 
 \begin{solution}
-    
+    \begin{luke}
+        \begin{enumerate}
+            \item 
+            Let $J$ be a set of homogeneous polynomials. Note that 
+            \[
+                \theta^{-1}(Z_{\pp}(J)) = Z_{\aa^{n+1}}(J) \setminus\{(0,\dots,0)\}
+            \]
+            Thus we have that
+            \[
+                Z_{\aa^{n+1}}(J) = \theta^{-1}(Z_{\pp^n}(J)) \cup \{(0,\dots,0)\} = C(Z_{\pp^n}(J)).
+            \]
+            Hence if $Y$ is algebraic, so is $C(Y)$. In addition, if $J = I_{\pp^n}(Y)$, then 
+            \[
+                Z_{\aa^{n+1}}(I_{\pp^n}(Y)) = C(Z_{\pp^n}(I_{\pp^n}(Y))) = C(Y).
+            \]
+            Since $I_{\pp^n}(Y)$ is a radical ideal, this implies that $I(C(Y)) = I_{\pp^n}(Y)$, regarded 
+            as an ideal of $k[x_0, \dots, x_n]$.
+
+            \item Since $I_{\aa^{n+1}}(C(Y)) = I_{\pp^n}(Y)$, the result follows immediately.
+            
+            \item Consider a maximal chain of closed, irreducible subsets of $Y$ in $\pp^n$. 
+            \[
+                Y_0 \subset Y_1 \subset \cdots \subset Y_r = Y.
+            \]
+            By {\bf (a)} and {\bf (b)}, these are in bijection with closed, irreducible 
+            subsets in $\aa^{n+1}$:
+            \[
+                C(Y_0) \subset C(Y_1) \subset \cdots \subset C(Y_r) = C(Y).
+            \]
+            We can extend the chain by appending the single point $\{(0,\dots, 0)\}$:
+            \[
+                \{(0, \dots, 0)\} \subset C(Y_0) \subset C(Y_1) \subset \cdots \subset C(Y_r) = C(Y).
+            \]
+            Hence, $\dim C(Y) = \dim(Y) + 1$. 
+
+        \end{enumerate}
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[2.11]
@@ -279,13 +411,61 @@
 \end{exercise}
 
 \begin{solution}
-    
+    \begin{luke}
+        \begin{enumerate}
+            \item Let $H_i = Z(f_i)$ be hyperplanes, $f_i$ a linear homogeneous polynomial, for $i = 1, 2, \dots, r$. 
+            Then 
+            \begin{align*}
+                Y 
+                = H_1 \cap \cdots \cap H_r
+                =
+                Z(f_1) \cap \cdots \cap Z(f_r)
+                \iff
+                I(Y) 
+                = I(Z(f_1) \cap \cdots Z(f_r))
+                =
+                I(Z(f_1, \dots, f_r)).
+            \end{align*}
+            However, since $f_1, \dots, f_n$ are homogeneous polynomials of degree 1, it is prime.
+            Therefore, $I(Z(f_1, \dots, f_r)) = (f_1, \dots, f_r) \implies I(Y) = (f_1, \dots, f_r)$.
+            Hence (\emph{i}.) and (\emph{ii}.) are equivalent.
+            
+            \item By Theorem 1.8A, we know that since $Y$ is a linear varitety, 
+            \[
+                \Ht(I(Y)) + \Dim( k[x_0, \dots, x_n]/I(r)) = n + 1
+                \implies 
+                \Ht(I(Y)) + r + 1 = n + 1
+                \implies 
+                \Ht(I(Y)) = n - r.
+            \]
+            By {\bf (a)}, we know that $I(Y)$ is generated by some linear homogeneous 
+            polynomials $f_1, \dots, f_s$. This in turn creates a chain of prime ideals:
+            \[
+                (0) \subset (f_1) \subset (f_1, f_2) \subset \dots \subset (f_1, \dots, f_s) = I(Y).
+            \]
+            Since $\Ht(I(Y)) = n - r$, we see that some of the generators must be redundant, 
+            so that $I(Y)$ is minimally generated by $n - r$ elements. 
+            
+            \item Since $r + s - n \ge 0$, we can conclude that $(n - r) + (n - s) \le n$. This implies 
+            that $Y \cap Z$ is a system of equations with less equations than unknowns. From linear 
+            algebra, we know that if such a system is homogeneous (i.e., set equal to zeroes), then 
+            there are infinitely many solutions. Therefore, 
+            \[
+                Y \cap Z = Z(f_1, \dots, f_{n-s}) \cap Z(g_1, \dots, g_{n-r}) = Z(f_1, \dots, g_{n-r}) \ne \varnothing.                
+            \] 
+            In addition, we also see that this is a linear variety as claimed. Further, we know by {\bf (a)} 
+            that $n - \dim(Y \cap Z) \le (n - r) + (n - s) \implies \dim(Y \cap Z) \ge r + s - n$, as desired.
+
+
+
+        \end{enumerate}
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[2.12]
     For given $n, d>0$, let
     $M_0,\ldots, M_N$ be all the monomials of degree $d$ in the $n+1$ variables
-    $x_0, \ldots x_n$, where $N = \binom{n+d}{n} -1.$ We define a mabbPing
+    $x_0, \ldots x_n$, where $N = \binom{n+d}{n} -1.$ We define a mapping
     $\rho_d\colon \bbP^n \to \bbP^N$ by sending the point $P = (a_0, \ldots, a_n)$
     to the point $\rho_d(P) = (M_0(a), \ldots, M_N(a))$ obtained by substituting
     the $a_i$ in the monomials $M_j$. This is called the $d$-uple \emph{embedding}
@@ -306,17 +486,102 @@
 \end{exercise}
 
 \begin{solution}
+        
 \begin{enumerate}
     \item 
-    \item \lfy{To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.}
+    \item We prove the harder direction that $Z(\fa) \subseteq \im(\rho_d).$ We may index the $N+1$ coordinates of a point in $\bbP^n$ by tuples of the form $(a_0, a_1, \dots, a_n)$ where $a_i \in \Z_{+}$ and the sum of all $a_i$'s is $d$. Given $\y \in Z(\fa)$, I claim that there exists $0 \leq i \leq n$ such that $y_{d\bbe_i} \neq 0$. Indeed, suppose towards the contrary. Then since for any index $\bv = (a_0, a_1, \dots, a_n)$, $p(\y) = y_{\bv}^d - \prod_{i = 0}^{n}y_{d \bbe_i}^{a_i} \in \fa$, we have that $p(\y) = y_{\bv}^d = 0$, which implies that $y_{\bv} = 0$ for arbitrary $\bv$, which is absurd. 
 
-    \item \lfy{The map $\rho_d$ is clearly a bijection between $\bbP^n$ and $\im \rho_d = Z(\fa)$. So it suffices to show that $\rho_d$ is bicontinuous, or equivalently, that it identifies the closed sets in $\bbP^n$ and $Z(\fa)$. 
+    To give an example to make this proof clearer, consider the example when $n = 1$ and $d = 3$. Then if $\y = (y_{30}, y_{21}, y_{12}, y_{03}) \in Z(\fa)$, suppose WLOG that $y_{30} = 1$. Then $\y = \rho_d(1, y_{21})$. We check that since $y_{30}y_{12} - y_{21}^2 = 0$, indeed $y_{12} = y_{21}^2$. Similarly, since $y_{03}y_{30}^2 - y_{21}^3$, indeed $y_{03} = y_{21}^3$.
 
+    \item The map $\rho_d$ is clearly a bijection between $\bbP^n$ and $\im \rho_d = Z(\fa)$. So it suffices to show that $\rho_d$ is bicontinuous, or equivalently, that it identifies the closed sets in $\bbP^n$ and $Z(\fa)$. 
+        
     ($\rho_d$ continuous.) We claim that for any ideal $I \subset k[y_0, \dots, y_N]$, \[\rho_d^{-1}(Z(I)) = Z(\theta(I)).\] Notice that if $(x_0, \dots, x_n) \in \rho_d^{-1}(Z(I))$, then $p(M_0(\bx), \dots, M_N(\bx)) = 0$ for all $p(y_0, \dots, y_N) \in I$. If $(x_0, \dots, x_n) \in Z(\theta(I))$, then for all $p(y_0, \dots, y_N) \in I$, $\theta(p)(x_0, \dots, x_n) = 0$. But $\theta(p)(x_0, \dots, x_n) = p(M_0(\bx), \dots, M_N(\bx))$. So these two conditions are equivalent.
 
-    ($\rho_d^{-1}$ continuous.) We claim that for any ideal $J \subset k[x_0, \dots, x_n]$, \[\rho_d(Z(J)) = Z(\theta^{-1}J) \cap Z(\fa).\] Indeed, if $\y = \rho_d(\x)$ where $\x \in Z(J)$, then for any $p \in \theta^{-1}J$, $p(\y) = p(\rho_d(\x)) = 0$ because $p \circ \rho_d = \theta(p) \in J$. Conversely, if $\y \in Z(\theta^{-1}J) \cap Z(\fa)$, then by part (ii), since $Z(\fa) = \im \rho_d$, there exists $\x$ such that $\y = \rho_d(\x)$. We check that $\x \in Z(J)$: for all $q$ such that $q \circ \rho_d \in J$, we have that $q(\y) = q(\rho_d(\x))= 0$. In other words, for all $p \in J$, $p(\x) = 0$.}
+    ($\rho_d^{-1}$ continuous.) We claim that for any ideal $J \subset k[x_0, \dots, x_n]$, \[\rho_d(Z(J)) = Z(\theta^{-1}J) \cap Z(\fa).\] Indeed, if $\y = \rho_d(\x)$ where $\x \in Z(J)$, then for any $p \in \theta^{-1}J$, $p(\y) = p(\rho_d(\x)) = 0$ because $p \circ \rho_d = \theta(p) \in J$. Conversely, if $\y \in Z(\theta^{-1}J) \cap Z(\fa)$, then by part (ii), since $Z(\fa) = \im \rho_d$, there exists $\x$ such that $\y = \rho_d(\x)$. We check that $\x \in Z(J)$: for all $q$ such that $q \circ \rho_d \in J$, we have that $q(\y) = q(\rho_d(\x))= 0$. In other words, for all $p \in J$, $p(\x) = 0$.
 \end{enumerate}
+    
 
+    \begin{luke}
+        \begin{enumerate}
+            \item First, it is prime since $\theta$ maps into an integral domain.
+            Now recall that we may uniquely express
+            any multivariate polynomial in $y_1, \dots, y_N$ into 
+            homogeneous components. Since $y_i \not\in \ker(\theta)$, 
+            no single monomial of any degree in $k[y_1, \dots, y_N]$ 
+            maps to zero. Therefore, if
+            for a multivariate polynomial $f$ we have that $\theta(f) = 0$, 
+            then it must be that each 
+            of the homogeneous components of $\theta(f_i)$ must map to zero, by 
+            individually canceling each other out (in their own degree). 
+            In other words, a polynomial is in $\idl{a}$
+            if and only if its homogeneous components are in $\idl{a}$. 
+            Thus, $\idl{a}$ is homogeneous. 
+
+            \item ${\big[}\im(\rho_d) \subset Z(\idl{a}){\big]}$. 
+            If $q \in \im(\rho_d)$, then $q = (M_0(P), \dots, M_N(P))$ for some $P \in \pp^n$, 
+            and so for any $f \in \idl{a}$, we have that $f(q) = f(M_0(P), \dots, M_N(P)) = 0.$
+            Therefore, $q \in Z(\idl{a})$.
+            \\
+            \\
+            \noindent ${\big[}Z(\idl{a}) \subset \im(\rho_d){\big]}$. 
+            In order to show this direction we must understand what is contained in $Z(\idl{a})$. 
+            First, denote $y_m$ as the coordinate which corresponds to the monomial 
+            $M_m(x_0, \dots, x_n) = x_0^{\alpha_1^m} \cdots x_n^{\alpha_n^{m}}$ where $\alpha_i$ are nonnegative and 
+            sum to $d$. In particular, denote
+            \[
+                y_0 = x_0^d, \quad y_1 = x_1^d, \quad \dots, \quad y_n = x_n^{d}.
+            \]
+            We make some observations. 
+            \begin{itemize}
+                \item Observe that $y_m^d - y_0^{\alpha_0^m} \cdots y_n^{\alpha_n^{m}} \in \idl{a}.$
+                The polynomial is nonzero when $m > n$. 
+                Thus if $ Q = (b_0, \dots, b_n, b_{n+1}, \dots, b_{N}) \in Z(\idl{a})$, then for each $n < m \le N$, we see that 
+                $b_m^d = b_0^{\alpha_0^m} \cdots b_n^{\alpha_n^{m}}$, so that at least one $b_0, \dots, b_n \ne 0$.
+
+                \item Next, observe that for any $x_j$ with 
+                $j = 0, 1, \dots, n$, we have that
+                \begin{align*}
+                    M_m(x_0, \dots, x_n)\cdot (x_j^{d-1})^{d}
+                    =
+                    M_m(x_j^{d-1}x_0, \dots, x_j^{d-1}x_n)
+                \end{align*}
+                for all $m$.
+                In terms of $y$'s, this translates to the relation 
+                $y_m \cdot y_j^{d-1}- M_m(y_{m_0}, \dots, y_{m_n}) \in \idl{a}$, 
+                where $y_{m_i}$ corresponds to $x_j^{d-1}x_i$.
+
+                \item Since one of $b_0, \dots, b_n \ne 0$, suppose that it is $b_0$. 
+                Let $c \in \pp^N$ be such that $c_i = b_0^{d-1}b_i$. 
+                Then by the above relation we have that 
+                \[
+                    b_m\cdot b_0^{d-1} = M_m(c_0, \dots, c_n).
+                \]
+                Hence, 
+                \begin{align*}
+                    (b_0, \dots, b_n, \dots, b_N) 
+                    &=
+                    (b_0^{d-1}\cdot b_0, \dots, b_0^{d-1} \cdot b_n, \dots, b_0^{d-1} \cdot b_N)\\
+                    &=
+                    (M_0(c_0, \dots, c_n), \dots, M_n(c_0, \dots, c_n), \dots, M_N(c_0, \dots, c_n)).
+                \end{align*}
+                Therefore, $(b_0, \dots, b_N) \in \im(\rho_d)$. 
+    
+            \end{itemize}
+            
+        \item We show it is a homeomorphism. First, it is surjective onto $Z(\idl{a})$. 
+        By our work from the last part, it is also injective, for we constructed the map 
+        \[
+            \rho_d^{-1}: Z(\idl{a}) \to \pp^n \qquad (b_0, \dots, b_n, b_{n+1}, \dots, b_N) \mapsto (b_0^{d-1}b_0, \dots, b_0^{d-1}b_n).
+        \]
+        We now show that $\rho_d$ is a closed bijection. Suppose $Y \subset \pp^n$ is closed, and that 
+        $Y = Z(T)$ for some family of homogeneous polynomials in $(n+1)$-variables. 
+        Then 
+        \[
+            \rho_d(Y) = \bigg\{ (M_0(P), \dots, M_N(P)) \;\bigg|\; P \in Y \bigg\} 
+            =
+        \]
+        \end{enumerate}
+    \end{luke}
 \end{solution}
 
 \begin{exercise}[2.13]
@@ -389,7 +654,8 @@
     \emph{set-theoretic complete intersection} if $Y$ can be written as the
     intersection of $n-r$ hypersurfaces.
     \begin{enumerate}
-    \item Let $Y$ be a variety in $\bbP^n$, let $Y = Z(\mathfrak{a})$; and suppose that $\mathfrak{a}$ can be generated by $q$ elements. Then show
+    \item Let $Y$ be a variety in $\bbP^n$, let $Y = Z(\mathfrak{a})$; and
+    suppose that $\mathfrak{a}$ can be generated by $q$ elements. Then show
     that $\Dim Y \ge n-q$. 
     \item Show that a strict complete intersection is a set-theoretic complete
     intersection.
