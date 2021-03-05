@@ -1,0 +1,326 @@
+\documentclass[10pt]{amsart}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm} 
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames]{xcolor} % If using tikz, put \usepackage{tikz} after this
+\usepackage{pdfcolmk}
+\usepackage{tikz-cd}
+\usepackage{enumitem}
+
+% Our commands + environments are in style.cls. 
+% Using the line below, they can be imported into any .tex file.
+\usepackage{../../style}
+
+% Header 
+\newcommand{\header}[2]{
+    {\noindent
+    {\Large \bf Hartshorne #1 Exercises: #2}
+    \hfill 
+    {\large Feiyang Lin and Luke Trujillo}
+    \vspace{0.5cm}}
+}
+
+\begin{document}
+
+\header{1.3}{Morphisms}
+
+%% 
+\begin{exercise}[3.1]
+    \begin{enumerate}[itemsep=2pt]
+    \item Show that any conic in $\aa^2$ is isomorphic either to $\aa^1$ or
+        $\aa^1 - \{0\}$ \emph{(cf.\ Ex.~$1.1$)}.
+    \item Show that $\aa^1$ is \emph{not} isomorphic to any proper open subset
+        of itself. (This result is generalized by \emph{(Ex.~$6.7$)} below.)
+    \item Any conic in $\pp^2$ is isomorphic to $\pp^1$.
+    \item We will see later \emph{(Ex.\ $4.8$)} that any two curves are
+        homeomorphic. But show now that $\aa^2$ is not even homeomorphic to
+        $\pp^2$.
+    \item If an affine variety is isomorphic to a projective variety, then it
+        consists of only one point.
+    \end{enumerate}
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.2]
+    A morphism whose underlying map on the topological spaces 
+    is a homeomorphism need not be an isomorphism.
+    \begin{enumerate}[itemsep=2pt]
+        \item For example, let $\phi : \aa^1  \to \aa^2$ be defined by 
+        $t \mapsto (^t2,t^3)$. Show that $\phi$ defines a
+        bijective bicontinuous morphism of $\aa^1$ onto the curve $y^2 = x^3$, 
+        but that $\phi$ is not an isomorphism.
+
+        \item For another example, let the characteristic of the base field $k$ be $p > 0$, and
+        define a map $\phi : \aa^1 \to \aa^2$ by $t \to t^p$. Show that $\phi$ 
+        is bijective and bicontinuous but not an isomorphism. 
+        This is called the \emph{Frobenius morphism}.
+    \end{enumerate}
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.3]
+    \begin{enumerate}[itemsep=2pt]
+        \item 
+        Let $\phi:X \to Y$ be a morphism. Then for each $P \in X$, $\phi$ 
+        induces a homomorphism of local rings 
+        $\phi_P^*: \cO_{\phi(P), Y} \to \cO_{P, X}$.
+
+        \item Show that a morphism $\phi$ is an isomorphism if and only if $\phi$ is a 
+        homeomorphism, and the induced map $\phi_P^*$ on local rings 
+        is an isomorphism, for all $p \in X$. 
+
+        \item Show that if $\phi(X)$ is dense in $Y$, 
+        then the map $\phi_P^*$ is injective for all $p \in X$.
+    \end{enumerate}
+    
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.4]
+    Show that the $d$-uple embedding of $\pp^n$ (Ex. 2.12) is an isomorphism 
+    onto its image.
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.5]
+    By abuse of language, we will say that a variety ``is affine'' if it is 
+    isomorphic to an affine variety. If $H \subseteq \pp^n$ is any hypersurface, 
+    show that $\pp^n \setminus H$ is affine. 
+    [\emph{Hint}: Let $H$ have degree $d$. Then consider the $d$-uple 
+    embedding of $\pp^n$ in $\pp^n$ and use the fact that $\pp^n$ minus 
+    a hyperplane is affine.]
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.6]
+    There are quasi-affine varieties which are not affine. For example, show that 
+    $X = \aa^2 - \{(0,0)\}$ is not affine. [\emph{Hint}: Show 
+    that $\cO \cong k[x,y]$
+    and use (3.5). See (III, Ex. 4.3) for another proof.]
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.7]  
+    \begin{enumerate}[itemsep=2pt]
+        \item Show that any two curves in $\pp^2$ have a nonempty intersection.
+        \item More generally, show that if $Y \subseteq \pp^n$ is a projective variety of 
+        dimension $\ge 1$, and if $H$ is a hypersurface, then $Y \cap H \ne \varnothing$ . 
+        [\emph{Hint}: Use (Ex. 3.5) and (Ex. 3.1e). See (7.2) for a generalization.]
+    \end{enumerate}
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.8]
+    Let $H_i$ and $H_j$ be the hyperplanes in $\pp^n$ defined by 
+    $x_i = 0$ and $x_j = 0$, with $i \ne j$. Show that any regular function on 
+    $\pp^n - (H_i \cap H_j)$ is constant. 
+    (This gives an alternate proof of (3.4a) in the case $Y = \pp^n$.)
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.9]
+    The homogeneous coordinate ring of a projective variety is not invariant under 
+    isomorphism. For example, let $X = \pp^1$, and let $Y$ be the 2-uple embedding of $\pp^1$ in $\pp^2$. 
+    Then $X \cong Y$ (Ex. 3.4). But show that $S(X) \not\cong S(Y)$.
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.10]
+    \emph{Subvarieties}. A subset of a topological space is locally closed if it is an 
+    open subset of its closure, or, equivalently, if it is the intersection of an open set with 
+    a closed set.
+    
+    If $X$ is a quasi-affine or quasi-projective variety and $Y$ is an irreducible locally closed 
+    subset, then $Y$ is also a quasi-affine (respectively, quasi-projective) variety, by virtue 
+    of being a locally closed subset of the same affine or projective space. We call this the induced 
+    structure on $Y$, and we call $Y$ a subvariety of $X$.
+    
+    Now let $\phi:X \to Y$ be a morphism, let $X' \subseteq X$ and $Y' \subseteq Y$ be irreducible locally closed subsets 
+    such that $\phi(X') \subseteq Y'$. Show that $\phi|_{X'} :X' \to Y'$ 
+    is a morphism.
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.11]
+    Let $X$ be any variety and let $P \in X$. Show there is a 1-1 correspondence between
+    the prime ideals of the local ring $\cO_P$ and the closed subvarieties of $X$ containing $P$.
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.12]
+    If $P$ is a point on a variety $X$, then $\dim \cO_P = \dim X$. [\emph{Hint}: Reduce to the
+    affine case and use (3.2c).]
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.13]
+    \emph{The Local Ring of a Subvariety}. Let $Y \subseteq X$ be a subvariety. Let $\cO_{Y,X}$ be the set 
+    of equivalence classes $\<U,f\>$ where $U \subseteq X$ is open, $U \cap Y \ne 0$, and $f$ is a regular 
+    function on $U$. We say $\<U, f\>$ is equivalent to $\<V, g\>$ if $f = g$ on $U \cap V$. Show that 
+    $\cO_{Y,X}$ is a local ring, with residue field $K(Y)$ and dimension $= \dim X - \dim Y$. It is the local ring 
+    of $Y$ on $X$. Note if $Y = P$ is a point we get $\cO_{P}$ and if $Y = X$ we get $K(X)$. 
+    Note also that if $Y$ is not a point, then $K(Y)$ is not algebraically closed, so in this way we 
+    get local rings whose residue fields are not algebraically closed.
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.14]
+    \emph{Projection from a Point}. Let $\pp^n$ be a hyperplane in $\pp^{n+1}$ and let $P \in \pp^{n+1} - \pp^n$. 
+    Define a mapping $\phi : \pp^{n+ 1} - P \to \pp^n$ by $\phi(Q) = $ the intersection of the unique line containing $P$ and $Q$ 
+    with $\pp^n$.
+    \begin{enumerate}[itemsep=2pt]
+        \item Show that $\phi$ is a morphism.
+        \item Let $Y \subseteq \pp^3$ be the twisted cubic curve which is the image of the 
+        3-uple embedding of $\pp^1$ (Ex. 2.12). If $t$,$u$ are the homogeneous coordinates on $\pp^1$, 
+        we say that $Y$ is the curve given parametrically by $(x,y,z,w) = (t^3,t^2u,tu^2,u^3)$. 
+        Let $P = (0,0,1,0)$, and let $\pp^2$ be the hyperplane $z = 0$. Show that the projection of 
+        $Y$ from $P$ is a cuspidal cubic curve in the plane, and find its equation.
+    \end{enumerate}
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.15]
+    \emph{Products of Affine Varieties}. Let $X \subseteq \aa^n$ and $Y \subseteq \aa^m$ be affine varieties.
+    \begin{enumerate}[itemsep=2pt]
+        \item Show that $X \times Y \subseteq A^{n+m}$ with its induced topology is irreducible. 
+        [Hint: Suppose that $X \times Y$ is a union of two closed subsets $Z_1 \cup Z_2$. Let 
+        $X_i = \{x \in X \mid x \times Y \subseteq Z_i\}$, $i = 1,2$. 
+        Show that $X = X_1 \cup X_2$ and $X_1$, $X_2$ are closed. Then $X = X_1$ or $X_2$ so $X \times Y = Z_1$ or $Z_2$.] 
+        The affine variety $X \times Y$ is called the product of $X$ and $Y$. Note that its topology is in general
+        not equal to the product topology (Ex. 1.4).
+        \item Show that $A(X \times Y) \cong A(X) \otimes_k A(Y)$.
+        \item Show that $X \times Y$ is a product in the category of varieties, i.e., show (i) the
+        projections $X \times Y \to X$ and $X \times Y \to Y$ are morphisms, and (ii) given a variety $Z$, 
+        and the morphisms $Z \to X$, $Z \to Y$, there is a unique morphism $Z \to X \times Y$ making a commutative 
+        diagram 
+        \begin{center}
+            \begin{tikzcd}[row sep = 1.2cm]
+                Z 
+                \arrow[rr, dashed]
+                \arrow[dr]
+                \arrow[drrr, crossing over]
+                &[-0.25cm]
+                &
+                X \times Y
+                \arrow[dl, crossing over]
+                \arrow[dr]
+                &[-0.25cm]
+                \\
+                &
+                X
+                &
+                &
+                Y
+            \end{tikzcd}
+        \end{center}
+    \end{enumerate}
+\end{exercise}
+
+
+%% 
+\begin{exercise}[3.16]
+    \emph{Products of Quasi-Projective Varieties}. Use the Segre embedding (Ex. 2.14) to identify $\pp^n \times \pp^m$ 
+    with its image and hence give it a structure of projective variety. Now for any two quasi-projective varieties 
+    $X \subseteq \pp^n$ and $Y \subseteq \pp^m$, consider $X \times Y \subseteq \pp^n \times \pp^m$
+    \begin{enumerate}[itemsep=2pt]
+        \item Show that $X \times Y$ is a quasi-projective variety.
+        \item If $X$, $Y$ are both projective, show that $X \times Y$ is projective.
+        \item[{\bf *(c)}] Show that $X \times Y$ is a product in the category of varieties.
+    \end{enumerate}
+\end{exercise}
+
+%% 
+\begin{exercise}[3.17]
+    \emph{Normal Varieties}. A variety $Y$ is normal at a point $P \in Y$ if $\cO_p$ is an integrally closed ring. 
+    $Y$ is normal if it is normal at every point.
+    \begin{enumerate}[itemsep=2pt]
+        \item Show that every conic in $\pp^2$ is normal.
+        \item Show that the quadric surfaces $Q_1$,$Q_2$ in $\pp^3$ given by equations $Q_1 :xy = zw$;
+        $Q2 :xy = z^2$ are normal (cf. (II. Ex. 6.4) for the latter.)
+        \item Show that the cuspidal cubic $y^2 = x^3$ in $\aa^2$ is not normal.
+        \item If $Y$ is affine, then $Y$ is normal $\iff A(Y)$ is integrally closed.
+        \item Let $Y$ be an affine variety. Show that there is a normal affine variety $Y$, and a
+        morphism $\pi: \tilde{Y} \to Y$, with the property that whenever $Z$ is a normal variety, and 
+        $\phi : Z \to Y$ is a dominant morphism (i.e., $\phi(Z)$ is dense in $Y$), then there is a unique 
+        morphism $e:Z \to \tilde{Y}$ such that $\phi = \pi \circ \theta$. $\tilde{Y}$ is called the 
+        normalization of $Y$. You will need (3.9A) above.
+    \end{enumerate}
+\end{exercise}
+
+%% 
+\begin{exercise}[3.18]
+    \emph{Projectively Normal Varieties}. A projective variety $Y \subseteq \pp^n$ is projectively normal 
+    (with respect to the given embedding) if its homogeneous coordinate ring $S(Y)$ is integrally closed.
+    \begin{enumerate}[itemsep=2pt]
+        \item If $Y$ is projectively normal, then $Y$ is normal.
+        \item There are normal varieties in projective space which are not projectively normal. For example, let $Y$ be the 
+        twisted quartic curve in $\pp^3$ given parametrically by $(x,y,z,w) = (t^4 ,t^3u,tu^3,u^4)$. Then $Y$ is normal 
+        but not projectively normal. See (III, Ex. 5.6) for more examples.
+        \item Show that the twisted quartic curve $Y$ above is isomorphic to $\pp^1$, which is projectively normal. 
+        Thus projective normality depends on the embedding.
+    \end{enumerate}
+\end{exercise}
+
+%% 
+\begin{exercise}[3.19]
+    \emph{Automorphisms of $\aa^m$}. Let $\phi: \aa^n \to \aa^n$ be a morphism of $\aa^n$ to $\aa^n$ given 
+    by $n$ polynomials $f_1, ... ,f_n$ of $n$ variables $x_1, ... ,x_n$ Let $J = \det [\partial f_i/\partial x_j] $ 
+    be the \emph{Jacobian} polynomial of $\phi$.
+    \begin{enumerate}[itemsep=2pt]
+        \item If $\phi$ is an isomorphism (in which case we call $\phi$ an automorphism of $\aa^n$) show
+        that $J$ is a nonzero constant polynomial.
+        \item The converse of {\bf (a)} is an unsolved problem, even for $n = 2$. See, for example.
+        Vitushkin [1].
+    \end{enumerate}
+\end{exercise}
+
+%% 
+\begin{exercise}[3.20]
+    Let $Y$ be a variety of dimension $\ge 2$, and let $P \in Y$ be a normal point. Let $f$ be a regular function 
+    on $Y - P$.
+    \begin{enumerate}[itemsep=2pt]
+        \item Show that $f$ extends to a regular function on $Y$.
+        \item Show this would be false for $\dim Y = 1$.
+        See (III, Ex. 3.5) for generalization.
+    \end{enumerate}
+\end{exercise}
+
+\begin{exercise}[3.21]
+    \emph{Group Varieties}. A group variety consists ofa variety $Y$ together with a morphism $\mu: Y \times Y \to Y$, 
+    such that the set of points of $Y$ with the operation given by $\mu$ is a group, and such that the inverse 
+    map $y \to y^{-1}$ is also a morphism of $Y \to Y$.
+    \begin{enumerate}[itemsep=2pt]
+        \item The \emph{additive group} $\mathbf{G_a}$ is given by the variety $\aa^1$ 
+        and the morphism $\mu: \aa^2 \to \aa^1$.
+        defined by $\mu(a,b) = a + b$. Show it is a group variety.
+        \item The multiplicative qroup $\mathbf{G_m}$ is given by the variety $\aa^1 - \{(0)\}$ and the 
+        morphism $\mu(a, b) = ab$. Show it is a group variety.
+        \item If $G$ is a group variety, and $X$ is any variety, show that the set $\Hom(X, \mathbf{G_a})$ has 
+        a natural group structure.
+        \item For any variety $X$, show that $\Hom(X,\mathbf{G_a})$ is isomorphic to $\cO(X)$ as a group
+        under addition.
+        \item For any variety $X$, show that $\Hom(X,\mathbf{G_m})$ is isomorphic to the group of units
+        in $\cO(X)$, under multiplication.
+    \end{enumerate}
+\end{exercise}
+
+
+
+\end{document}
