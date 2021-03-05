@@ -49,13 +49,13 @@
     A morphism whose underlying map on the topological spaces 
     is a homeomorphism need not be an isomorphism.
     \begin{enumerate}[itemsep=1pt]
-        \item For example, let $\phi : \aa^1  \to \aa^2$ be defined by 
-        $t \mapsto (^t2,t^3)$. Show that $\phi$ defines a
+        \item For example, let $\varphi : \aa^1  \to \aa^2$ be defined by 
+        $t \mapsto (^t2,t^3)$. Show that $\varphi$ defines a
         bijective bicontinuous morphism of $\aa^1$ onto the curve $y^2 = x^3$, 
-        but that $\phi$ is not an isomorphism.
+        but that $\varphi$ is not an isomorphism.
 
         \item For another example, let the characteristic of the base field $k$ be $p > 0$, and
-        define a map $\phi : \aa^1 \to \aa^2$ by $t \to t^p$. Show that $\phi$ 
+        define a map $\varphi : \aa^1 \to \aa^2$ by $t \to t^p$. Show that $\varphi$ 
         is bijective and bicontinuous but not an isomorphism. 
         This is called the \emph{Frobenius morphism}.
     \end{enumerate}
@@ -66,16 +66,16 @@
 \begin{exercise}[3.3]
     \begin{enumerate}[itemsep=1pt]
         \item 
-        Let $\phi:X \to Y$ be a morphism. Then for each $P \in X$, $\phi$ 
+        Let $\varphi:X \to Y$ be a morphism. Then for each $P \in X$, $\varphi$ 
         induces a homomorphism of local rings 
-        $\phi_P^*: \cO_{\phi(P), Y} \to \cO_{P, X}$.
+        $\varphi_P^*: \cO_{\varphi(P), Y} \to \cO_{P, X}$.
 
-        \item Show that a morphism $\phi$ is an isomorphism if and only if $\phi$ is a 
-        homeomorphism, and the induced map $\phi_P^*$ on local rings 
+        \item Show that a morphism $\varphi$ is an isomorphism if and only if $\varphi$ is a 
+        homeomorphism, and the induced map $\varphi_P^*$ on local rings 
         is an isomorphism, for all $p \in X$. 
 
-        \item Show that if $\phi(X)$ is dense in $Y$, 
-        then the map $\phi_P^*$ is injective for all $p \in X$.
+        \item Show that if $\varphi(X)$ is dense in $Y$, 
+        then the map $\varphi_P^*$ is injective for all $p \in X$.
     \end{enumerate}
     
 \end{exercise}
@@ -92,7 +92,7 @@
 \begin{exercise}[3.5]
     By abuse of language, we will say that a variety ``is affine'' if it is 
     isomorphic to an affine variety. If $H \subseteq \pp^n$ is any hypersurface, 
-    show that $\pp^n \setminus H$ is affine. 
+    show that $\pp^n - H$ is affine. 
     [\emph{Hint}: Let $H$ have degree $d$. Then consider the $d$-uple 
     embedding of $\pp^n$ in $\pp^n$ and use the fact that $\pp^n$ minus 
     a hyperplane is affine.]
@@ -147,8 +147,8 @@
     of being a locally closed subset of the same affine or projective space. We call this the induced 
     structure on $Y$, and we call $Y$ a subvariety of $X$.
     
-    Now let $\phi:X \to Y$ be a morphism, let $X' \subseteq X$ and $Y' \subseteq Y$ be irreducible locally closed subsets 
-    such that $\phi(X') \subseteq Y'$. Show that $\phi|_{X'} :X' \to Y'$ 
+    Now let $\varphi:X \to Y$ be a morphism, let $X' \subseteq X$ and $Y' \subseteq Y$ be irreducible locally closed subsets 
+    such that $\varphi(X') \subseteq Y'$. Show that $\varphi|_{X'} :X' \to Y'$ 
     is a morphism.
 \end{exercise}
 
@@ -182,10 +182,10 @@
 %% 
 \begin{exercise}[3.14]
     \emph{Projection from a Point}. Let $\pp^n$ be a hyperplane in $\pp^{n+1}$ and let $P \in \pp^{n+1} - \pp^n$. 
-    Define a mapping $\phi : \pp^{n+ 1} - P \to \pp^n$ by $\phi(Q) = $ the intersection of the unique line containing $P$ and $Q$ 
+    Define a mapping $\varphi : \pp^{n+ 1} - P \to \pp^n$ by $\varphi(Q) = $ the intersection of the unique line containing $P$ and $Q$ 
     with $\pp^n$.
     \begin{enumerate}[itemsep=1pt]
-        \item Show that $\phi$ is a morphism.
+        \item Show that $\varphi$ is a morphism.
         \item Let $Y \subseteq \pp^3$ be the twisted cubic curve which is the image of the 
         3-uple embedding of $\pp^1$ (Ex. 2.12). If $t$,$u$ are the homogeneous coordinates on $\pp^1$, 
         we say that $Y$ is the curve given parametrically by $(x,y,z,w) = (t^3,t^2u,tu^2,u^3)$. 
@@ -200,7 +200,7 @@
     \emph{Products of Affine Varieties}. Let $X \subseteq \aa^n$ and $Y \subseteq \aa^m$ be affine varieties.
     \begin{enumerate}[itemsep=1pt]
         \item Show that $X \times Y \subseteq A^{n+m}$ with its induced topology is irreducible. 
-        [Hint: Suppose that $X \times Y$ is a union of two closed subsets $Z_1 \cup Z_2$. Let 
+        [\emph{Hint}: Suppose that $X \times Y$ is a union of two closed subsets $Z_1 \cup Z_2$. Let 
         $X_i = \{x \in X \mid x \times Y \subseteq Z_i\}$, $i = 1,2$. 
         Show that $X = X_1 \cup X_2$ and $X_1$, $X_2$ are closed. Then $X = X_1$ or $X_2$ so $X \times Y = Z_1$ or $Z_2$.] 
         The affine variety $X \times Y$ is called the product of $X$ and $Y$. Note that its topology is in general
@@ -260,8 +260,8 @@
         \item If $Y$ is affine, then $Y$ is normal $\iff A(Y)$ is integrally closed.
         \item Let $Y$ be an affine variety. Show that there is a normal affine variety $Y$, and a
         morphism $\pi: \tilde{Y} \to Y$, with the property that whenever $Z$ is a normal variety, and 
-        $\phi : Z \to Y$ is a dominant morphism (i.e., $\phi(Z)$ is dense in $Y$), then there is a unique 
-        morphism $e:Z \to \tilde{Y}$ such that $\phi = \pi \circ \theta$. $\tilde{Y}$ is called the 
+        $\varphi : Z \to Y$ is a dominant morphism (i.e., $\varphi(Z)$ is dense in $Y$), then there is a unique 
+        morphism $e:Z \to \tilde{Y}$ such that $\varphi = \pi \circ \theta$. $\tilde{Y}$ is called the 
         normalization of $Y$. You will need (3.9A) above.
     \end{enumerate}
 \end{exercise}
@@ -282,13 +282,13 @@
 
 %% 
 \begin{exercise}[3.19]
-    \emph{Automorphisms of $\aa^m$}. Let $\phi: \aa^n \to \aa^n$ be a morphism of $\aa^n$ to $\aa^n$ given 
+    \emph{Automorphisms of $\aa^n$}. Let $\varphi: \aa^n \to \aa^n$ be a morphism of $\aa^n$ to $\aa^n$ given 
     by $n$ polynomials $f_1, ... ,f_n$ of $n$ variables $x_1, ... ,x_n$ Let $J = \det [\partial f_i/\partial x_j] $ 
-    be the \emph{Jacobian} polynomial of $\phi$.
+    be the \emph{Jacobian} polynomial of $\varphi$.
     \begin{enumerate}[itemsep=1pt]
-        \item If $\phi$ is an isomorphism (in which case we call $\phi$ an automorphism of $\aa^n$) show
+        \item If $\varphi$ is an isomorphism (in which case we call $\varphi$ an automorphism of $\aa^n$) show
         that $J$ is a nonzero constant polynomial.
-        \item The converse of {\bf (a)} is an unsolved problem, even for $n = 2$. See, for example.
+        \item[{\bf**(b)}] The converse of {\bf (a)} is an unsolved problem, even for $n = 2$. See, for example.
         Vitushkin [1].
     \end{enumerate}
 \end{exercise}
@@ -305,7 +305,7 @@
 \end{exercise}
 
 \begin{exercise}[3.21]
-    \emph{Group Varieties}. A group variety consists ofa variety $Y$ together with a morphism $\mu: Y \times Y \to Y$, 
+    \emph{Group Varieties}. A group variety consists of a variety $Y$ together with a morphism $\mu: Y \times Y \to Y$, 
     such that the set of points of $Y$ with the operation given by $\mu$ is a group, and such that the inverse 
     map $y \to y^{-1}$ is also a morphism of $Y \to Y$.
     \begin{enumerate}[itemsep=1pt]
