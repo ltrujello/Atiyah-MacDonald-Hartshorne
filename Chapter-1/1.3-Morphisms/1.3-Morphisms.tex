@@ -50,7 +50,7 @@
     is a homeomorphism need not be an isomorphism.
     \begin{enumerate}[itemsep=1pt]
         \item For example, let $\varphi : \aa^1  \to \aa^2$ be defined by 
-        $t \mapsto (^t2,t^3)$. Show that $\varphi$ defines a
+        $t \mapsto (t^2,t^3)$. Show that $\varphi$ defines a
         bijective bicontinuous morphism of $\aa^1$ onto the curve $y^2 = x^3$, 
         but that $\varphi$ is not an isomorphism.
 
@@ -61,6 +61,75 @@
     \end{enumerate}
 \end{exercise}
 
+\begin{solution}
+    \begin{luke}
+        \begin{enumerate}
+            \item 
+            \begin{description}[itemsep = 2pt]
+                \item[Bijection]
+                Since $k$ is an integral domain, this map is injective. In addition, the map 
+                is surjective: if $(x_0, y_0) \in Z(y^2 - x^3)$ are nonzero, we set $t_0 = \frac{y_0}{x_0}$. 
+                We then have that $\varphi(t_0) = (t_0^2, t_0^3) = (x_0, y_0)$.  
+                \item[Closed]
+                Let $Y = Z(T) \in \aa^1$ be a closed set, $T$ some family 
+                of polynomials in $k[x]$. Establishing notation, write 
+                \[
+                    \psi: k[x, y] \to k[t] \qquad x \mapsto t^2, y \mapsto t^3
+                \]
+                Now observe that 
+                \begin{align*}
+                    \varphi(Y) 
+                    = 
+                    \bigSet{ (z_0^2, z_0^3)}{z_0 \in Y }
+                    = 
+                    \bigSet{ (z_0^2, z_0^3)}{f(z_0) = 0 \quad \forall f \in T }
+                    = 
+                    Z(y^2 - x^3, T')
+                \end{align*}
+                where $T' = \{ g \in k[x, y] \mid \psi(g) \in T \}$. Hence $\varphi$ is a closed. 
+                \item[Continuous]
+                Now we show this function is continuous. Let $W = Z(S) \cap Z(y^2 - x^3)$ where $S$ 
+                is a family of polynomials in $k[x, y]$. Then 
+                \[
+                    \varphi^{-1}(W) = \bigSet{t_0 \in \aa^1}{ f(t_0^2, t_0^3) = 0 \quad \forall f \in T \cap (y^2 - x^3)}.
+                \] 
+                If $f(t_0^2, t_0^3) = 0$, then $\psi(f)(t_0) = 0$. 
+                Hence $\varphi^{-1}(W) \subseteq Z(\psi(T))$. The alternative direction is immediate, and we have that 
+                $\varphi^{-1}(W) = Z(\psi(T))$, so that $\varphi^{-1}(W)$ is closed. 
+                \item[Morphism]    
+                We show that this function is actually a morphism of varieties. 
+                Consider a regular map $f: V \subset Z(y^2 - x^3) \to k$ on some open subset 
+                $V \subset Z(y^2 - x^3)$. Let $P \in \varphi^{-1}(V)$. Since $f: V \to k$ is regular, 
+                there exits an open set $U \subseteq V$ containing $\varphi(p)$ such that 
+                \[
+                    f(x, y) = \frac{g(x, y)}{h(x, y)} \qquad \forall (x, y) \in U.  
+                \]
+                Now observe that $\varphi^{-1}(U)$ is an open subset of $\varphi^{-1}(V)$ containing 
+                $P$, and moreover that 
+                \[
+                    f \circ \varphi(t) = f(t^2, t^3) = \frac{g(t^2, t^3)}{h(t^2, t^3)} \qquad \forall t \in \varphi^{-1}(U).
+                \]
+                Hence, $f \circ \varphi$ is regular whenever $f$ is, making $\varphi$ a morphism of 
+                varieties. 
+            \end{description}
+            
+            We finally show that this is not an isomorphism. This is because 
+            \[
+                k[x, y]/(y^2 - x^3) \not\cong k[x] \implies A(Z(y^2- x^3)) \not\cong A(\aa^1). 
+            \]
+            and this is due to the fact that $\psi$ is not surjective (e.g., $x \not\in \im(\psi)$, although $\ker(\psi) = I(y^2 - x^3)$).
+            Hence, these varieties are not isomorphic.
+           
+
+            
+
+            
+
+            
+    
+        \end{enumerate}    
+    \end{luke}
+\end{solution}
 
 %% 
 \begin{exercise}[3.3]
@@ -77,8 +146,45 @@
         \item Show that if $\varphi(X)$ is dense in $Y$, 
         then the map $\varphi_P^*$ is injective for all $p \in X$.
     \end{enumerate}
-    
-\end{exercise}
+    \end{exercise}
+
+\begin{solution}
+    \begin{luke}
+        \begin{enumerate}
+            \item Given a morphism $\phi: X \to Y$ of varieties and a point $P \in X$, 
+            we define
+            \[
+                \phi_P^* : \cO_{\phi(P), Y} \to \cO_{P, X} \qquad \big(U \subset Y, f: U \to k \big) \longmapsto 
+                \big(\phi^{-1}(U), f \circ \phi: \phi^{-1}(U) \to k\big).
+            \]
+            \begin{description}[itemsep = 3pt]
+                \item[Well-defined] Let $(U_1, f_1) \sim (U_2, f_2)$ be members of $\cO_{\phi(P), Y}$.
+                Then $f_1 \cap f_2$ on $U_1 \cap U_2$, which implies that 
+                $f_1 \circ \phi = f_2 \circ \phi$ on $\phi^{-1}(U_1 \cap U_2)$. 
+                Hence $(\phi^{-1}(U_1), f_1 \circ \phi) \sim (\phi^{-1}(U_2), f_2 \circ \phi)$.
+
+                \item[Local]
+                Let $\idl{m}_{\phi(P)} = \{ (V, f) \in \cO_{\phi(P), Y} \mid f\circ \phi(p) = 0 \}$ be the 
+                maximal ideal of $\cO_{\phi(P), Y}$. Then observe that 
+                $\phi_P^{*}(\idl{m}_{\phi(P)}) = (\phi^{-1}(V), f \circ \phi) \in \idl{m}_P \subset \cO_{P, X}$.
+                Hence, we see that $\phi_P^{*}(\idl{m}_{\phi(P)}) \subset \idl{m}_{P}$, so that 
+                $\phi_P^*$ is a homomorphism of local rings. 
+            \end{description}
+
+            \item Let $\phi: X \to Y$ be a homeomorphism such that $\phi_P^{*}$ is an isomorphism 
+            for each $P \in X$. Let
+            $f: V \subseteq Y \to k$ be a regular function on $V$ containing $P$.
+            Then $f$ corresponds via $\phi_P^*$ to the regular function 
+            $f \circ \phi: \phi^{-1}(V) \to k$ on $\phi^{-1}(P)$. 
+            Hence, $\phi$ is a morphism of varieties. By a similar argument, $\phi^{-1}$ is also a morphism of varieties. 
+            As they are inverses of each other, we see that $\phi$ is an isomorphism of varieties. 
+            The other direction is not difficult to check.
+
+            \item 
+            
+        \end{enumerate}
+    \end{luke}
+\end{solution}
 
 
 %% 
@@ -87,6 +193,61 @@
     onto its image.
 \end{exercise}
 
+\begin{solution}
+    \begin{luke}
+        We recall some notation. 
+        \begin{itemize}[itemsep=2pt, label={\textbullet}]
+            \item $M_i(x_0, \dots, x_n)$ is the $i$-th $d$-degree monomial (from $0$ to $N = {n + d \choose n} -1 $) 
+            \item $\rho_d: \pp^n \to Z(\idl{a})\subset \pp^N$ sends $(a_0, \dots, a_n)$ to $(M_0(a_0, \dots, a_n), \dots, M_N(a_0, \dots, a_n))$ 
+            \item $\theta: k[y_0, \dots, y_N] \to k[x_0, \dots, x_n]$ sends $y_i$ to $M_i(x_0, \dots, x_n)$.
+        \end{itemize}
+        From Exercise 2.12, we already know that $\rho_d: \pp^n \to Z(\idl{a}) \subset \pp^N$ 
+        is a homeomorphism. We show that $\rho_d$ and $\rho_d^{-1}$ are morphisms of varieties 
+        and are inverses of each other (as morphisms of varieties).
+
+        \begin{itemize}[itemsep=2pt, label={\textbullet}]
+            \item We show $\rho_d$ is a morphism of varieties. 
+            Let $f: V \subseteq Z(\idl{a}) \to k$ be regular. Then for each $p \in V$, there exists 
+            an open set $U \subseteq V$ containing $p$ such that $f(y_0, \dots, y_N) = g_1(y_0, \dots, y_N)/g_2(y_0, \dots, y_N)$
+            on $U$, for some homogeneous polynomials $g_1, g_2$ of the same degree. 
+            Consider the function $f \circ \rho_d: \rho_d^{-1}(V) \to k$. Observe that 
+            $\rho_d^{-1}(U)$ is a subset of $\rho_d^{-1}(V)$ containing $\rho_d^{-1}(p)$, 
+            and moreover that 
+            \[
+                f \circ \rho_d = \frac{\theta(g_1)}{\theta(g_2)} \text{ on all of } \rho_d^{-1}(U).
+            \]
+            Note that $\theta(g_1)$, $\theta(g_2)$ are homogeneous polynomials of the same degree, 
+            and moreover that $\theta(g_2) \ne 0$ on any of $\rho_d^{-1}(U)$. 
+            Hence, $f \circ \rho_d$ is regular, which implies that $\rho_d$ is a morphism of varieties. 
+        
+            \item We show $\rho_d^{-1}$ is a morphism of varieties. Let $m: V \subseteq \pp^n \to k$ be a
+            regular function. Then for each $p \in P$, there exists some open set $U \subseteq V$ containing 
+            $p$ and a pair of 
+            homogeneous polynomials $h_1, h_2$ of the same degree such that 
+            $m(x_0, \dots, x_n) = h_1(x_0, \dots, x_n)/h_2(x_0, \dots, x_n)$ on all of $U$. 
+            
+            Take $U_i = \pp^n - H_i$ such that $p \in U \cap U_i$. Let 
+            $\alpha = |d - \deg(h_1)| = |d - \deg(h_2)|$.  
+            Observe that 
+            \[
+                m = \frac{x_i^{\alpha}h_1(x_0, \dots, x_n)}{x_i^{\alpha}h_2(x_0, \dots, x_n)} = \frac{h_1'(x_0, \dots, x_n)}{h_2'(x_0, \dots, x_n)}.
+            \]
+            Both $h_1'$ and $h_2'$ are homogeneous polynomials 
+            of degree $\alpha + \deg(h_1) = \alpha + \deg(h_2)$ which is divisible by $d$.
+            Hence, we see that both of these polynomials are in the image of $\theta$. 
+            Let $k_1, k_2 \in k[y_0, \dots, y_N]$ such that $\theta(k_1) = h_1'$, $\theta(k_2) = h_2'$.
+            Then we see that 
+            \[
+                f \circ \rho_d^{-1} = \frac{k_1}{k_2} \text{ on all of } \rho_d(U \cap U_i).
+            \]
+            Thus we see that $f \circ \rho_d^{-1}: \rho_d(V) \subset Z(\idl{a}) \to k$ is a regular function, so that 
+            $\rho_d^{-1}$ is a morphism of varieties. 
+        \end{itemize}
+        As both $\rho_d$ and $\rho_d^{-1}$ are morphisms 
+        of varieties, and are homeomorphisms, we see that $\rho_d$ establishes the isomorphism 
+        $\pp^n \cong Z(\idl{a})$, as desired. 
+    \end{luke}
+\end{solution}
 
 %% 
 \begin{exercise}[3.5]

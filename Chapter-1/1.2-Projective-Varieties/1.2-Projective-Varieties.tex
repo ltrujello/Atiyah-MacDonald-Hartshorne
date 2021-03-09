@@ -8,11 +8,10 @@
 \usepackage[usenames,dvipsnames]{xcolor} % If using tikz, put \usepackage{tikz} after this
 \usepackage{pdfcolmk}
 \usepackage{enumitem}
-\setlist{noitemsep}
 
 % Our commands + environments are in style.cls. 
 % Using the line below, they can be imported into any .tex file.
-\usepackage{../../style}
+\usepackage{../../style}    
 
 % Header 
 \newcommand{\header}[2]{
@@ -207,44 +206,54 @@
 
 \begin{solution}
     \begin{luke}
-        We follow the hints. Note that 
-        \[
-            S(Y)_{x_i}
-            =
-            \bigg\{ \frac{f(x_0, \dots, x_n) + I_{\pp^n}(Y)}{x_i^j} \;\bigg|\; f + I_{\pp^n}(Y) \in S(Y) \bigg\}.
-        \]
-        In addition, an element of degree  0 will be of the form $(f + I(Y))/x_i^d$, where $\deg(f) = d$. 
-        Now in this case, 
-        \[
-            \frac{f(x_0, \dots, x_n) + I_{\pp^n}(Y)}{x_i^d}
-            =
-            f\left( \frac{x_0}{x_i}, \dots, 1, \dots, \frac{x_n}{x_i} \right) + I_{\pp^n}(Y)
-            =
-            f(x_0, \dots, 1, \dots, x_n) + I_{\aa^n}(Y_i)
-        \]
-        where $1$ appears in the $i$-th coordinate. Therefore, the homogeneous 
-        representative $f$ may be regarded as an ordinary polynomial which is 
-        not in $I(Y_i)$ (i.e., it at least does not vanish on $Y$ if the $i$-th coordinate is 
-        fixed to be nonzero). Hence, we may identify the 0-degree element 
-        $(f + I(Y))/x_i^d$ as a member of $A(Y_i)$. 
+        We follow the hints.
+        \begin{itemize}
+            \item A degree 0 element of $S(Y)_{x_i}$ will be of the 
+            form $(f + I(Y))/x_i^d$, where $\deg(f) = d$. Now in this case, 
+            \[
+                \frac{f(x_0, \dots, x_n) + I_{\pp^n}(Y)}{x_i^d}
+                =
+                \alpha(f) + I_{\aa^n}(Y_i)
+            \]
+            Therefore, the homogeneous 
+            representative $f$ may be regarded as an ordinary polynomial which is 
+            not in $I(Y_i)$ (i.e., it at least does not vanish on $Y$ if the $i$-th coordinate is 
+            fixed to be nonzero). Hence, we may identify the 0-degree element 
+            $(f + I(Y))/x_i^d$ as a member of $A(Y_i)$. 
+    
+            Alternatively, let $g(x_1, \dots, x_n) + I_{\aa^n}(Y_i) \in A(Y_i)$. 
+            Then we may rewrite 
+            \[
+                g(x_1, \dots, x_n) + I_{\aa^n}(Y_i) = \frac{\beta(g)}{x_i^d} + I_{\pp^n}(Y)
+            \]
+            and note that this is a degree 0 element of $S(Y)_{x_i}$.
 
-        Alternatively, let $f + I_{\aa^n}(Y_i) \in A(Y_i)$. 
-        Since $f$ does not vanish on $Y$ when $x_i$ is fixed to 1, we 
+            \item We now establish our desired isomorphism. To do so, we recycle the notation use by 
+            Hartshorne: $\alpha$ sets the $x_i$-th coordinate of a homogeneous polynomial to 1, 
+            while $\beta: k[x_1, \dots, x_n] \to k[x_i, x_1, \dots, x_n]$ homogenizes a polynomial 
+            by introducing the variable $x_i$. 
+            Note that they are inverses. Now we define the isomorphism
+            $\psi: S(X)_{x_i} \to A(Y_i)[x_i, x_i^{-1}]$ where 
+            \[
+                \psi\left( \frac{f + I(Y)}{x_i^j} \right)
+                =
+                x^{j-d}\alpha(f) + I_{\aa^n}(Y_i)
+                \qquad 
+                d = \deg(f)
+            \]
+            and 
+            \[
+                \psi^{-1}\big(g \cdot x_i^{r}x_i^{-s} + I_{\aa^n}(Y)\big) = 
+                \frac{\beta(g)x_i^{r}x_i^{-s} + I_{\pp^n}(Y)}{x_i^d}
+                \qquad 
+                d = \deg(g).
+            \]
+            \item  
+        \end{itemize}
+
         
 
-        We
-        may homogenize the representative to 
-        obtain the homogeneous polynomial $x_i^df\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right)$, 
-        where $d = \deg(f)$. Note that this can represent the
-        degree $d$-element of $x_i^df\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right) + I(Y)$ in 
-        $S(Y)$. This in turn corresponds to the degree $0$-element of 
-        $S(Y)_{x_i}$: 
-        \[
-            \frac{x_i^df\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right) + I(Y)}{x_i^d}
-            =
-            f\left( \frac{x_0}{x_i}, \dots, \frac{x_n}{x_i} \right) + I(Y).
-        \]
-        In this way we identify $f + I(Y_i) \in A(Y_i)$ with a degree 0 element of $S(Y)_{x_i}$. 
+        
         
         
         
@@ -617,7 +626,42 @@
 \end{exercise}
 
 \begin{solution}
-    
+\begin{luke}
+    We follow the hint. Let $0 \le i \le r$ and $0 \le j \le s$. 
+    Let $\idl{a}$ be the kernel of the mapping below.
+    \[
+        \theta: k[z_{(i,j)}] \to k[x_0, \dots, x_r, y_0, \dots, y_s] \qquad z_{(i,j)} \mapsto x_iy_j
+    \]
+    Now consider a point $\psi\big( (a_0, \dots, a_r), (b_0, \dots, b_s) \big) = (a_0b_0, \dots, a_rb_s)$ 
+    in $\pp^N$. If $f \in \idl{a}$, then we see that 
+    \begin{align*}
+        f(a_0b_0, \dots, a_rb_s)
+        =
+        \theta(f)((a_0, \dots, a_r), (b_0, \dots, b_s)) =0.
+    \end{align*}
+    Hence we see that $\im(\psi) \subset Z(\idl{a})$. 
+    Now let $(b_0, \dots, b_N) \in Z(\idl{a})$. We can denote this tuple 
+    as below
+    \[
+        (b_0, \dots, b_N) = (b_{(0,0)}, \dots, b_{(r,s)}).
+    \]
+    Observe that $z_{(0,0)}z_{(i,j)} - z_{(i, 0)}z_{(j,0)} \in \idl{a}$.
+    Hence, we see that $b_{(0,0)}b_{(i,j)} = b_{(i, 0)}b_{(j,0)}$. 
+    We the have that
+    \begin{align*}
+        (b_{(0,0)}, \dots, b_{(r,s)}) 
+        &= 
+        (b_{(0,0)}\cdot b_{(0,0)}, \dots, b_{(0,0)} \cdot b_{(r,s)})\\
+        &=
+        (b_{(0, 0)}\cdot b_{(0,0)}, \dots, b_{(r, 0)}\cdot b_{(s,0)})\\
+        &=
+        \psi\big((b_{(0,0)}, \dots, b_{(0,s)}), (b_{(0,0)}, \dots, b_{(r,0)}) \big).
+    \end{align*}
+    Therefore, $(b_0, \dots, b_N) \in \im(\psi)$. This then proves that 
+    $\im(\psi) = Z(\idl{a})$. As $\idl{a}$ is prime, we see that $\im(\psi)$ 
+    is a variety, specifically a subset of $\pp^n$ which is a variety. 
+
+\end{luke}
 \end{solution}
 
 \begin{exercise}[2.15]
