@@ -264,7 +264,10 @@
 \end{exercise}
 
 \begin{solution}
-    
+    \begin{enumerate}
+        \item \lfy{By Exercise 2.6, $\Dim \bbP^n = \Dim S(\bbP^n)-1 = n$.}
+        \item 
+    \end{enumerate}
 \end{solution}
 
 \begin{exercise}[2.8]
@@ -274,7 +277,8 @@
 \end{exercise}
 
 \begin{solution}
-    
+    \lfy{By Exercise 2.6, $\Dim Y = n-1$ if and only if $\Ht I(Y) = 1$. By Theorem 1.12A, since polynomials rings are UFD, $I(Y)$ is principal. Since $I(Y)$ is prime and homogeneous, its generator must be an irreducible homogeneous polynomial
+    $f$ of positive degree.}
 \end{solution}
 
 \begin{exercise}[2.9]
@@ -303,7 +307,7 @@
        \begin{luke}
         \begin{enumerate}
             \item 
-            Note that since $\overline{Y} =  Z(I_{\pp^n}(Y))$, we have that 
+            Note that since $\overline{Y} =  Z(I_{\pp^n}(Y))$, we have that \lfy{Do you mean $I_{\pp^n}(\overline{Y})$?}
             $I_{\pp^n}(Y) = I(Z(I_{\pp^n}(Y))) = I_{\pp^n}(Y)$. Additionally, we 
             have that 
             \[
@@ -671,7 +675,12 @@
 
 \begin{solution}
 \begin{enumerate}
-    \item If $\fa = $
+    \item Let $\fa = (f_1, \dots, f_q)$. It suffices to show that $\Ht \fa \leq q$. Consider the homomorphism
+    \[\phi: k[y_1,\dots,y_q] \to k[x_0, \dots, x_n]\] via $y_i \mapsto f_i$. By construction, $\im \phi = \fa$. Since $\phi$ is surjective onto $\fa$, if $\fp_i \subsetneq \fp_{i+1}$, then $\phi^{-1}\fp_i \subsetneq \phi^{-1}\fp_{i+1}$. Taking preimages also preserves prime ideals. Therefore, $\Ht \fa \leq \dim k[y_1,\dots,y_q] = q$.
+    \item If $I(Y) = (f_1, \dots, f_q)$, then $Y = Z(f_1, \dots, f_q) = \bigcap_{i = 1}^{q}Z(f_i)$. 
+    \item Recall that the twisted cubic contains $W = \{[1:t:t^2:t^3]:t \in k\}$ as an open dense subset. Let $H_1 = Z(x^2-yw)$, $H_2 = Z(x^3-zw^2)$. Since 
+    \[W \subset H_1 \cap H_2,\]
+    we have $Y \subset H_1 \cap H_2$. \lfy{tbc......}
 \end{enumerate}
 \end{solution}
 
