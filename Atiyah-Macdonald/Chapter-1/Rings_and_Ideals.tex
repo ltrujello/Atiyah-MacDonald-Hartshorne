@@ -1,0 +1,467 @@
+\documentclass[10pt]{amsart}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsthm} 
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fancyhdr}
+\usepackage[usenames,dvipsnames]{xcolor} % If using tikz, put \usepackage{tikz} after this
+\usepackage{pdfcolmk}
+
+% Our commands + environments are in style.cls. 
+\usepackage{../atiyah-macdonald-style}
+
+\begin{document}
+\header{Chapter 1}
+
+\begin{exercise}
+    Let $x$ be a nilpotent element of a ring $A$. Show that $1 + x$ is a unit of $A$. Deduce that the sum of a nilpotent element and a unit is a unit.
+\end{exercise}
+
+\begin{solution}
+    Let $x$ be nilpotent and $n$ the smallest integer such that $x^n = 0$. The case for $n = 2$ is clear 
+    because $(1 + x)(1 - x) = 1 - x^2 = 1$. Therefore, let $n > 2$, and let $k$ be the smallest integer 
+    such that $n \le 2^k$. Then observe that 
+    \[
+        (1 + x)(1 - x) \prod_{i = 2}^{k}\left(1 + x^{2^i}\right) = 1.
+    \]
+    Hence we see that $1 + x$ is a unit. By adjusting the above argument, and noting that the 
+    set of units of a ring form a group, we can get that the sum of a nilpotent element and a 
+    unit is a unit. 
+\end{solution}
+
+
+\begin{exercise}
+    Let $A$ be a ring and let $A[x]$ be the ring of polynomials in an indeterminate $x$, with coefficients in $A$. Let $f = a_0 + a_1x + \dots + a_nx^n$ in $A[x]$. 
+    Prove that
+    \begin{itemize}
+        \item[\emph{i})] $f$ is a unit in $A[x] \iff a_0$ is a unit in $A$ and $a_1, \dots, a_n$ are nilpotent. [If $b_0 + b_1x +\dots+ b_mx^m$ 
+        is the inverse of $f$, prove by induction on $r$ that $a_n^{r+1}b_{m-r} = 0$. Hence show that $a_n$ is nilpotent, and then use Ex. 1.]
+        \item[\emph{ii})] $f$ is nilpotent $\iff a_0, a_1, \dots a_n$ are nilpotent.
+        \item[\emph{iii})] $f$ is a zero-divisor $\iff$ there exists a $a \ne 0$ in $A$ such that $af = 0.$ [Choose a
+        polynomial $g = b_0 +b_1x + \dots + b_mx^m$ of least degree $m$ such that $fg = 0$. Then $a_nb_m = 0$, hence $a_ng = 0$ 
+        (because $a_n g$ annihilates $f
+        $ and has degree $<m$). Now show by induction that $a_{n-r} g = 0$ $(0 \le r \le n)$.]
+        \item[\emph{iv})] $f$ is said to be primitive if $(a_0, a_1, \dots , a_n) = (1)$. Prove that if $f,g \in A[x]$, then
+        $fg$ is primitive $\iff$ $f$ and $g$ are primitive.
+    \end{itemize}
+\end{exercise}
+
+\begin{solution}
+    \begin{itemize}
+        \item[\emph{i})] Suppose that $f$ is a unit. Then there exists a polynomial $g$ such that 
+        \[
+            fg = 1 \implies \sum_{k = 0}^{n + m}\left( \sum_{i + j = k} a_ib_j \right)x^k = 1.
+        \] 
+        For this to be the case, we must have that $a_0b_0 = 1$, which implies that $a_0$ is a unit, 
+        and $a_nb_m = 0$, which implies that $a_n$ is a zero divisor. We'll now argue that $a_n^{r+1}b_{m-r} = 0$ whenever 
+        $r > 0$ (here we treat $b_{m-r} = 0$ whenever $r > m$.)
+        Since the base case is true, suppose that it is true for all integers less than $r \ge 0$. 
+        Then observe that the coefficient of $x^{n+m-r}$ is given by 
+        \[
+            \sum_{i + j = m+n-r} a_ib_j = a_nb_{m-r} + a_{n-1}b_{m-r-1} 
+            + \cdots +
+            a_{n-r}b_{m}
+            =
+            0.
+        \]
+        If we multiply this by $a_n^{r}$, we see that
+        \[
+            a_n^r \cdot a_nb_{m-r} + a_n^r \cdot a_{n-1}b_{m-r-1} 
+            + \cdots +
+            a_n^r \cdot a_{n-r}b_{m}
+            =
+            a_n^{r+1}b_{m-r}
+        \] 
+        where for every summand other than the first term we applied the induction hypothesis. 
+        This then implies that $a_n^{r+1}b_{m-r} = 0$. Hence, we have proved our claim by 
+        induction.
+        Using our claim, note that $a_n^{m+1}b_0 = 0$. Since $b_0$ is a unit, we have that 
+        $a_n^{m+1}=0$ which implies $a_n$ is nilpotent. 
+
+        \item[\emph{ii})] 
+        We can prove the forward statement by induction on degree. First note that 
+        the base case of $\deg f = 0$ is immediate. Therefore, let $f$ have degree $n > 0$
+        and suppose the (forward) statement is true for polynomials of degree $n-1$. 
+        Since $f$ is nilpotent, we have that $f^r = 0$ for some integer $r$. In particular, we have that 
+        $a_n^rx^{n+r} = 0 \implies a_n^r =0$. This shows that $a_n$ is nilpotent. Now observe that 
+        \[
+            f - a_nx^n = a_0 + \cdots a_{n-1}x^{n-1}.
+        \]
+        The left hand side is nilpotent, and so $a_0 + \cdots + a_{n-1}x^{n-1}$ must be nilpotent. 
+        We can then apply our induction hypothesis to conclude that $a_0, \dots, a_{n-1}$ must be nilpotent. 
+        This proves the forward direction. 
+
+        To prove the reverse direction, suppose $a_i$ are nilpotent. Then
+        $f^r$ is a polynomial whose coefficients are (up to a scalar multiple)
+        of the form 
+        \[
+            a_0^{k_0}a_1^{k_1}\cdots a_n^{k_n}
+        \]
+        where $k_i$ are nonnegative and sum to $r$. Since each $a_i$ is nilpotent, take 
+        $r = \ord(a_0) + \cdots + \ord(a_n)$. Then each coefficient $a_0^{k_0}a_1^{k_1}\cdots a_n^{k_n}$ 
+        of $f^r$ must be zero, since at for at least one $i$, we have that $k_i \ge \ord(a_i)$ (or else 
+        the $k_i$ powers cannot sum to $r$). In taking $r$ to be this value, we can see 
+        that each coefficient of $f^r$ is zero, which implies that $f$ is nilpotent. This proves 
+        the reverse direction, and completes the if and only if proof.
+
+        \item[\emph{iii})] We follow the hint which proves the base case of our induction: 
+        as $g$ is supposed to have minimal degree for which $fg = 0$, we can only have that 
+        $a_ng = 0$. To prove further that $a_{n-r}g = 0$, we suppose that the statement is 
+        true for all nonnegative integers less than $r$. Observe that the coefficient of 
+        $x^{m+n-r}$ is given by 
+        \[
+            \sum_{i + j = m+n-r} a_ib_j = a_nb_{m-r} + a_{n-1}b_{m-r-1} 
+            + \cdots +
+            a_{n-(r+1)}b_{m+1}
+            +
+            a_{n-r}b_{m}
+            =
+            0.
+        \]
+        By our induction hypothesis, each term $a_nb_{m-r}, \dots, a_{n-(r+1)}b_{m+1}$ 
+        must be zero since $a_{n}g, \dots, a_{n-(r+1)}g$ are all zero. This leaves 
+        just $a_{n-r}b_m = 0$, from which we can again deduce that $a_{n-r}g = 0$ as it has degree less 
+        than $m$ and annihilates $f$. Hence, we have that the statement is true for all nonnegative 
+        integers. 
+
+        Using this claim, we can then prove the main result by picking a nonzero 
+        coefficient of $g$. Take for instance $b_m$: Then $b_mf = b_ma_0 + \cdots + b_ma_nx^n = 0$.
+        This proves the main result.
+
+        \item[\emph{iv})]
+        If $fg$ is primitive, then this implies that the ideal generated by the coefficients of $fg$ 
+        is the entire ring. Explicitly, there exist coefficients $c_0, \dots, c_{n+m}$ 
+        such that 
+        \[
+            c_0\left( \sum_{i + j = 0}a_ib_j \right) 
+            +
+            c_1\left( \sum_{i + j = 1}a_ib_j \right)  
+            + \cdots + 
+            c_{n+m}\left( \sum_{i + j = n+m}a_ib_j \right)
+            = 1
+        \]
+        Since the above is a linear relation, we can rearrange the 
+        coefficients to obtain a summation of coefficients in $a_i$ to 1. 
+        This can similarly be done for $b_i$. Hence $(a_0, \dots, a_n) = (1)$ 
+        and $(b_0, \dots, b_{m}) = (1)$.
+
+    \end{itemize}
+\end{solution}
+
+\begin{exercise}
+    Generalize the results of Exercise 2 to a polynomial ring $A[x_1, \dots, x_r]$ in several indeterminates.
+\end{exercise}
+
+\begin{solution}
+    \begin{itemize}
+        \item[\emph{i})] We claim that a multivariate polynomial $f(x_1, \dots, x_n) = \sum a(i_1, \dots, i_n)x_1^{i_1}\cdots x_n^{i_n}$ 
+        is a unit if and only if $a(0,\dots, 0)$ is a unit and the rest of $a(i_1, \dots, i_n)$ are nilpotent.
+        We can prove this by induction on the number of variables: 
+        Suppose the statement is true for polynomials in $n-1$ variables. Then any polynomial 
+        $f(x_1, \dots, x_n)$ in $n$-variables is technically a polynomial in $A[x_1, \dots, x_{n-1}][x_n]$. 
+        By Exercise 2.1, this holds if and only if each $a(i_1, \dots, i_n)x_1^{i_1}\cdots x_n^{i_{n-1}}$
+        is nilpotent with $a(0,\dots,0)$ a unit. 
+        However, this occurs if and only if the 
+        $a(i_1, \dots, i_n)$ (of course excluding $a(0, \dots, 0)$) 
+        are all nilpotent, which proves the result.
+
+        \item[\emph{ii})] We claim that a multivariate polynomial is nilpotent if and only if each of 
+        its coefficients are nilpotent in $A$. This is achieved by induction on the number of indeterminates 
+        as in the previous example exercise
+
+        \item[\emph{iii})] We can prove this similarly to Exercise 1.2.3. 
+        First, we define the degree of a multivariate monomial $x_1^{\alpha_1} \cdots x_n^{\alpha_n}$ 
+        to be the sum of the degrees of each $\alpha_i$. We denote this degree by $(\alpha_1, \dots, \alpha_n)$. 
+        We then impose a total ordering on monomial 
+        degree via lexicographical ordering. In other words, we say
+        $x_1^{\alpha_1} \cdots x_n^{\alpha_n}$ has less degree than $x_1^{\beta_1} \cdots x_n^{\beta_n}$ 
+        if and only if $\alpha_i \le \beta_i$ for all $i$. 
+
+        With that said, let $f(x_1, \dots, x_n)$ be a zero divisor with degree $(k_1, \dots, k_n)$, 
+        and let $g(x_1, \dots, x_n)$ be the polynomial with least degree $(m_1, \dots, m_n)$. 
+        If we express 
+        \[
+            f = \sum_{}a_{i_1, \dots, i_n}x_1^{i_1}\cdots x_n^{i_n}
+            \;\;
+            g = \sum_{}b_{i_1, \dots, i_n}x_1^{i_1}\cdots x_n^{i_n}
+        \]
+        Then we see that $a(k_1, \dots, k_n)\cdot b_{m_1, \dots, m_n} = 0$. 
+        Hence $a(k_1, \dots, k_n)\cdot g$ annihilates $f$, but has less degree than 
+        $g$, and so it must be zero. 
+
+        We show by induction that $a_{i_1, \dots, i_n}g = 0$ for each coefficient $a_{i_1, \dots, i_n}$ 
+        of $f$. To see this, suppose $f$ has $j$-many monomial terms; then order them and denote them 
+        as $a_0, \dots, a_j$; similarly suppose $g$ has $\ell$-many monomial terms and order them as $b_0, \dots, b_{\ell}$. 
+        To perform induction, suppose that $a_{j - r}g = 0$ for all $0 \le r < t$ where $0 \le t < j$ (note the base case is true).
+        Then observe that 
+        \begin{align*}
+            fh = 0 
+            &\implies (a_1x_1^{i^{(1)}_1} \cdots x_n^{i^{(1)}_n} + \cdots + a_jx_1^{i^{(j)}_1} \cdots x_n^{i^{(j)}_n})h = 0 \\
+            &\implies (a_1x_1^{i^{(1)}_1} \cdots x_n^{i^{(1)}_n} + \cdots + a_kx_1^{i^{(k)}_1} \cdots x_n^{i^{(k)}_n})h = 0 \\
+            &\implies a_kb_{\ell} = 0 \\
+            &\implies a_kh = 0.
+        \end{align*}
+        This completes our inductive step. We then take any nonzero coefficient of $h$ and can now use 
+        our above result to conclude that $f$ may be annihilated by a single element of $A$, as desired. 
+
+        
+
+
+
+
+
+    \end{itemize}
+\end{solution}
+
+\begin{exercise}
+    In the ring $A[x]$, the Jacobson radical is equal to the nilradical.
+\end{exercise}
+
+\begin{solution}
+    It is clear that the nilradical is contained in the Jacobson radical. 
+    Therefore, let $f$ be in the Jacobson radical. Then $1 - fg$ is a unit for 
+    all $g \in A[x]$. In particular, $1 - f\cdot x$ is a unit. By Ex 1.2.1, 
+    this implies that the coefficients of $f$ are nilpotent. By Ex 1.2.2, 
+    this implies that $f$ is nilradical, so the Jacobson is contained in the nilradical. 
+    This then implies that they are equal.
+\end{solution}
+
+\begin{exercise}
+    Let $A$ be a ring and let $A[[x]]$ be the ring of formal power series $f = \sum_{n = 0}^{\infty}a_nx^n$ with coefficients in $A$. Show that
+    \begin{itemize}
+        \item[\emph{i})] $f$ is a unit in $A[[x]] \iff a_0$ is a unit in $A$.
+        \item[\emph{ii})] If $f$ is nilpotent, then $a_n$ is nilpotent for all $n \ge 0$. Is the converse true? (See Chapter 7, Exercise 2.)
+        \item[\emph{iii})] $f$ belongs to the Jacobson radical of $A[[x]] \iff a_0$ belongs to the Jacobson radical of A.
+        \item[\emph{iv})] The contraction of a maximal ideal $\mathfrak{m}$ of $A[[x]]$ is a maximal ideal of $A$, and
+        $\idl{m}$ is generated by $\idl{m}^c$ and $x$.
+        \item[\emph{v})] Every prime ideal of $A$ is the contraction of a prime ideal of $A[[x]]$. 
+    \end{itemize}
+\end{exercise}
+
+\begin{solution}
+    \begin{itemize}
+        \item[\emph{i})] Suppose $f = \sum_{n=0}^{\infty} a_nx^n$ is a power series and 
+        $a_0$ is a unit. We prove that there exists an inverse of $g= \sum_{n=0}^{\infty}b_n x^n$ 
+        by inductively constructing $b_n$.
+
+        For $n=0$, we let $b_0$ be the inverse of $a_0$. Thus suppose that the coefficients have been 
+        defined for all nonnegative integers less than $n > 0$. Then observe that 
+        we require 
+        \[
+            \sum_{i=0}^n a_ib_{n-i} = 0.
+        \]
+        The above is a linear equation which is in terms of $b_0, \dots, b_n$.
+        We can use our induction hypothesis to solve for $b_n$ and construct it in this way. We see 
+        by induction that we may construct an inverse $g$, demonstrating that $f$ is a unit. 
+    
+        \item[\emph{ii})] Suppose $f$ is nilpotent. Then clearly $a_0$ is nilpotent. 
+        Suppose now that $a_r$ is nilpotent for all $0 \le r < k$ where $0 < k < n$. 
+        To show that $a_k$ is nilpotent, note that 
+        \[
+            f - (a_0 + a_1x + \cdots + a_{r}x^r) = \sum_{i = n}^{\infty}a_ix^i 
+        \] 
+        is nilpotent. Hence, $\sum_{i = n}^{\infty}a_ix^i  = x^k\sum_{i = n}^{\infty}a_ix^{i - k}$
+        is nilpotent, which implies that $\sum_{i = n}^{\infty}a_ix^{i - k}$ is nilpotent. In this case, 
+        we clearly have that $a_k$ is nilpotent, which proves our inductive step. We thus have the general 
+        claim by induction. 
+
+        \item[\emph{iii})] We know that $f$ is in the Jacobson $\iff$ 
+        $1 - fg$ is a unit for all $g \in A[[x]]$. However, this is the case if and 
+        only if $1 - a_0y$ is a unit 
+        for all $y \in A$, so that $a_0$ is in the Jacobson if and ony if $f$ is in the Jacobson of $A[[x]]$.
+
+          
+          
+         
+    \end{itemize}
+\end{solution}
+
+\begin{exercise}
+    A ring $A$ is such that every ideal not contained in the nilradical contains a non-zero idempotent (that is, an element $e$ 
+    such that $e^2 = e  \ne 0$). Prove that the nilradical and Jacobson radical of $A$ are equal.
+\end{exercise}
+
+\begin{solution}
+    We already know that the nilradical is contained in the Jacobson radical. 
+    To show the opposite inclusion, suppose the contrary. Then since the Jacobson 
+    is not contained in the nilradical, there exists an element $e$ in the Jacobson such 
+    that $e^2 = e \ne 0$. As an element of the Jacobson we know that 
+    $1 - e$ is a unit. However, note that $(1 - e)(1 + e) = 1 - e^2 = 1 - e$. 
+    Thus $(1 - e)(1 + e - 1) = 0 \implies e(1 - e) = 0$. However, $e \ne 0$ and 
+    $1 - e$ is not a zero divisor, so this is a contradiction. Hence the Jacobson is 
+    contained in the nilradical, so that they are equal. 
+\end{solution}
+
+\begin{exercise}
+    Let $A$ be a ring in which every element $x$ satisfies $x^n = x$ for some $n > 1$ (depending on $x$). Show that every prime ideal in $A$ 
+    is maximal.
+\end{exercise}
+
+\begin{solution}
+    Let $P$ be a prime ideal, and consider the ring $A/P$. Consider an element 
+    $a + P$ in $A/P$. Then $(a + P)^n = a + P$ for some $n$. In particular, we have that 
+    $(a + P)((a + P)^{n-1} - (1 + P)) = 0$. Since $A/P$ is an integral domain, this implies that 
+    $(a + P)^{n-1} = 1 + P$. Hence, $(a + P)$ is invertible. Since this was an arbitray element 
+    this implies that $A/P$ is a field, so that $P$ is maximal.
+\end{solution}
+
+\begin{exercise}
+    Let $A$ be a ring $\ne 0$. Show that the set of prime ideals of $A$ has minimal 
+    elements with respect to inclusion.
+\end{exercise}
+
+\begin{exercise}
+    Let $\idl{a}$ be an ideal $\ne (1)$ in a ring $A$. Show that 
+    $\idl{a} = r(\idl{a}) \iff \idl{a}$ is an intersection of prime ideals.
+\end{exercise}
+
+\begin{exercise}
+    Let $A$ be a ring, $\idl{R}$ its nilradical. Show that the following are equivalent: 
+    \begin{itemize}
+        \item[\emph{i})] $A$ has exactly one prime ideal;
+        \item[\emph{ii})] every element of $A$ is either a unit or nilpotent; 
+        \item[\emph{iii}] $A/\idl{R}$ is a field.    
+    \end{itemize}
+\end{exercise}
+
+\begin{solution}
+    \begin{description}
+        \item[\emph{i} $\iff$ \emph{ii}] Suppose $A$ has exactly on prime ideal. Then it must be a maximal ideal. 
+        Additionally, since $\idl{R}$ is 
+        the intersection of all the prime ideals of $A$, this means that $\idl{R}$ is maximal. 
+        Therefore, every element of $A$ is either a unit or a nilpotent element. 
+
+        Conversely, if every nonunit is nilpotent, this means that every non unit must be in $\idl{R}$. 
+        Additionally, $\idl{R}$ must be maximal because there cannot be any maximal ideal containing $\idl{R}$ 
+        as every nonunit is nilpotent. Hence $A$ has exactly one prime ideal. 
+
+        \item[\emph{i} $\iff$ \emph{iii}]
+        If $A$ has exactly one prime ideal, then again, $\idl{R}$ must be prime, in fact it must be maximal. 
+        Therefore, $A/\idl{R}$ is a field. If conversely we are given the fact that $A/\idl{R}$ is a field, 
+        this implies that $\idl{R}$ is maximal. Hence, the intersection of the prime ideals 
+        of $A$ must consist of one element, so that $A$ has exactly one prime ideal.
+
+    \end{description}
+\end{solution}
+
+\begin{exercise}
+    A ring $A$ is Boolean if $x^2 = x$ for all $x \in A$. In a Boolean ring 
+    $A$, show that
+    \begin{itemize}
+        \item[\emph{i})] $2x = 0$ for all $x \in A$
+        \item[\emph{ii})] Every prime ideal $\idl{p}$ is maximal and 
+        $A/\idl{p}$ is a field with two elements;
+        \item[\emph{iii})] Every finitely generated ideal in A is principal.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    A local ring contains no idempotent $\ne 0,1 $.
+\end{exercise}
+
+\begin{exercise}\emph{Construction of an algebraic closure of a field} (E. Artin).\\
+    Let $K$ be a field and let $\Sigma$ be the set of all irreducible monic 
+    polynomials $f$ in one indeterminate with coefficients in $K$. 
+    Let $A$ be the polynomial ring over $K$ generated by indeterminates 
+    $x_f$, one for each $f \in \Sigma$. Let $\idl{a}$ be the ideal of $A$ 
+    generated by the polynomials $f(x_f)$ for all $f \in \Sigma$. 
+    Show that $\idl{a} \ne (1)$. 
+
+    Let $\idl{m}$ be a maximal ideal of $A$ containing $\idl{a}$, and let 
+    $K_1 = A/\idl{m}$. Then $K_1$ is an extension field of $K$ in which 
+    each $f \in \Sigma$ has a root. Repeat the construction with $K_1$ in place 
+    of $K$, obtaining a field $K_2$ , and so on. Let $L = \bigcup_{n=1}^{\infty} K_n$.
+    Then $L$ is a field in which each $f \in \Sigma$ splits completely into linear factors. 
+    Let $\overline{K}$ be the set of all elements of $L$ which are algebraic over $K$. 
+    Then $\overline{K}$ is an algebraic closure of $K$.
+\end{exercise}
+
+\begin{exercise}
+    In a ring $A$, let $\Sigma$ be the set of all ideals in which every element is a zero-divisor. 
+    Show that the set $\Sigma$ has maximal elements and that every maximal element of $\Sigma$ is a prime ideal. 
+    Hence the set of zero-divisors in $A$ is a union of prime ideals.
+\end{exercise}
+
+\begin{exercise}\emph{The Prime Spectrum of a Ring}\\
+    Let $A$ be a ring and let $X$ be the set of all prime ideals of $A$. For each subset
+    $E$ of $A$, let $V(E)$ denote the set of all prime ideals of $A$ which contain $E$. 
+    Prove that 
+    \begin{itemize}
+        \item[\emph{i})] if $\idl{a}$ is the ideal generated by $E$, then $V(E) = V(\idl{a}) = V(r(\idl{a}))$.
+        \item[\emph{ii})] $V(0) = X$, $V(1) = \varnothing$
+        \item[\emph{iii})] if $(E_i)_{i \in I}$ is any family of subsets of $A$, then
+        \[
+            V\left( \bigcup_{i \in I}E_i \right) = \bigcap_{i \in I}V(E_i)
+        \] 
+        \item[\emph{iv})] $V(\idl{a} \cap \idl{b}) = V(\idl{a}\idl{b}) = V(\idl{a})\cup V(\idl{b})$ 
+        for any ideals $\idl{a}, \idl{b}$ of $A$.
+
+        These results show that the sets $V(E)$ satisfy the axioms for closed sets in a topological space. 
+        The resulting topology is called the \emph{Zariski topology}. The topological space 
+        $X$ is called the prime spectrum of $A$, and is written $\text{Spec}(A)$.
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    Draw pictures of $\Spec(\mathbb{Z})$, $\Spec(\mathbb{R})$, $\Spec(\mathbb{C}[x])$, $\Spec(\mathbb{R}[x])$, $\Spec(\mathbb{Z}[x])$.
+\end{exercise}
+
+\begin{exercise}
+    For each $f\in A$, let $X_f$ denote the complement of $V(f)$ in $X = \Spec(A)$. The sets $X_f$ are open. Show that they form a 
+    basis of open sets for the Zariski topology, and that
+    \begin{itemize}
+        \item[\emph{i})] $X_f \cap X_g = X_{fg}$;
+        \item[\emph{ii})] $X_f = \varnothing \iff f$ is nilpotent;
+        \item[\emph{iii})] $X_f = X \iff f$ is a unit;
+        \item[\emph{iv})] $X_f = X_g \iff r((f)) = r((g))$;
+        \item[\emph{v})] $X$ is quasi-compact (that is, every open covering of $X$ has a finite subcovering)
+        \item[\emph{vi})] More generally, each $X_f$ is quasi-compact.
+        \item[\emph{vii})] An open subset of $X$ is quasi-compact if and only if it is a finite union of
+        sets $X_f$.
+    \end{itemize}
+    [To prove (\emph{v}), remark that it is enough to consider a covering of $X$ by basic open sets $X_{f_i} (i \in I)$. 
+    Show that the $f_i$ generate the unit ideal and hence that there is an equation of the form
+    \[
+        1 = \sum_{i \in J}g_if_i \qquad (g_i \in A)   
+    \]
+    where $J$ is some \emph{finite} subset of $I$. Then $X_{f_i} (i \in J)$ cover $X$. 
+\end{exercise}
+
+\begin{exercise}
+    For psychological reasons it is sometimes convenient to denote a prime ideal 
+    of $A$ by a letter such as $x$ or $y$ when thinking of it as a point of $X= \Spec(A)$. 
+    When thinking of $x$ as a prime ideal of $A$, we denote it by $\idl{p}_x$ (logically, of course, 
+    it is the same thing). Show that
+    \begin{itemize}
+        \item[\emph{i})] the set $\{x\}$ is closed (we say that $x$ is a ``closed point'') in 
+        $\Spec(A) \iff \idl{p}_x$ is maximal; 
+        \item[\emph{ii})] $\overline{\{x\}} = V(\idl{p}_x)$;
+        \item[\emph{iii})] $y \in \overline{\{x\}} \iff \idl{p}_x \subset \idl{p}_y$;
+        \item[\emph{iv})] $X$ is a $T_0$-space (this means that if $x$, $y$ are distinct points of $X$, then either
+        there is a neighborhood of $x$ which does not contain $y$, or else there is a neighborhood of $y$ which does not contain $x$).
+    \end{itemize}
+\end{exercise}
+
+\begin{exercise}
+    A topological space $X$ is said to be irreducible if $X \ne \varnothing$ and if every pair 
+    of non-empty open sets in $X$ intersect, or equivalently if every non-empty open set is dense in $X$. 
+    Show that $\Spec(A)$ is irreducible if and only if the nilradical of $A$ is a prime ideal.
+\end{exercise}
+
+\begin{exercise}
+    Let $X$ be a topological space.
+    \begin{itemize}
+        \item[\emph{i})] If $Y$ is an irreducible (Exercise 19) subspace of $X$, then the closure $\overline{Y}$ of $Y$
+        in $X$ is irreducible.
+        \item[\emph{ii})] Every irreducible subspace of $X$ is contained in a maximal irreducible
+        subspace.
+        \item[\emph{iii})] The maximal irreducible subspaces of $X$ are closed and cover $X$. They are
+        called the \emph{irreducible components} of $X$. What are the irreducible components
+        of a Hausdorff space?
+        \item[\emph{iv})] If $A$ is a ring and $X = \Spec(A)$, then the irreducible components of $X$ are
+        the closed sets $V(\idl{p})$ where $\idl{p}$ is a minimal prime ideal of $A$ (Exercise 8).
+    \end{itemize}
+\end{exercise}
+
+\end{document}

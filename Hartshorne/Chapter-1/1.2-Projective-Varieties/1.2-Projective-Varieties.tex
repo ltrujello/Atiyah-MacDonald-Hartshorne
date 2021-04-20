@@ -11,7 +11,7 @@
 
 % Our commands + environments are in style.cls. 
 % Using the line below, they can be imported into any .tex file.
-\usepackage{../../style}    
+\usepackage{../../hartshorne-style}    
 
 % Header 
 \newcommand{\header}[2]{
@@ -21,6 +21,7 @@
     {\large Feiyang Lin and Luke Trujillo}
     \vspace{0.5cm}}
 }
+
 
 
 \begin{document}
@@ -206,50 +207,58 @@
 
 \begin{solution}
     \begin{luke}
-        We follow the hints.
-        \begin{itemize}
-            \item A degree 0 element of $S(Y)_{x_i}$ will be of the 
-            form $(f + I(Y))/x_i^d$, where $\deg(f) = d$. Now in this case, 
-            \[
-                \frac{f(x_0, \dots, x_n) + I_{\pp^n}(Y)}{x_i^d}
-                =
-                \alpha(f) + I_{\aa^n}(Y_i)
-            \]
-            Therefore, the homogeneous 
-            representative $f$ may be regarded as an ordinary polynomial which is 
-            not in $I(Y_i)$ (i.e., it at least does not vanish on $Y$ if the $i$-th coordinate is 
-            fixed to be nonzero). Hence, we may identify the 0-degree element 
-            $(f + I(Y))/x_i^d$ as a member of $A(Y_i)$. 
-    
-            Alternatively, let $g(x_1, \dots, x_n) + I_{\aa^n}(Y_i) \in A(Y_i)$. 
-            Then we may rewrite 
-            \[
-                g(x_1, \dots, x_n) + I_{\aa^n}(Y_i) = \frac{\beta(g)}{x_i^d} + I_{\pp^n}(Y)
-            \]
-            and note that this is a degree 0 element of $S(Y)_{x_i}$.
+        Let $S(Y)_{x_i}^{(0)}$ be the degree 0 elements of $S(Y)_{x_i}$. We will construct 
+        an isomorphism $\psi_0: S(Y)_{x_i}^{(0)} \to A(Y_i)$.
+        To do so, we recycle the notation use by 
+        Hartshorne: $\alpha_i$ sets the $x_i$-th coordinate of a homogeneous polynomial to 1, 
+        while $\beta_i: k[x_1, \dots, x_n] \to k[x_i, x_1, \dots, x_n]$ homogenizes a polynomial 
+        by introducing the variable $x_i$. 
+        Note that they are inverses. 
 
-            \item We now establish our desired isomorphism. To do so, we recycle the notation use by 
-            Hartshorne: $\alpha$ sets the $x_i$-th coordinate of a homogeneous polynomial to 1, 
-            while $\beta: k[x_1, \dots, x_n] \to k[x_i, x_1, \dots, x_n]$ homogenizes a polynomial 
-            by introducing the variable $x_i$. 
-            Note that they are inverses. Now we define the isomorphism
-            $\psi: S(X)_{x_i} \to A(Y_i)[x_i, x_i^{-1}]$ where 
-            \[
-                \psi\left( \frac{f + I(Y)}{x_i^j} \right)
-                =
-                x^{j-d}\alpha(f) + I_{\aa^n}(Y_i)
-                \qquad 
-                d = \deg(f)
-            \]
-            and 
-            \[
-                \psi^{-1}\big(g \cdot x_i^{r}x_i^{-s} + I_{\aa^n}(Y)\big) = 
-                \frac{\beta(g)x_i^{r}x_i^{-s} + I_{\pp^n}(Y)}{x_i^d}
-                \qquad 
-                d = \deg(g).
-            \]
-            \item  
-        \end{itemize}
+        A degree 0 element of $S(Y)_{x_i}$ will be of the 
+        form $(f + I_{\pp^n}(Y))/x_i^d$ with $f \ne x_i^n$ for any $n$, 
+        and where $\deg(f) = d$. Thus we let 
+        \[
+            \psi_0\left(\frac{f(x_0, \dots, x_n) + I_{\pp^n}(Y)}{x_i^d}\right)
+            =
+            \alpha_i(f) + I_{\aa^n}(Y_i).
+        \]
+        Here, we see that if $f(x_0, \dots, x_n)/x_i^d$ is nonzero on $Y$, then 
+        $\alpha_i(f)$ is nonzero on $Y_i$. 
+        Alternatively, let $g(x_1, \dots, x_n) + I_{\aa^n}(Y_i) \in A(Y_i)$. 
+        Then we define 
+        \[
+            \psi_0^{-1}\left(g(x_1, \dots, x_n) + I_{\aa^n}(Y_i)\right) = \frac{\beta_i(g)}{x_i^d} + I_{\pp^n}(Y)
+        \]
+        and note that this is a degree 0 element of $S(Y)_{x_i}$.
+        The fact that these are inverses follows from the fact that $\alpha_i, \beta_i$ 
+        are inverses of each other. Therefore, $S(Y)_{x_i}^{(0)} \cong A(Y_i).$
+
+        We now establish the stronger isomorphism $\psi:S(Y)_{x_i} \to A(Y_i)[x_i, x_i^{-1}]$.
+        Define 
+        \[
+            \psi\left( \frac{f + I(Y)}{x_i^j} \right)
+            =
+            \alpha_i(f)x^{j}x^{-d} + I_{\aa^n}(Y_i)
+            \qquad 
+            d = \deg(f)
+        \]
+        and 
+        \[
+            \psi^{-1}\big(g \cdot x_i^{r}x_i^{-s} + I_{\aa^n}(Y)\big) = 
+            \frac{\beta_i(g) + I_{\pp^n}(Y)}{x_i^rx_i^{-s}x_i^{d}}
+            \qquad 
+            d = \deg(g).
+        \]
+        These are once again inverses because $\alpha_i$ and $\beta_i$ are inverses 
+        of each other.
+
+        Now observe that $Y = \bigcup_{i} U_i \cap Y$, so that by Exercise 1.10, we have 
+        that $\dim Y = \sup_{i} \dim U_i \cap Y$. However, $\phi_i$ establishes the isomorphism 
+        to $Y_i$, so that $\dim Y = \sup_{i}\dim Y_i $. Hence it suffices to calculate this quantity. 
+
+        Since $Y_i$ is an affine variety, we have that $\dim Y_i = \dim A(Y_i)$. 
+
 
         
 

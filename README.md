@@ -1,9 +1,13 @@
-## Solutions to Hartshorne Exercises 
+## Solutions to Hartshorne and Atiyah Macdonald
 
-Completed exercises of Hartshorne's Algebraic Geometry, as part of a collaborative study between Feiyang Lin and Luke Trujillo of the text.
+Completed exercises of Hartshorne and Atiyah Macdonald, as part of a collaborative study between Feiyang Lin and Luke Trujillo of the text.
 
-[Chapter 1 Section 1: Affine Varieties](https://ltrujello.github.io/Hartshorne-Exercises/Chapter-1/1.1-Affine-Varieties/1.1-Affine-Varieties.pdf)
+### Atiyah Macdonald
+[Chapter 1: Rings and Ideals](https://ltrujello.github.io/Hartshorne-Exercises/Atiyah-Macdonald/Chapter-1/Rings_and_Ideals.pdf)
 
-[Chapter 1 Section 2: Projective Varieties](https://ltrujello.github.io/Hartshorne-Exercises/Chapter-1/1.2-Projective-Varieties/1.2-Projective-Varieties.pdf)
+### Hartshorne
+[Chapter 1 Section 1: Affine Varieties](https://ltrujello.github.io/Hartshorne-Exercises/Hartshorne/Chapter-1/1.1-Affine-Varieties/1.1-Affine-Varieties.pdf)
 
-[Chapter 1 Section 3: Morphisms](https://ltrujello.github.io/Hartshorne-Exercises/Chapter-1/1.3-Morphisms/1.3-Morphisms.pdf)
+[Chapter 1 Section 2: Projective Varieties](https://ltrujello.github.io/Hartshorne-Exercises/Hartshorne/Chapter-1/1.2-Projective-Varieties/1.2-Projective-Varieties.pdf)
+
+[Chapter 1 Section 3: Morphisms](https://ltrujello.github.io/Hartshorne-Exercises/Hartshorne/Chapter-1/1.3-Morphisms/1.3-Morphisms.pdf)
