@@ -12,7 +12,7 @@
 
 % Our commands + environments are in style.cls. 
 % Using the line below, they can be imported into any .tex file.
-\usepackage{../../style}
+\usepackage{../../hartshorne-style}
 
 % Header 
 \newcommand{\header}[2]{
@@ -151,36 +151,36 @@
 \begin{solution}
     \begin{luke}
         \begin{enumerate}
-            \item Given a morphism $\phi: X \to Y$ of varieties and a point $P \in X$, 
+            \item Given a morphism $\varphi: X \to Y$ of varieties and a point $P \in X$, 
             we define
             \[
-                \phi_P^* : \cO_{\phi(P), Y} \to \cO_{P, X} \qquad \big(U \subset Y, f: U \to k \big) \longmapsto 
-                \big(\phi^{-1}(U), f \circ \phi: \phi^{-1}(U) \to k\big).
+                \varphi_P^* : \cO_{\varphi(P), Y} \to \cO_{P, X} \qquad \big(U \subset Y, f: U \to k \big) \longmapsto 
+                \big(\varphi^{-1}(U), f \circ \varphi: \varphi^{-1}(U) \to k\big).
             \]
             \begin{description}[itemsep = 3pt]
-                \item[Well-defined] Let $(U_1, f_1) \sim (U_2, f_2)$ be members of $\cO_{\phi(P), Y}$.
+                \item[Well-defined] Let $(U_1, f_1) \sim (U_2, f_2)$ be members of $\cO_{\varphi(P), Y}$.
                 Then $f_1 \cap f_2$ on $U_1 \cap U_2$, which implies that 
-                $f_1 \circ \phi = f_2 \circ \phi$ on $\phi^{-1}(U_1 \cap U_2)$. 
-                Hence $(\phi^{-1}(U_1), f_1 \circ \phi) \sim (\phi^{-1}(U_2), f_2 \circ \phi)$.
+                $f_1 \circ \varphi = f_2 \circ \varphi$ on $\varphi^{-1}(U_1 \cap U_2)$. 
+                Hence $(\varphi^{-1}(U_1), f_1 \circ \varphi) \sim (\varphi^{-1}(U_2), f_2 \circ \varphi)$.
 
                 \item[Local]
-                Let $\idl{m}_{\phi(P)} = \{ (V, f) \in \cO_{\phi(P), Y} \mid f\circ \phi(p) = 0 \}$ be the 
-                maximal ideal of $\cO_{\phi(P), Y}$. Then observe that 
-                $\phi_P^{*}(\idl{m}_{\phi(P)}) = (\phi^{-1}(V), f \circ \phi) \in \idl{m}_P \subset \cO_{P, X}$.
-                Hence, we see that $\phi_P^{*}(\idl{m}_{\phi(P)}) \subset \idl{m}_{P}$, so that 
-                $\phi_P^*$ is a homomorphism of local rings. 
+                Let $\idl{m}_{\varphi(P)} = \{ (V, f) \in \cO_{\varphi(P), Y} \mid f\circ \varphi(p) = 0 \}$ be the 
+                maximal ideal of $\cO_{\varphi(P), Y}$. Then observe that 
+                $\varphi_P^{*}(\idl{m}_{\varphi(P)}) = (\varphi^{-1}(V), f \circ \varphi) \in \idl{m}_P \subset \cO_{P, X}$.
+                Hence, we see that $\varphi_P^{*}(\idl{m}_{\varphi(P)}) \subset \idl{m}_{P}$, so that 
+                $\varphi_P^*$ is a homomorphism of local rings. 
             \end{description}
 
-            \item Let $\phi: X \to Y$ be a homeomorphism such that $\phi_P^{*}$ is an isomorphism 
+            \item Let $\varphi: X \to Y$ be a homeomorphism such that $\varphi_P^{*}$ is an isomorphism 
             for each $P \in X$. Let
             $f: V \subseteq Y \to k$ be a regular function on $V$ containing $P$.
-            Then $f$ corresponds via $\phi_P^*$ to the regular function 
-            $f \circ \phi: \phi^{-1}(V) \to k$ on $\phi^{-1}(P)$. 
-            Hence, $\phi$ is a morphism of varieties. By a similar argument, $\phi^{-1}$ is also a morphism of varieties. 
-            As they are inverses of each other, we see that $\phi$ is an isomorphism of varieties. 
+            Then $f$ corresponds via $\varphi_P^*$ to the regular function 
+            $f \circ \varphi: \varphi^{-1}(V) \to k$ on $\varphi^{-1}(P)$. 
+            Hence, $\varphi$ is a morphism of varieties. By a similar argument, $\varphi^{-1}$ is also a morphism of varieties. 
+            As they are inverses of each other, we see that $\varphi$ is an isomorphism of varieties. 
             The other direction is not difficult to check.
 
-            \item \lfy{Given $(U, f) \in \cO_{\phi(P, Y)}$ such that $\phi_P^*((U,f)) = 0$, we wish to show that $f(U) = 0$. The condition $\phi_P^*((U,f)) = 0$ implies that $f(\phi(X) \cap U) = 0$. Now suppose that there exists $x \in U$ such that $f(x) \neq 0$.Since $k \setminus \{0\}$ is open in $k$, there exists an open neighborhood $V \subseteq U$ around $x$ such that $f(V) \neq 0$ (let $V = f^{-1}(k \setminus \{0\})$). But $\phi(X)$ is dense in $Y$, so $\phi(X) \cap V \neq \emptyset$. This is a contradiction because $f(\phi(X) \cap V) \subset f(\phi(X) \cap U) = 0$. Therefore, there can be no such $x$. In other words, $f(U) = 0$ as desired.}
+            \item 
             
         \end{enumerate}
     \end{luke}
@@ -247,12 +247,6 @@
         of varieties, and are homeomorphisms, we see that $\rho_d$ establishes the isomorphism 
         $\pp^n \cong Z(\idl{a})$, as desired. 
     \end{luke}
-
-    \lfy{
-        By 3.3(b) and (c), since we know $\phi := \rho_d$ is a homeomorphism onto its image by Exercise 2.12, it suffices to check that $\phi_P^{*}$ is surjective for all $P \in X$. Let's consider a pair $(U, f) \in \cO_{P, \pp^n}$, where, without loss of generality, we may assume that $U \subseteq U_0 = \pp^n \setminus Z(x_0)$. Then consider $(V, g) \in \cO_{\phi(P), \im \phi}$ given by $V = \phi(U)$ and 
-        \[g(y_0, \dots, y_N) = f(y_{(d-1)\bbe_0+\bbe_0}, \dots, y_{(d-1)\bbe_0+\bbe_n}).\] The set $V$ is open because $\phi$ is a homeomorphism. The function $g$ is regular at $\phi(P)$ because...  We verify that $\phi_P^{*}(V, g) = (U, f)$: indeed, $\phi^{-1}V = \phi^{-1}\phi (U) = U$ and for all $\x = [x_0: \dots: x_n] \in U$, so that in particular $x_0 \neq 0$, $g(M_0(\x), \dots, M_N(\x)) = f(x_0^d, \dots, x_0^{d-1}x_n) = f(x_0, \dots, x_n)$.
-
-    }
 \end{solution}
 
 %% 
@@ -261,25 +255,66 @@
     isomorphic to an affine variety. If $H \subseteq \pp^n$ is any hypersurface, 
     show that $\pp^n - H$ is affine. 
     [\emph{Hint}: Let $H$ have degree $d$. Then consider the $d$-uple 
-    embedding of $\pp^n$ in $\pp^N$ and use the fact that $\pp^N$ minus 
+    embedding of $\pp^n$ in $\pp^n$ and use the fact that $\pp^N$ minus 
     a hyperplane is affine.]
 \end{exercise}
 
 \begin{solution}
-\lfy{
-Recall that a hypersurface is a variety defined by an irreducible polynomial, and a hyperplane is a hypersurface whose defining polynomial is linear.
+    \begin{luke}
+        Let $H$, the hypersurface, be given by the irreducible polynomial $f$. 
+        Since $f$ is homogeneous, we may write it as 
+        \[
+            f(x_0, \dots, x_n) = \sum_{i = 0}^{N}a_iM_i(x_0, \dots, x_n).  
+        \]
+        where $M_i$ is the $i$-th homogeneous monomial of degree $d = \deg(f)$.
+        If we let $y_i = M_i$, then the linear polynomial 
+        \[
+            p(y_0, \dots, y_N) = \sum_{i = 0}^{N}a_iy_i    
+        \]
+        has the property that $\theta(p(y_0, \dots, y_N)) = f$, 
+        where $\theta$ substitutes $y_i$ for $M_i$. What this tell us is that 
+        $\rho_d(H) = Z(p)$, so that $\rho_d(H)$ is actually a hyperplane. 
+        Observe now that 
+        \[
+            \rho_d(\pp^n - H) \cong Z(\idl{a}) - \rho_d(H) = (\pp^N - \rho_d(H)) \cap Z(\idl{a}).
+        \]
+        However, $\pp^N - \rho_d(H) \cong \aa^{N-1}$ as we know that the $\pp^N - Z(x_i) \cong \aa^{N-1}$, 
+        and we can achieve a similar result for general hyperplanes by substituting 
+        variables as necessary. 
 
-We first prove the fact that $\pp^N$ minus a hyperplane $H$ is isomorphic to $\aa^n$. Without loss of generality, the defining equation of the hyperplane provides us with a relation $x_0 = p(x_1, \dots, x_n)$ where $p$ is a linear polynomial. This observation allows us to define a bijection between $\pp^N$ minus a hyperplane $H$ and $\aa^n$.
-}
+    \end{luke}
 \end{solution}
+
 
 %% 
 \begin{exercise}[3.6]
     There are quasi-affine varieties which are not affine. For example, show that 
     $X = \aa^2 - \{(0,0)\}$ is not affine. [\emph{Hint}: Show 
-    that $\cO \cong k[x,y]$
+    that $\cO(X) \cong k[x,y]$
     and use (3.5). See (III, Ex. 4.3) for another proof.]
 \end{exercise}
+
+\begin{solution}
+    \begin{luke}
+        Consider $f \in \mathcal{O}(X)$. Let $p = (x_0, y_0) \in X$,
+    Since $f$ is regular on $X = \aa^2 - \{(0,0)\}$, 
+    we know that there is an open set $U$ of $p$ such that 
+    \[
+        f(x, y) = \frac{g(x,y)}{h(x,y)} \quad \forall (x,y) \in U.
+    \]
+    Now $h(x,y)$ is only allowed to have a root at $(0,0)$. 
+    Thus, observe that $h(x_0, y)$ is a single variable polynomial with no solution, as 
+    $x_0 \ne 0$. Since $k$ is algebraically closed, $h(x_0, y)$ must be constant, 
+    so that $h(x, y)$ is just a polynomial in $x$. However, we can similarly 
+    observe that $h(x,y)$ would also need to be constant. This all together 
+    implies that $\mathcal{O}(X) \cong k[x, y]$.
+    
+    Now suppose $X$ is affine. Then by (3.5), we know that since 
+    $\mathcal{O}(X) \cong k[x,y] \cong A(\aa^2)$, which implies that 
+    $\aa^2 \cong X$. As this is a contradiction, we see that $X$ is not affine.
+    \end{luke}
+
+\end{solution}
 
 
 %% 
@@ -293,6 +328,8 @@ We first prove the fact that $\pp^N$ minus a hyperplane $H$ is isomorphic to $\a
 \end{exercise}
 
 
+
+
 %% 
 \begin{exercise}[3.8]
     Let $H_i$ and $H_j$ be the hyperplanes in $\pp^n$ defined by 
@@ -301,9 +338,6 @@ We first prove the fact that $\pp^N$ minus a hyperplane $H$ is isomorphic to $\a
     (This gives an alternate proof of (3.4a) in the case $Y = \pp^n$.)
 \end{exercise}
 
-\begin{solution}
-\lfy{Suppose that there is some non-constant regular function $f$ on $\pp^n - (H_i \cap H_j)$. Then we may write $f$ as $\frac{h_1(x_0, \dots, x_n)}{h_2(x_0, \dots, x_n)}$ so that $h_1$ and $h_2$ are relatively prime, homogeneous polynomials and $\deg h_1 = \deg h_2 > 0$. Then $V(h_2) \subseteq H_i \cap H_j$, which implies that $(x_i, x_j) \subseteq (h_2)$. But this would mean that $h_2$ divides both $x_i$ and $x_j$ and must be equal to a unit, which contradicts $\deg h_2 > 0$.}
-\end{solution}
 
 %% 
 \begin{exercise}[3.9]
@@ -312,9 +346,6 @@ We first prove the fact that $\pp^N$ minus a hyperplane $H$ is isomorphic to $\a
     Then $X \cong Y$ (Ex. 3.4). But show that $S(X) \not\cong S(Y)$.
 \end{exercise}
 
-\begin{solution}
-\lfy{Why is $k[x,y]\not\cong k[x,y,z]/(xz-y^2)$? Possibly: $(x, y ,x)$ is an ideal of height 3 in the latter, but $\dim k[x,y]$ is $2$. Problem with this: seems to suggest that $\dim Y$ is different from the dimension of its embedding.}
-\end{solution}
 
 %% 
 \begin{exercise}[3.10]
