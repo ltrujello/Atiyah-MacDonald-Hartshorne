@@ -180,7 +180,7 @@
             As they are inverses of each other, we see that $\phi$ is an isomorphism of varieties. 
             The other direction is not difficult to check.
 
-            \item 
+            \item \lfy{Given $(U, f) \in \cO_{\phi(P, Y)}$ such that $\phi_P^*((U,f)) = 0$, we wish to show that $f(U) = 0$. The condition $\phi_P^*((U,f)) = 0$ implies that $f(\phi(X) \cap U) = 0$. Now suppose that there exists $x \in U$ such that $f(x) \neq 0$.Since $k \setminus \{0\}$ is open in $k$, there exists an open neighborhood $V \subseteq U$ around $x$ such that $f(V) \neq 0$ (let $V = f^{-1}(k \setminus \{0\})$). But $\phi(X)$ is dense in $Y$, so $\phi(X) \cap V \neq \emptyset$. This is a contradiction because $f(\phi(X) \cap V) \subset f(\phi(X) \cap U) = 0$. Therefore, there can be no such $x$. In other words, $f(U) = 0$ as desired.}
             
         \end{enumerate}
     \end{luke}
@@ -247,6 +247,12 @@
         of varieties, and are homeomorphisms, we see that $\rho_d$ establishes the isomorphism 
         $\pp^n \cong Z(\idl{a})$, as desired. 
     \end{luke}
+
+    \lfy{
+        By 3.3(b) and (c), since we know $\phi := \rho_d$ is a homeomorphism onto its image by Exercise 2.12, it suffices to check that $\phi_P^{*}$ is surjective for all $P \in X$. Let's consider a pair $(U, f) \in \cO_{P, \pp^n}$, where, without loss of generality, we may assume that $U \subseteq U_0 = \pp^n \setminus Z(x_0)$. Then consider $(V, g) \in \cO_{\phi(P), \im \phi}$ given by $V = \phi(U)$ and 
+        \[g(y_0, \dots, y_N) = f(y_{(d-1)\bbe_0+\bbe_0}, \dots, y_{(d-1)\bbe_0+\bbe_n}).\] The set $V$ is open because $\phi$ is a homeomorphism. The function $g$ is regular at $\phi(P)$ because...  We verify that $\phi_P^{*}(V, g) = (U, f)$: indeed, $\phi^{-1}V = \phi^{-1}\phi (U) = U$ and for all $\x = [x_0: \dots: x_n] \in U$, so that in particular $x_0 \neq 0$, $g(M_0(\x), \dots, M_N(\x)) = f(x_0^d, \dots, x_0^{d-1}x_n) = f(x_0, \dots, x_n)$.
+
+    }
 \end{solution}
 
 %% 
@@ -255,10 +261,17 @@
     isomorphic to an affine variety. If $H \subseteq \pp^n$ is any hypersurface, 
     show that $\pp^n - H$ is affine. 
     [\emph{Hint}: Let $H$ have degree $d$. Then consider the $d$-uple 
-    embedding of $\pp^n$ in $\pp^n$ and use the fact that $\pp^n$ minus 
+    embedding of $\pp^n$ in $\pp^N$ and use the fact that $\pp^N$ minus 
     a hyperplane is affine.]
 \end{exercise}
 
+\begin{solution}
+\lfy{
+Recall that a hypersurface is a variety defined by an irreducible polynomial, and a hyperplane is a hypersurface whose defining polynomial is linear.
+
+We first prove the fact that $\pp^N$ minus a hyperplane $H$ is isomorphic to $\aa^n$. Without loss of generality, the defining equation of the hyperplane provides us with a relation $x_0 = p(x_1, \dots, x_n)$ where $p$ is a linear polynomial. This observation allows us to define a bijection between $\pp^N$ minus a hyperplane $H$ and $\aa^n$.
+}
+\end{solution}
 
 %% 
 \begin{exercise}[3.6]
@@ -288,6 +301,9 @@
     (This gives an alternate proof of (3.4a) in the case $Y = \pp^n$.)
 \end{exercise}
 
+\begin{solution}
+\lfy{Suppose that there is some non-constant regular function $f$ on $\pp^n - (H_i \cap H_j)$. Then we may write $f$ as $\frac{h_1(x_0, \dots, x_n)}{h_2(x_0, \dots, x_n)}$ so that $h_1$ and $h_2$ are relatively prime, homogeneous polynomials and $\deg h_1 = \deg h_2 > 0$. Then $V(h_2) \subseteq H_i \cap H_j$, which implies that $(x_i, x_j) \subseteq (h_2)$. But this would mean that $h_2$ divides both $x_i$ and $x_j$ and must be equal to a unit, which contradicts $\deg h_2 > 0$.}
+\end{solution}
 
 %% 
 \begin{exercise}[3.9]
@@ -296,6 +312,9 @@
     Then $X \cong Y$ (Ex. 3.4). But show that $S(X) \not\cong S(Y)$.
 \end{exercise}
 
+\begin{solution}
+\lfy{Why is $k[x,y]\not\cong k[x,y,z]/(xz-y^2)$? Possibly: $(x, y ,x)$ is an ideal of height 3 in the latter, but $\dim k[x,y]$ is $2$. Problem with this: seems to suggest that $\dim Y$ is different from the dimension of its embedding.}
+\end{solution}
 
 %% 
 \begin{exercise}[3.10]
